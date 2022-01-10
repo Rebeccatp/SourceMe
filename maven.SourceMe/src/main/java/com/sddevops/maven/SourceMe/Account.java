@@ -7,5 +7,5 @@ public class Account {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private int contact;
+	private String hello;
 }
