@@ -49,7 +49,7 @@
     		<h2>Reply a comment</h2>
 		</div>
     <form class="create-form">
-        <!--Remarks-->  
+        <!--Question-->  
           <div class="form-row mt-2">
             <div class="col">
                 <label class="qns-label">Question</label> 
@@ -57,7 +57,7 @@
             </div>
           </div>
 
-          <!--Remarks-->  
+          <!--My Answer-->  
           <div class="form-row mt-2">
             <div class="col">
                 <label class="ans-label">My Answer</label> 
@@ -65,15 +65,14 @@
             </div>
           </div>
           
-          <div class="submit-btn">
-          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button>
-          </div>
-        
+         
         </form>
     </div>
-    
 </div>
-        
+      <!-- Submit button -->
+      <div class="btn-all">
+          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button>
+      </div> 
 </div>
 </body>
 </html>
