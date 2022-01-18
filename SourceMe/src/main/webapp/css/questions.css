@@ -63,10 +63,32 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
+.save-btn{
+text-align: center;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
 
 
 .button-submit{
 background-color: #586BA4;
+border: none;
+border-radius: 5px;
+color: white;
+padding: 5px 145px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+/* margin-left: 150px; */
+align-content: center;
+/* margin-top: 30px; */
+}
+
+.btn-success{
 border: none;
 border-radius: 5px;
 color: white;

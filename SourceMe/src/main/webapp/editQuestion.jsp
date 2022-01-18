@@ -46,7 +46,7 @@
 <div class="container">
 <div>
 <div class="title">
-<h2>Edit my question</h2>
+<h2>Edit</h2>
 </div>
 <form class="create-form" action="questions" method="post">
 <!--Remarks-->
@@ -68,8 +68,8 @@
 </div>
 </div>
 
-<div class="submit-btn">
-<button type="submit" class="button-submit" id="submitQuestion">Save changes</button>
+<div class="save-btn">
+<button type="submit" class="btn btn-success" id="submitQuestion">Save changes</button>
 </div>
 
 </form>
