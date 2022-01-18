@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createAnswer.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -23,6 +24,9 @@
     <li class="nav-item">
       <a class="nav-link" href="#">All Questions</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">All Tutorials</a>
+    </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
    <li class="nav-item">
@@ -37,7 +41,7 @@
   </ul>
 </nav>
 
-
+<!-- Create an answer container -->
 <div class="create-body">
     <div class="container">
     <div>
@@ -62,7 +66,8 @@
           </div>
           
           <div class="submit-btn">
-          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button></div>
+          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button>
+          </div>
         
         </form>
     </div>
