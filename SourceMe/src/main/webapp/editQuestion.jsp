@@ -46,14 +46,14 @@
 <div class="container">
 <div>
 <div class="title">
-<h2>Question</h2>
+<h2>Edit my question</h2>
 </div>
 <form class="create-form" action="questions" method="post">
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">
 <input type="text" name="username" class="form-control" id="editText">
-<label class="title-label">Title</label>
+<label class="title-label">Edit my title</label>
 <input type="text" name="title" class="form-control" id="editText">
 </div>
 </div>
@@ -63,13 +63,13 @@
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">
-<label class="question-label">Question</label>
+<label class="question-label">Edit my question</label>
 <input type="text" name="question" class="form-control" id="editText">
 </div>
 </div>
 
 <div class="submit-btn">
-<button type="submit" class="button-submit" id="submitQuestion">Submit</button>
+<button type="submit" class="button-submit" id="submitQuestion">Save changes</button>
 </div>
 
 </form>
