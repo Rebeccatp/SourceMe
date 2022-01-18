@@ -23,9 +23,6 @@
       <a class="nav-link" href="#">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Questions</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
     </li>
   </ul>
