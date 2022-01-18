@@ -50,7 +50,7 @@
 <div class="title">
 <h2>Create Tutorial</h2>
 </div>
-<form class="create-form">
+<form class="create-form" action="createTutorial" method="post">
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">
@@ -65,12 +65,12 @@
 <div class="form-row mt-2">
 <div class="col">
 <label class="tutorial-label">Content</label>
-<textarea rows="5" class="form-control" id="tutorial"></textarea>
+<textarea name="content" rows="5" class="form-control" id="tutorial"></textarea>
 </div>
 </div>
 
 <div class="submit-btn">
-<button type="button" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+<button type="submit" class="button-submit" id="submitAnswer">Submit Tutorial</button>
 </div>
 
 </form>
