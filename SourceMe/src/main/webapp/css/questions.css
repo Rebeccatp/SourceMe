@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+.align{
+	display:inline-block;
+}
+.question{
+display: inline-block !important;
+width:92%;
+}
+
+.qnsField{
+float:right;
+}
+
+.button {
+	margin-left: 245px;
+}
+
+.question-body{
+padding-left:15px
+}
+
+h1{
+padding-top:20px;
+padding-bottom: 20px;
+}
