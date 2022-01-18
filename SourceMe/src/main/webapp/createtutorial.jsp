@@ -42,22 +42,42 @@
      
   
 </nav>
-<div class="tutorial-body">
-<h1>Create Tutorial</h1>
 
-<div class="tutorial tutorialLabel" style="width:auto;">
-<p>Title: </p>
-<p>Tutorial: </p>
+<!-- Create an tutorial container -->
+<div class="create-body">
+<div class="container">
+<div>
+<div class="title">
+<h2>Create Tutorial</h2>
+</div>
+<form class="create-form">
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="title-label">Title</label>
+<p class="input-Title"><input type="text" name="title" class="form-control"></p>
+</div>
 </div>
 
-<div class="tutorial tutorialFields" >
-<p><input type="text" name="title" size="36"></p>
-<p><textarea rows="5" cols="39"></textarea></p>
-<div class="addBtn">
-<input type="submit" value="Add Tutorial">
+
+
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="tutorial-label">Content</label>
+<textarea rows="5" class="form-control" id="tutorial"></textarea>
+</div>
+</div>
+
+<div class="submit-btn">
+<button type="button" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+</div>
+
+</form>
+</div>
 
 </div>
-</div>
+
 </div>
 </body>
 </html>
