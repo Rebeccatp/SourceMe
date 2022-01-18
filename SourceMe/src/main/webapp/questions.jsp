@@ -23,9 +23,6 @@
       <a class="nav-link" href="#">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Questions</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
     </li>
   </ul>
@@ -40,20 +37,40 @@
     <div class="btn-add-qns">Add Your Question</div>
     </li>
   </ul>
-     
-  
 </nav>
-<div class="question-body">
-<h1>Questions</h1>
-<div class="question qnsLabel" style="width:auto;">
-<p>Title: </p>
-<p>Questions: </p>
+
+<!-- Create an answer container -->
+<div class="create-body">
+<div class="container">
+<div>
+<div class="title">
+<h2>Add a question</h2>
 </div>
-<div class="question qnsField" >
-<p><input type="text" name="title" size="36"></p>
-<p><textarea rows="5" cols="39"></textarea></p>
-<input type="submit" value="submit" class="button"/>
+<form class="create-form">
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class=title-label">Title</label>
+<input type="text" class="form-control" id="title">
 </div>
+</div>
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="question-label">Question</label>
+<input type="text" class="form-control" id="question">
+</div>
+</div>
+
+<div class="submit-btn">
+<button type="button" class="button-submit" id="submit">Submit</button>
+</div>
+
+</form>
+</div>
+
+</div>
+
 </div>
 </body>
 </html>
