@@ -51,8 +51,8 @@
 	    
 </div>
 	<div class="buttons">
-		<a href="/SourceMe/createAnswer.jsp" type="button" class="btn-all-questions">All Questions</a>
-		<button type="button" class="btn-all-tutorials">All Tutorials</button>
+		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-questions">All Questions</button>
+		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
 	</div>
 </body>
 </html>
