@@ -23,6 +23,9 @@
       <a class="nav-link" href="#">Home</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="#">All Questions</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
     </li>
   </ul>
@@ -37,6 +40,8 @@
     <div class="btn-add-qns">Add Your Question</div>
     </li>
   </ul>
+     
+  
 </nav>
 
 <!-- Create an answer container -->
@@ -44,26 +49,30 @@
 <div class="container">
 <div>
 <div class="title">
-<h2>Add a question</h2>
+<h2>Question</h2>
 </div>
-<form class="create-form">
+<form class="create-form" action="questions" method="post">
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">
-<label class=title-label">Title</label>
-<input type="text" class="form-control" id="title">
+<input type="text" name="username" class="form-control" id="editText">
+<label class="title-label">Title</label>
+<input type="text" name="title" class="form-control" id="editText">
 </div>
 </div>
+
+
+
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">
 <label class="question-label">Question</label>
-<input type="text" class="form-control" id="question">
+<input type="text" name="question" class="form-control" id="editText">
 </div>
 </div>
 
 <div class="submit-btn">
-<button type="button" class="button-submit" id="submit">Submit</button>
+<button type="submit" class="button-submit" id="submitAnswer">Submit</button>
 </div>
 
 </form>
