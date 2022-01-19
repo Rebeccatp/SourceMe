@@ -96,7 +96,7 @@ public class questionServlet extends HttpServlet {
 	 private void listQuestions(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, IOException, ServletException 
 	 {
-	 List <question> questions = new ArrayList <>();
+	 List <Question> questions = new ArrayList <>();
 	  try (Connection connection = getConnection();
 	  // Step 5.1: Create a statement using connection object
 	  PreparedStatement preparedStatement = 
@@ -108,7 +108,7 @@ public class questionServlet extends HttpServlet {
 	  String title = rs.getString("title");
 	  String question = rs.getString("question");
 	  String username = rs.getString("username");
-	  questions.add(new question(title, question, username));
+	  questions.add(new Question(title, question, username));
 	  }
 	  } catch (SQLException e) {
 	  System.out.println(e.getMessage());

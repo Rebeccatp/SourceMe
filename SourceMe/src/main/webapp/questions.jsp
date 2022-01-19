@@ -37,8 +37,6 @@
     <div class="btn-add-qns">Add Your Question</div>
     </li>
   </ul>
-     
-  
 </nav>
 
 <!-- Create an answer container -->
