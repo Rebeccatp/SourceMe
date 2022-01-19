@@ -48,31 +48,43 @@
         <div class="title">
     		<h2>Reply a comment</h2>
 		</div>
-    <form class="create-form">
-        <!--Question-->  
+    <form class="create-form" action="createAnswerServlet" method="post">
+   
+    	<!--Question-->  
           <div class="form-row mt-2">
             <div class="col">
                 <label class="qns-label">Question</label> 
-              <p class="answer">lalalaala</p>
-            </div>
-          </div>
-
-          <!--My Answer-->  
-          <div class="form-row mt-2">
-            <div class="col">
-                <label class="ans-label">My Answer</label> 
-              <input type="text" class="form-control" id="editRemarks">
+              	<!-- <p class="answer" name="question" id="question">1</p> -->
+              	<input type="text" class="form-control" name="question">
             </div>
           </div>
           
-         
+    	
+ 		<!--Username-->  
+          <div class="form-row mt-2">
+            <div class="col username">
+                <label style="font-size: 18px;">Username</label> 
+              	<!-- <p class="answer" name="username" id="username">jaslynylh</p> -->
+              	<input type="text" class="form-control" name="username">
+            </div>
+          </div>
+          
+          <!--My Answer-->  
+          <div class="form-row mt-2">
+            <div class="col">
+                <label style="font-size: 18px;">My Answer</label> 
+              <input type="text" class="form-control" name="answer">
+            </div>
+          </div>
+          
+         <!-- Submit button -->
+      <div class="btn-all">
+          <button type="submit" class="button-submit" id="submitAnswer">Submit Answer</button>
+      </div> 
         </form>
     </div>
 </div>
-      <!-- Submit button -->
-      <div class="btn-all">
-          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button>
-      </div> 
+      
 </div>
 </body>
 </html>
