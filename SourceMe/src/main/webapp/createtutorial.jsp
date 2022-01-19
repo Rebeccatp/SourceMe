@@ -1,11 +1,11 @@
-1<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/register.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createtutorial.css" crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -24,7 +24,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#">All Questions</a>
     </li>
-         <li class="nav-item">
+     <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
     </li>
   </ul>
@@ -43,16 +43,41 @@
   
 </nav>
 
-<form action="RegisterServlet" method="post" >
-    First Name: <input type="text" name="firstName" size="20" style="margin-left: 26px"><br>
-    Last Name: <input type="text" name="lastName" size="20" style="margin-left: 27px"><br>
-    Contact Details: <input type="number" name="number" size="20"><br>
-    UserName: <input type="text" name="userName" size="20" style="margin-left: 27px"><br>
-    Password: <input type="password" name="password" size="20" style="margin-left: 32px"><br>
-    Email: <input type="text" name="email" size= "20" style="margin-left: 58px"><br>
-    <input type="submit" value="Register" />
-</form>
+<!-- Create an tutorial container -->
+<div class="create-body">
+<div class="container">
+<div>
+<div class="title">
+<h2>Create Tutorial</h2>
+</div>
+<form class="create-form">
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="title-label">Title</label>
+<p class="input-Title"><input type="text" name="title" class="form-control"></p>
+</div>
+</div>
 
- 
+
+
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="tutorial-label">Content</label>
+<textarea rows="5" class="form-control" id="tutorial"></textarea>
+</div>
+</div>
+
+<div class="submit-btn">
+<button type="button" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+</div>
+
+</form>
+</div>
+
+</div>
+
+</div>
 </body>
 </html>
