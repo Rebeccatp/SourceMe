@@ -21,6 +21,31 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/questionServlet")
 public class questionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	//Step 1: Prepare list of variables used for database connections
+		 private String jdbcURL = "jdbc:mysql://localhost:3306/question";
+		 private String jdbcUsername = "root";
+		 private String jdbcPassword = "password";
+		 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
+		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO Question" + " (title, question, username) VALUES " +
+		 " (?, ?, ?);";
+		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from Question where username =?";
+		 private static final String SELECT_ALL_QUESTIONS = "select * from Question ";
+		 private static final String DELETE_QUESTIONS_SQL = "delete from Question where username = ?;";
+		 private static final String UPDATE_QUESTIONS_SQL = "update Question set title = ?,question= ?, username = ?;";
+		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
+		 protected Connection getConnection() {
+		 Connection connection = null;
+		 try {
+		 Class.forName("com.mysql.jdbc.Driver");
+		 connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+		 } catch (SQLException e) {
+		 e.printStackTrace();
+		 } catch (ClassNotFoundException e) {
+		 e.printStackTrace();
+		 }
+		 return connection;
+		 }
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,31 +92,6 @@ public class questionServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	//Step 1: Prepare list of variables used for database connections
-	 private String jdbcURL = "jdbc:mysql://localhost:3306/question";
-	 private String jdbcUsername = "root";
-	 private String jdbcPassword = "password";
-	 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
-	 private static final String INSERT_QUESTION_SQL = "INSERT INTO Question" + " (title, question, username) VALUES " +
-	 " (?, ?, ?);";
-	 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from Question where username =?";
-	 private static final String SELECT_ALL_QUESTION = "select * from Question ";
-	 private static final String DELETE_QUESTION_SQL = "delete from Question where username = ?;";
-	 private static final String UPDATE_QUESTION_SQL = "update Question set title = ?,question= ?, username = ?;";
-	 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
-	 protected Connection getConnection() {
-	 Connection connection = null;
-	 try {
-	 Class.forName("com.mysql.jdbc.Driver");
-	 connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-	 } catch (SQLException e) {
-	 e.printStackTrace();
-	 } catch (ClassNotFoundException e) {
-	 e.printStackTrace();
-	 }
-	 return connection;
-	 }
-	 
 	//Step 5: listQuestion function to connect to the database and retrieve all question records
 	 private void listQuestions(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, IOException, ServletException 
@@ -100,7 +100,7 @@ public class questionServlet extends HttpServlet {
 	  try (Connection connection = getConnection();
 	  // Step 5.1: Create a statement using connection object
 	  PreparedStatement preparedStatement = 
-	 connection.prepareStatement(SELECT_ALL_QUESTION);) {
+	 connection.prepareStatement(SELECT_ALL_QUESTIONS);) {
 	  // Step 5.2: Execute the query or update query
 	  ResultSet rs = preparedStatement.executeQuery();
 	  // Step 5.3: Process the ResultSet object.
