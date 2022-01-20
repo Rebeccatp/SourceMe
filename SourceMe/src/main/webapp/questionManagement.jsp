@@ -41,7 +41,7 @@ crossorigin="anonymous">
 
     </li>
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="addQnLink">Add Your Question</a></div>
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp">Add Your Question</a></div>
     
     </li>
   </ul>
