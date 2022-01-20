@@ -32,7 +32,7 @@ public class createTutorial extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter();
 	}
 
 	/**
@@ -51,14 +51,16 @@ public class createTutorial extends HttpServlet {
 		 Class.forName("com.mysql.jdbc.Driver");
 		 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
 		//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-		 PreparedStatement ps = con.prepareStatement("insert into tutorials values(?,?)");
+		 PreparedStatement ps = con.prepareStatement("insert into tutorials values(?,?,?)");
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
-		 ps.setString(1, n);
-		 ps.setString(2, p);
+		 ps.setInt(1, 0);
+		 ps.setString(2, n);
+		 ps.setString(3, p);
 		//Step 6: perform the query on the database using the prepared statement
 		 int i = ps.executeUpdate();
 		//Step 7: check if the query had been successfully execute, return “You are successfully registered” via the response
 		 if (i > 0){
+			 response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
 			 PrintWriter writer = response.getWriter();
 		 writer.println("<h1>" + "You have successfully created a tutorial!" + "</h1>");
 				 writer.close(); 
