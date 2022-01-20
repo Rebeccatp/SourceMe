@@ -54,8 +54,8 @@
           <div class="form-row mt-2">
             <div class="col">
                 <label class="qns-label">Question</label> 
-              	<!-- <p class="answer" name="question" id="question">1</p> -->
-              	<input type="text" class="form-control" name="question">
+              	<p class="answer" name="question" id="question">1</p>
+              	<!-- <input type="text" class="form-control" name="question"> -->
             </div>
           </div>
           
@@ -64,8 +64,8 @@
           <div class="form-row mt-2">
             <div class="col username">
                 <label style="font-size: 18px;">Username</label> 
-              	<!-- <p class="answer" name="username" id="username">jaslynylh</p> -->
-              	<input type="text" class="form-control" name="username">
+              	<p class="answer" name="username" id="username">jaslynylh</p>
+              	<!-- <input type="text" class="form-control" name="username"> -->
             </div>
           </div>
           
