@@ -1,7 +1,23 @@
 @charset "ISO-8859-1";
 .align{
 	display:inline-block;
+	margin-right:10px;
 }
+
+.question-con {
+	border: 2px solid #F3F3F3;
+	margin-bottom: 20px;
+	width: 60%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.label-cont{
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
 .question{
 display: inline-block !important;
 width:92%;
@@ -103,6 +119,7 @@ cursor: pointer;
 align-content: center;
 /* margin-top: 30px; */
 }
+
 
 
 

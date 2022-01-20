@@ -23,16 +23,16 @@ public class questionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//Step 1: Prepare list of variables used for database connections
-		 private String jdbcURL = "jdbc:mysql://localhost:3306/question";
+		 private String jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
 		 private String jdbcUsername = "root";
 		 private String jdbcPassword = "password";
 		 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
-		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO Question" + " (title, question, username) VALUES " +
+		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO question" + " (title, question, username) VALUES " +
 		 " (?, ?, ?);";
-		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from Question where username =?";
-		 private static final String SELECT_ALL_QUESTIONS = "select * from Question ";
-		 private static final String DELETE_QUESTIONS_SQL = "delete from Question where username = ?;";
-		 private static final String UPDATE_QUESTIONS_SQL = "update Question set title = ?,question= ?, username = ?;";
+		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where username =?";
+		 private static final String SELECT_ALL_QUESTIONS = "select * from question ";
+		 private static final String DELETE_QUESTIONS_SQL = "delete from question where username = ?;";
+		 private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ?;";
 		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 		 protected Connection getConnection() {
 		 Connection connection = null;
