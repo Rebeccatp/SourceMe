@@ -40,19 +40,14 @@ crossorigin="anonymous">
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp">Add Your Questions</a></div>
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>
+
 <div class="row"> 
 <div class="container">
 <h3 class="text-center">List of Questions</h3>
-<hr>
-<div class="container text-left">
-<!-- Add new user button redirects to the register.jsp page -->
-
-</div>
-<br>
 <!-- Create a table to list out all current users information -->
 <table class="table">
 <!-- Pass in the list of users receive via the Servlet’s response to a loop 
@@ -68,31 +63,26 @@ crossorigin="anonymous">
 		
 		<div>
 			<div class="alignment">
-				<label>Title:</label> 
+				<label><b>Title:</b></label> 
 				<label><c:out value="${question.title}" /></label>
 			</div>
 			
 			<div class="alignment">
-				<label>Question:</label> 
+				<label><b>Question:</b></label> 
 				<label><c:out value="${question.question}" /></label>
 			</div>
-			
 			<div class="alignment">
-				<label>Username:</label>
+				<label><b>Username:</b></label>
 				<label><c:out value="${question.username}" /></label> 
 			</div>
 		</div>
-		
 		<div>
-			<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete functions -->
+			<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete/view answer functions -->
 			<div class="align"><a href="edit?question=<c:out value='${question.question}' />">Edit</a></div>
 			<div class="align"><a href="delete?question=<c:out value='${question.question}' />">Delete</a></div>
-			<div class="align"><a href="delete?question=<c:out value='${question.question}' />">View Answer</a></div>
-		</div>
-		
+			<div class="align"><a href="view?question=<c:out value='${question.question}' />">View Answer</a></div>
+		</div>	
 	</div>
-	
-	
 </div>
 </c:forEach>
 </tbody>
