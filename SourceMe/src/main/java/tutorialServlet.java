@@ -64,15 +64,16 @@ public class tutorialServlet extends HttpServlet {
 		String action = request.getServletPath();
 		 try {
 		 switch (action) {
-		 case "/insert":
+		 case "/tutorialServlet/delete":
+		 deleteTutorial(request, response);
 		 break;
-		 case "/delete":
+		 case "/tutorialServlet/edit":
+		 showEditForm(request, response);
 		 break;
-		 case "/edit":
+		 case "/tutorialServlet/update":
+		 updateTutorial(request, response);
 		 break;
-		 case "/update":
-		 break;
-		 case "/tutorialServlet":listTutorials(request, response);
+		 case "/tutorialServlet/dashboard":listTutorials(request, response);
 		 break;
 		 }
 		 } catch (SQLException ex) {
@@ -105,37 +106,86 @@ public class tutorialServlet extends HttpServlet {
 		  String title = rs.getString("title");
 		  String content = rs.getString("content");
 		  tutorials.add(new Tutorial(id, title, content));
-		  System.out.print(rs.getInt(1));
+//		  System.out.print(rs.getInt(1));
 		  }
 		  } catch (SQLException e) {
 		  System.out.println(e.getMessage());
 		  }
 		 // Step 5.4: Set the users list into the listUsers attribute to be pass to the userManagement.jsp
 		 request.setAttribute("listTutorials", tutorials);
-		 System.out.print(tutorials);
+//		 System.out.print(tutorials);
 		 request.getRequestDispatcher("/tutorial.jsp").forward(request, response);
 		 }
 
-			/*
-			 * //method to get parameter, query database for existing user data and redirect
-			 * to user edit page private void showEditForm(HttpServletRequest request,
-			 * HttpServletResponse response) throws SQLException, ServletException,
-			 * IOException { //get parameter passed in the URL String name =
-			 * request.getParameter("name"); User existingUser = new User("", "", "", "");
-			 * // Step 1: Establishing a Connection try (Connection connection =
-			 * getConnection(); // Step 2:Create a statement using connection object
-			 * PreparedStatement preparedStatement =
-			 * connection.prepareStatement(SELECT_USER_BY_ID);) {
-			 * preparedStatement.setString(1, name); // Step 3: Execute the query or update
-			 * query ResultSet rs = preparedStatement.executeQuery(); // Step 4: Process the
-			 * ResultSet object while (rs.next()) { name = rs.getString("name"); String
-			 * password = rs.getString("password"); String email = rs.getString("email");
-			 * String language = rs.getString("language"); existingUser = new User(name,
-			 * password, email, language); } } catch (SQLException e) {
-			 * System.out.println(e.getMessage()); } //Step 5: Set existingUser to request
-			 * and serve up the userEdit form request.setAttribute("user", existingUser);
-			 * request.getRequestDispatcher("/userEdit.jsp").forward(request, response); }
-			 */
+		//EDIT FORM		 
+		//method to get parameter, query database for existing user data and redirect to user edit page
+		 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+		 throws SQLException, ServletException, IOException {
+		 //get parameter passed in the URL
+		 int id = Integer.parseInt(request.getParameter("id"));
+		 Tutorial existingTutorial = new Tutorial(0, "", "");
+		 // Step 1: Establishing a Connection
+		 try (Connection connection = getConnection();
+		 // Step 2:Create a statement using connection object
+		 PreparedStatement preparedStatement = 
+		 connection.prepareStatement(SELECT_TUTORIAL_BY_ID);) {
+		 preparedStatement.setInt(1, id);
+		 // Step 3: Execute the query or update query
+		 ResultSet rs = preparedStatement.executeQuery();
+		 // Step 4: Process the ResultSet object 
+		 while (rs.next()) {
+		 String title = rs.getString("title");
+		 String content = rs.getString("content");
+		 existingTutorial = new Tutorial(id, title, content);
+		 }
+		 } catch (SQLException e) {
+		 System.out.println(e.getMessage());
+		 }
+		 //Step 5: Set existingUser to request and serve up the userEdit form
+		 request.setAttribute("tutorial", existingTutorial);
+		 request.getRequestDispatcher("/tutorialEdit.jsp").forward(request, response);
+		 System.out.println(existingTutorial);
+		 }
+
+		 //		UPDATE	
+		//method to update the user table base on the form data
+		 private void updateTutorial(HttpServletRequest request, HttpServletResponse response)
+		 throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		 //Step 1: Retrieve value from the request
+		 String title = request.getParameter("title");
+		  String content = request.getParameter("content");
+		  
+		  //Step 2: Attempt connection with database and execute update user SQL query
+		  try (Connection connection = getConnection(); PreparedStatement statement = 
+		 connection.prepareStatement(UPDATE_TUTORIAL_SQL);) {
+		  
+		  statement.setString(1, title);
+		  statement.setString(2, content);
+		  statement.setInt(3, id);
+		  int i = statement.executeUpdate();
+		  }
+		  //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
+		  response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
+		 }
+
+		 //DELETE
+		//method to delete user
+		 private void deleteTutorial(HttpServletRequest request, HttpServletResponse response)
+		 throws SQLException, IOException {
+		 //Step 1: Retrieve value from the request
+		String id = request.getParameter("id");
+		System.out.println("testing:" + id);
+		  //Step 2: Attempt connection with database and execute delete user SQL query
+		  try (Connection connection = getConnection(); PreparedStatement statement = 
+		 connection.prepareStatement(DELETE_TUTORIAL_SQL);) {
+			  statement.setString(1, id);
+		  int i = statement.executeUpdate();
+		  }
+		  //Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+		  response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
+		 }
+
 
 
 }

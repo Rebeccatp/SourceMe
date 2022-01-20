@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/allTutorial.css" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -26,7 +27,7 @@
       <a class="nav-link" href="#">All Questions</a>
     </li>
      <li class="nav-item">
-      <a class="nav-link" href="<%=request.getContextPath()%>/tutorial.jsp">All Tutorials</a>
+      <a class="nav-link" href="tutorialServlet">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
@@ -41,24 +42,23 @@
     </li>
   </ul>  
 </nav>
-<!-- Tutorial container -->
-	<div class="create-body">
-		<div class="container">
-			<div>
-				<div class="title">
-					<h2>Tutorials</h2>
-				</div>
-				<!-- Create a table to list out all current users information -->
+<div class="title">
+	<h2>Tutorials</h2>
+</div>
 <c:forEach var="tutorial" items="${listTutorials}">
+<!-- Tutorial container -->
+<div class="create-body">
+	<div class="container">
+		<div>
 <!-- For each user in the database, display their
 information accordingly -->
-<c:out value="${tutorial.id}" />
-<c:out value="${tutorial.title}" />
-<c:out value="${tutorial.content}" />
-</c:forEach>
-			</div>
+<p class="tutorialTitle"><b><c:out value="${tutorial.title}" /></b></p>
+<p><c:out value="${tutorial.content}" /></p>
+<div class="actionBtn"><a href="edit?id=<c:out value='${tutorial.id}'/>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a href="delete?id=<c:out value='${tutorial.id}' />">Delete</a></div>
 		</div>
 	</div>
-
+</div>
+</c:forEach>
 </body>
 </html>
