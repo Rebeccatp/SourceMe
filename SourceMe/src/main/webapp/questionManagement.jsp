@@ -38,6 +38,7 @@ crossorigin="anonymous">
     </li>
         <li class="nav-item">
       <a class="nav-link" href="#">Sign Up</a>
+      
     </li>
     <li>
     <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp">Add question</a></div>
