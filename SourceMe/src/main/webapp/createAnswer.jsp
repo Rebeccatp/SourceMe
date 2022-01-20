@@ -5,16 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
-
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createAnswer.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -45,14 +41,38 @@
   </ul>
 </nav>
 
-<div class="container">
-  <img src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
-  <div class="centered">Welcome to SourceMe!</div>
-	    
+<!-- Create an answer container -->
+<div class="create-body">
+    <div class="container">
+    <div>
+        <div class="title">
+    		<h2>Reply a comment</h2>
+		</div>
+    <form class="create-form">
+        <!--Question-->  
+          <div class="form-row mt-2">
+            <div class="col">
+                <label class="qns-label">Question</label> 
+              <p class="answer">lalalaala</p>
+            </div>
+          </div>
+
+          <!--My Answer-->  
+          <div class="form-row mt-2">
+            <div class="col">
+                <label class="ans-label">My Answer</label> 
+              <input type="text" class="form-control" id="editRemarks">
+            </div>
+          </div>
+          
+         
+        </form>
+    </div>
 </div>
-	<div class="buttons">
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-questions">All Questions</button>
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
-	</div>
+      <!-- Submit button -->
+      <div class="btn-all">
+          <button type="button" class="button-submit" id="submitAnswer">Submit Answer</button>
+      </div> 
+</div>
 </body>
 </html>
