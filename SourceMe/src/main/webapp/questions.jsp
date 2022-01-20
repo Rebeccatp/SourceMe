@@ -1,3 +1,4 @@
+<!-- Designing of the page -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/questions.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -37,14 +38,43 @@
     </li>
   </ul>
 </nav>
-<title>Insert title here</title>
-</head>
-<body>
- <form action="LoginServlet" method="post">
-UserName: <input type="text" name="userName" size="20"><br>
-    Password: <input type="password" name="password" size="20"><br>
-    <input type="submit" value="Register" />
-    </form>
+
+<!-- Create an answer container -->
+<div class="create-body">
+<div class="container">
+<div>
+<div class="title">
+<h2>Question</h2>
+</div>
+<form class="create-form" action="questions" method="post">
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<input type="text" name="username" class="form-control" id="editText">
+<label class="title-label">Title</label>
+<input type="text" name="title" class="form-control" id="editText">
+</div>
+</div>
+
+
+
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="question-label">Question</label>
+<input type="text" name="question" class="form-control" id="editText">
+</div>
+</div>
+
+<div class="submit-btn">
+<button type="submit" class="button-submit" id="submitQuestion">Submit</button>
+</div>
+
+</form>
+</div>
+
+</div>
+
+</div>
 </body>
 </html>
-
