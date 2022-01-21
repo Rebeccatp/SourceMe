@@ -119,7 +119,7 @@ public class questionServlet extends HttpServlet {
 	 request.getRequestDispatcher("/questionManagement.jsp").forward(request, response);
 	 }
 	 
-	//method to get parameter, query database for existing user data and redirect to user edit page
+	//method to get parameter, query database for existing question data and redirect to question edit page
 	 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, ServletException, IOException {
 		 //get parameter passed in the URL
@@ -144,12 +144,12 @@ public class questionServlet extends HttpServlet {
 		 } catch (SQLException e) {
 		 System.out.println(e.getMessage());
 		 }
-		 //Step 5: Set existingUser to request and serve up the userEdit form
+		 //Step 5: Set existingQuestion to request and serve up the questionEdit form
 		 request.setAttribute("currentQuestion", existingQuestion);
 		 request.getRequestDispatcher("/editQuestion.jsp").forward(request, response);
 	 }
 
-	//method to update the user table base on the form data
+	//method to update the question table base on the form data
 	 private void updateQuestion(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, IOException {
 	 //Step 1: Retrieve value from the request
@@ -159,7 +159,7 @@ public class questionServlet extends HttpServlet {
 	  String question = request.getParameter("question");
 	
 	  
-	  //Step 2: Attempt connection with database and execute update user SQL query
+	  //Step 2: Attempt connection with database and execute update question SQL query
 	  try (Connection connection = getConnection(); PreparedStatement statement = 
 	 connection.prepareStatement(UPDATE_QUESTIONS_SQL);) {
 	  statement.setString(1, title);
@@ -168,21 +168,21 @@ public class questionServlet extends HttpServlet {
 	  statement.setInt(4, oriId);
 	  int i = statement.executeUpdate();
 	  }
-	  //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
+	  //Step 3: redirect back to questionServlet (note: remember to change the url to your project name)
 	  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
 	 }
 	 
-	//method to delete user
+	//method to delete question
 	 private void deleteQuestion(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, IOException {
 	 //Step 1: Retrieve value from the request
-	  int id = Integer.parseInt(request.getParameter("id"));	  //Step 2: Attempt connection with database and execute delete user SQL query
+	  int id = Integer.parseInt(request.getParameter("id"));	  //Step 2: Attempt connection with database and execute delete question SQL query
 	  try (Connection connection = getConnection(); PreparedStatement statement = 
 	 connection.prepareStatement(DELETE_QUESTIONS_SQL);) {
 	  statement.setInt(1, id);
 	  int i = statement.executeUpdate();
 	  }
-	  //Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+	  //Step 3: redirect back to questionServlet main page (note: remember to change the url to your project name)
 	  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
 	 }
 
