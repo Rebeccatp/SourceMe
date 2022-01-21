@@ -1,24 +1,10 @@
 @charset "ISO-8859-1";
-.create-body{
-border: 2px solid #F3F3F3;
-width: 50%;
-margin-left: auto;
-margin-right: auto;
-margin-top: 50px;
-}
-
 .title{
 margin-top: 50px;
 }
 .title h2{
 text-align: center;
 }
-
-.create-form{
-margin-top: 50px;
-}
-
-
 
 .title-label{
 font-size: 20px;
@@ -34,8 +20,6 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
-
-
 .btn-success{
 border: none;
 border-radius: 5px;
@@ -50,5 +34,10 @@ cursor: pointer;
 /* margin-left: 150px; */
 align-content: center;
 /* margin-top: 30px; */
+}
+
+.alignmentSpecial {
+	position: relative;
+	top: 50px;
 }
 

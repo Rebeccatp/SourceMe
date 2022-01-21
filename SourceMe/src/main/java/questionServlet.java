@@ -29,10 +29,10 @@ public class questionServlet extends HttpServlet {
 		 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
 		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO question" + " (title, question, username) VALUES " +
 		 " (?, ?, ?);";
-		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where username =?";
+		 private static final String SELECT_QUESTION_BY_ID = "select id, title, question, username from question where id =?";
 		 private static final String SELECT_ALL_QUESTIONS = "select * from question ";
-		 private static final String DELETE_QUESTIONS_SQL = "delete from question where username = ?;";
-		 private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ?;";
+		 private static final String DELETE_QUESTIONS_SQL = "delete from question where id = ?;";
+		 private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ? where id = ?;";
 		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 		 protected Connection getConnection() {
 		 Connection connection = null;
@@ -60,25 +60,25 @@ public class questionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Step 4: Depending on the request servlet path, determine the function to invoke using the follow switch statement.
-		String action = request.getServletPath();
+		String action = request.getServletPath(); 
 		 try {
 		 switch (action) {
-		 case "/insert":
+		 case "/questionServlet/delete":
+		 deleteQuestion(request, response);
 		 break;
-		 case "/delete":
+		 case "/questionServlet/edit":
+		 showEditForm(request, response);
 		 break;
-		 case "/edit":
+		 case "/questionServlet/update":
+		 updateQuestion(request, response);
 		 break;
-		 case "/update":
-		 break;
-		 default:
+		 case "/questionServlet/questions":
 		 listQuestions(request, response);
 		 break;
 		 }
 		 } catch (SQLException ex) {
-		 throw new ServletException(ex);
-		 }
-
+			 throw new ServletException(ex);
+		 } 
 		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -105,10 +105,11 @@ public class questionServlet extends HttpServlet {
 	  ResultSet rs = preparedStatement.executeQuery();
 	  // Step 5.3: Process the ResultSet object.
 	  while (rs.next()) {
+	  int id = rs.getInt("id");
 	  String title = rs.getString("title");
 	  String question = rs.getString("question");
 	  String username = rs.getString("username");
-	  questions.add(new Question(title, question, username));
+	  questions.add(new Question(id, title, question, username));
 	  }
 	  } catch (SQLException e) {
 	  System.out.println(e.getMessage());
@@ -117,6 +118,79 @@ public class questionServlet extends HttpServlet {
 	 request.setAttribute("listQuestions", questions);
 	 request.getRequestDispatcher("/questionManagement.jsp").forward(request, response);
 	 }
+	 
+	//method to get parameter, query database for existing user data and redirect to user edit page
+	 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	 throws SQLException, ServletException, IOException {
+		 //get parameter passed in the URL
+		 int id = Integer.parseInt(request.getParameter("id"));
+		 Question existingQuestion = new Question(id , "", "", "");
+		 // Step 1: Establishing a Connection
+		 try (Connection connection = getConnection();
+		 // Step 2:Create a statement using connection object
+		 PreparedStatement preparedStatement = 
+		 connection.prepareStatement(SELECT_QUESTION_BY_ID);) {
+			 preparedStatement.setInt(1, id);
+			 // Step 3: Execute the query or update query
+			 ResultSet rs = preparedStatement.executeQuery();
+			 // Step 4: Process the ResultSet object 
+			 while (rs.next()) {
+			 id = rs.getInt("id");
+			 String username = rs.getString("username");
+			 String title = rs.getString("title");
+			 String question = rs.getString("question");
+			 existingQuestion = new Question(id, title, question, username);
+			 }
+		 } catch (SQLException e) {
+		 System.out.println(e.getMessage());
+		 }
+		 //Step 5: Set existingUser to request and serve up the userEdit form
+		 request.setAttribute("currentQuestion", existingQuestion);
+		 request.getRequestDispatcher("/editQuestion.jsp").forward(request, response);
+	 }
+
+	//method to update the user table base on the form data
+	 private void updateQuestion(HttpServletRequest request, HttpServletResponse response)
+	 throws SQLException, IOException {
+	 //Step 1: Retrieve value from the request
+	  int oriId = Integer.parseInt(request.getParameter("oriId"));
+	  String username = request.getParameter("username");
+	  String title = request.getParameter("title");
+	  String question = request.getParameter("question");
+	
+	  
+	  //Step 2: Attempt connection with database and execute update user SQL query
+	  try (Connection connection = getConnection(); PreparedStatement statement = 
+	 connection.prepareStatement(UPDATE_QUESTIONS_SQL);) {
+	  statement.setString(1, title);
+	  statement.setString(2, question);
+	  statement.setString(3, username);
+	  statement.setInt(4, oriId);
+	  int i = statement.executeUpdate();
+	  }
+	  //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
+	  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+	 }
+	 
+	//method to delete user
+	 private void deleteQuestion(HttpServletRequest request, HttpServletResponse response)
+	 throws SQLException, IOException {
+	 //Step 1: Retrieve value from the request
+	  int id = Integer.parseInt(request.getParameter("id"));	  //Step 2: Attempt connection with database and execute delete user SQL query
+	  try (Connection connection = getConnection(); PreparedStatement statement = 
+	 connection.prepareStatement(DELETE_QUESTIONS_SQL);) {
+	  statement.setInt(1, id);
+	  int i = statement.executeUpdate();
+	  }
+	  //Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+	  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+	 }
+
+
+	 
+	 
+	
+
 
 
 }

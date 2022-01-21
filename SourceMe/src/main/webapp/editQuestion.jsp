@@ -11,6 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
 <title>SourceMe</title>
 </head>
 <body>
@@ -41,42 +43,64 @@
   
 </nav>
 
-<!-- Create an answer container -->
-<div class="create-body">
-<div class="container">
-<div>
+<nav class="navbar navbar-expand-md navbar-light">
+<ul class="navbar-nav">
+<li><a href="<%=request.getContextPath()%>/questionServlet/questions"
+class="nav-link">Back to question</a></li>
+</ul>
+</nav>
+<div class="container col-md-6">
+<div class="card">
+<div class="card-body">
+<c:if test="${question != null}">
+<form action="update" method="post">
+</c:if>
+<c:if test="${question == null}">
+<form action="insert" method="post">
+</c:if>
+<caption>
 <div class="title">
-<h2>Edit</h2>
+<h2>
+<c:if test="${currentQuestion != null}">
+Edit
+</c:if>
+</h2>
 </div>
-<form class="create-form" action="questions" method="post">
-<!--Remarks-->
-<div class="form-row mt-2">
-<div class="col">
-<input type="text" name="username" class="form-control" id="editText">
-<label class="title-label">Edit my title</label>
-<input type="text" name="title" class="form-control" id="editText">
-</div>
+<br>
+<br>
+</caption>
+<c:if test="${currentQuestion != null}">
+<div class="alignment">
+<input type="hidden" name="oriId" value="${currentQuestion.id}" />
+</c:if>
 </div>
 
-
-
-<!--Remarks-->
-<div class="form-row mt-2">
-<div class="col">
-<label class="question-label">Edit my question</label>
-<input type="text" name="question" class="form-control" id="editText">
+<div class="alignmentSpecial">
+<fieldset class="form-group">
+<input type="text" value='${currentQuestion.username}' class="form-control" name="username" required="required">
+</fieldset>
 </div>
+
+<div class="alignment">
+<fieldset class="form-group">
+<label class="title-label">Title</label> <input type="text" value='${currentQuestion.title}' class="form-control" name="title">
+</fieldset>
+</div>
+<div class="alignment">
+<fieldset class="form-group">
+<label class="question-label">Question</label> 
+<input type="text" value='${currentQuestion.question}' class="form-control" name="question">
+</fieldset>
 </div>
 
 <div class="save-btn">
-<button type="submit" class="btn btn-success" id="submitQuestion">Save changes</button>
+<button type="submit" class="btn btn-success">Save changes</button>
 </div>
 
 </form>
 </div>
-
+</div>
 </div>
 
-</div>
 </body>
 </html>

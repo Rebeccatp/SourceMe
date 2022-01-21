@@ -48,6 +48,7 @@ crossorigin="anonymous">
 <div class="row"> 
 <div class="container">
 <h3 class="text-center">List of Questions</h3>
+<br>
 <!-- Create a table to list out all current users information -->
 <table class="table">
 <!-- Pass in the list of users receive via the Servlet’s response to a loop 
@@ -78,9 +79,9 @@ crossorigin="anonymous">
 		</div>
 		<div>
 			<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete/view answer functions -->
-			<div class="align"><a href="edit?question=<c:out value='${question.question}' />">Edit</a></div>
-			<div class="align"><a href="delete?question=<c:out value='${question.question}' />">Delete</a></div>
-			<div class="align"><a href="view?question=<c:out value='${question.question}' />">View Answer</a></div>
+			<div class="align"><a href="edit?id=<c:out value='${question.id}' />">Edit</a></div>
+			<div class="align"><a href="delete?id=<c:out value='${question.id}' />">Delete</a></div>
+			<div class="align"><a href="view?id=<c:out value='${question.id}' />">View Answer</a></div>
 		</div>	
 	</div>
 </div>
