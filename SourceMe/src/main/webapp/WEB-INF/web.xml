@@ -8,6 +8,7 @@
  <servlet-mapping>
  <servlet-name>tutorialServlet</servlet-name>
 <url-pattern>/tutorialServlet/dashboard</url-pattern>
+<url-pattern>/tutorialServlet/create</url-pattern>
  <url-pattern>/tutorialServlet/edit</url-pattern>
  <url-pattern>/tutorialServlet/update</url-pattern>
  <url-pattern>/tutorialServlet/delete</url-pattern>

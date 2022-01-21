@@ -63,3 +63,15 @@ cursor: pointer;
 align-content: center;
 /* margin-top: 30px; */
 }
+
+.btn-add-tutorial{
+background-color: #586BA4;
+color: white;
+padding: 6px 10px 6px 10px;
+border-radius: 5px;
+cursor: pointer;
+width:200px;
+text-align: center;
+margin-left:67.5%;
+margin-top: 30px;
+}

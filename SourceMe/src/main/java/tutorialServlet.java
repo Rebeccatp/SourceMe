@@ -64,6 +64,9 @@ public class tutorialServlet extends HttpServlet {
 		String action = request.getServletPath();
 		 try {
 		 switch (action) {
+		 case "/tutorialServlet/create":
+			 createTutorial(request, response);
+			 break;
 		 case "/tutorialServlet/delete":
 		 deleteTutorial(request, response);
 		 break;
@@ -146,6 +149,12 @@ public class tutorialServlet extends HttpServlet {
 		 request.getRequestDispatcher("/tutorialEdit.jsp").forward(request, response);
 		 System.out.println(existingTutorial);
 		 }
+		 
+		 private void createTutorial(HttpServletRequest request, HttpServletResponse response)
+				 throws SQLException, ServletException, IOException {
+	
+				 request.getRequestDispatcher("/createtutorial.jsp").forward(request, response);
+				 }
 
 		 //		UPDATE	
 		//method to update the user table base on the form data
