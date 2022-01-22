@@ -14,7 +14,6 @@
 </head>
 
 <body>
-<!-- banananannaanannanan -->
 	<nav class="navbar navbar-expand-sm bg-light navbar-light">
 	  <ul class="navbar-nav col-lg-9">
 	    <li class="nav-item active">
