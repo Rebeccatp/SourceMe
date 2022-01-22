@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+.create-body{
+	border: 2px solid #F3F3F3;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+.title{
+	margin-top: 50px;
+}
+.title h2{
+	text-align: center;
+}
+
+.create-form{
+	margin-top: 50px;
+}
+
+.qns-label{
+	font-size: 20px;
+}
+.answer{
+	font-size: 20px;
+    font-weight: 500;
+}
+.ans-label{
+	font-size: 20px;
+}
+.submit-btn{
+	text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-all{
+	text-align: center;
+    margin-top: 25px;
+    margin-bottom:25px;
+}
+
+.button-submit{
+	background-color: #274472;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 59px;
+    font-size: 20px;
+    margin-left:50px;
+}
