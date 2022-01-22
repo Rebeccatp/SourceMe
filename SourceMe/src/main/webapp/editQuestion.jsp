@@ -75,7 +75,7 @@ Edit
 </c:if>
 </div>
 
-<div class="alignmentSpecial">
+<div class="alignment">
 <fieldset class="form-group">
 <input type="text" value='${currentQuestion.username}' class="form-control" name="username" required="required">
 </fieldset>
@@ -83,7 +83,8 @@ Edit
 
 <div class="alignment">
 <fieldset class="form-group">
-<label class="title-label">Title</label> <input type="text" value='${currentQuestion.title}' class="form-control" name="title">
+<label class="title-label">Title</label>
+<input type="text" value='${currentQuestion.title}' class="form-control" name="title">
 </fieldset>
 </div>
 <div class="alignment">

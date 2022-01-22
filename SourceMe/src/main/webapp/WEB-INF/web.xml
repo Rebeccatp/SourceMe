@@ -24,6 +24,7 @@ version="3.1">
  <url-pattern>/questionServlet/edit</url-pattern>
  <url-pattern>/questionServlet/update</url-pattern>
  <url-pattern>/questionServlet/delete</url-pattern>
+ <url-pattern>/questionServlet/bookmark</url-pattern>
  </servlet-mapping>
 
 
