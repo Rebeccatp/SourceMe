@@ -48,6 +48,15 @@
 		<form action="update" method="post">
 			<table>
 				<tr>
+					<th>Role: </th>
+					<td>
+						<select name="role">
+							<option>${user.role}</option>
+							<option>${user.role == "Admin" ? "User" : "Admin"}</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<th>First Name: </th>
 					<td><input type="text" name="firstName" value="${user.firstName}"></td>
 				</tr>

@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
 		//Step 2: retrieve the six parameters from the request from the web form
+		String role = request.getParameter("role");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String number = request.getParameter("number");
@@ -63,15 +64,16 @@ public class RegisterServlet extends HttpServlet {
 			if (!(isNumeric(idExisting))) {
 				try {
 					//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-					PreparedStatement ps2 = con.prepareStatement("insert into USER values(?,?,?,?,?,?,?)");
+					PreparedStatement ps2 = con.prepareStatement("insert into USER values(?,?,?,?,?,?,?,?)");
 					//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
 					ps2.setInt(1, 0);
-					ps2.setString(2, firstName);
-					ps2.setString(3, lastName);
-					ps2.setString(4, number);
-					ps2.setString(5, userName);
-					ps2.setString(6, password);
-					ps2.setString(7, email);
+					ps2.setString(2, role);
+					ps2.setString(3, firstName);
+					ps2.setString(4, lastName);
+					ps2.setString(5, number);
+					ps2.setString(6, userName);
+					ps2.setString(7, password);
+					ps2.setString(8, email);
 					//Step 6: perform the query on the database using the prepared statement
 					int i2 = ps2.executeUpdate();
 					//Step 7: check if the query had been successfully executed, return “You are successfully registered” via the response,

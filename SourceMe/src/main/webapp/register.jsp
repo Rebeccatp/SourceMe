@@ -48,6 +48,15 @@
 		<form action="RegisterServlet" method="post" >
 			<table>
 				<tr>
+					<th>Role: </th>
+					<td>
+						<select name="role">
+							<option>Admin</option>
+							<option>User</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<th>First Name: </th>
 					<td><input type="text" name="firstName" size="20"></td>
 				</tr>

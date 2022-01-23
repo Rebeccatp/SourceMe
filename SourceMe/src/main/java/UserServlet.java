@@ -26,9 +26,9 @@ public class UserServlet extends HttpServlet {
 	private String jdbcPassword = "password";
 	
 	//Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
-	private static final String SELECT_USER_BY_ID = "select firstName,lastName,number,userName,password,email from user where id = ?;";
+	private static final String SELECT_USER_BY_ID = "select role,firstName,lastName,number,userName,password,email from user where id = ?;";
 	private static final String DELETE_USER = "delete from user where id = ?;";
-	private static final String UPDATE_USER = "update user set firstName = ?, lastName = ?, number = ?, userName = ?, password = ?, email = ? where id = ?;";
+	private static final String UPDATE_USER = "update user set role = ?, firstName = ?, lastName = ?, number = ?, userName = ?, password = ?, email = ? where id = ?;";
 	
 	//Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 	protected Connection getConnection() {
@@ -90,7 +90,7 @@ public class UserServlet extends HttpServlet {
 		//get parameter passed in the URL
 		//int id = Integer.parseInt(request.getParameter("id"));
 		int id = 1;
-		User existingUser = new User(0, "", "", "", "", "", "");
+		User existingUser = new User(0, "", "", "", "", "", "", "");
 
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
@@ -101,13 +101,14 @@ public class UserServlet extends HttpServlet {
 			ResultSet rs = preparedStatement.executeQuery();
 			// Step 4: Process the ResultSet object
 			while (rs.next()) {
+				String role = rs.getString("role");
 				String firstName = rs.getString("firstName");
 				String lastName = rs.getString("lastName");
 				String number = rs.getString("number");
 				String userName = rs.getString("userName");
 				String password = rs.getString("password");
 				String email = rs.getString("email");
-				existingUser = new User(id, firstName, lastName, number, userName, password, email);
+				existingUser = new User(id, role, firstName, lastName, number, userName, password, email);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -122,6 +123,7 @@ public class UserServlet extends HttpServlet {
 		//Step 1: Retrieve value from the request
 		//int id = Integer.parseInt(request.getParameter("id"));
 		int id = 1;
+		String role = request.getParameter("role");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String number = request.getParameter("number");
@@ -132,13 +134,14 @@ public class UserServlet extends HttpServlet {
 		//Step 2: Attempt connection with database and execute update user SQL query
 		try (Connection connection = getConnection(); PreparedStatement statement =
 			connection.prepareStatement(UPDATE_USER);) {
-			statement.setString(1, firstName);
-			statement.setString(2, lastName);
-			statement.setString(3, number);
-			statement.setString(4, userName);
-			statement.setString(5, password);
-			statement.setString(6, email);
-			statement.setInt(7, id);
+			statement.setString(1, role);
+			statement.setString(2, firstName);
+			statement.setString(3, lastName);
+			statement.setString(4, number);
+			statement.setString(5, userName);
+			statement.setString(6, password);
+			statement.setString(7, email);
+			statement.setInt(8, id);
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
