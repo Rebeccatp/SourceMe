@@ -1,4 +1,4 @@
-1<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@
 				</tr>
 				<tr>
 					<th>Contact Details: </th>
-					<td><input type="number" name="number" size="20"></td>
+					<td><input type="text" name="number" size="20"></td>
 				</tr>
 				<tr>
 					<th>UserName: </th>
