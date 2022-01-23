@@ -42,6 +42,9 @@
 	  </ul>
 	</nav>
 
+	<div class="container" style="margin-top:20px">
+		<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+	</div>
 	<div class="container" style="margin-top: 20px">
 		<h2>Update Profile</h2>
 		<br>

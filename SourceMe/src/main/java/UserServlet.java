@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserServlet
@@ -60,14 +61,17 @@ public class UserServlet extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch (action) {
-				case "/UserServlet/delete":
-					deleteUser(request, response);
-					break;
 				case "/UserServlet/edit":
 					showEditForm(request, response);
 					break;
 				case "/UserServlet/update":
 					updateUser(request, response);
+					break;
+				case "/UserServlet/delete":
+					deleteUser(request, response);
+					break;
+				case "/UserServlet/logout":
+					logoutUser(request, response);
 					break;
 			}
 		} catch (SQLException ex) {
@@ -87,42 +91,55 @@ public class UserServlet extends HttpServlet {
 	
 	//method to get parameter, query database for existing user data and redirect to user edit page
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-		//get parameter passed in the URL
-		//int id = Integer.parseInt(request.getParameter("id"));
-		int id = 1;
-		User existingUser = new User(0, "", "", "", "", "", "", "");
-
-		// Step 1: Establishing a Connection
-		try (Connection connection = getConnection();
-		// Step 2: Create a statement using connection object
-		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
-			preparedStatement.setInt(1, id);
-			// Step 3: Execute the query or update query
-			ResultSet rs = preparedStatement.executeQuery();
-			// Step 4: Process the ResultSet object
-			while (rs.next()) {
-				String role = rs.getString("role");
-				String firstName = rs.getString("firstName");
-				String lastName = rs.getString("lastName");
-				String number = rs.getString("number");
-				String userName = rs.getString("userName");
-				String password = rs.getString("password");
-				String email = rs.getString("email");
-				existingUser = new User(id, role, firstName, lastName, number, userName, password, email);
+		//get userId from session storage
+		HttpSession session = request.getSession();
+		String idString = (String) session.getAttribute("userId");
+		
+		if (idString != null) {
+			int id = Integer.parseInt(idString);
+			User existingUser = new User(0, "", "", "", "", "", "", "");
+			
+			// Step 1: Establishing a Connection
+			try (Connection connection = getConnection();
+			// Step 2: Create a statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
+				preparedStatement.setInt(1, id);
+				// Step 3: Execute the query or update query
+				ResultSet rs = preparedStatement.executeQuery();
+				// Step 4: Process the ResultSet object
+				while (rs.next()) {
+					String role = rs.getString("role");
+					String firstName = rs.getString("firstName");
+					String lastName = rs.getString("lastName");
+					String number = rs.getString("number");
+					String userName = rs.getString("userName");
+					String password = rs.getString("password");
+					String email = rs.getString("email");
+					existingUser = new User(id, role, firstName, lastName, number, userName, password, email);
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
 			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			//Step 5: Set existingUser to request and serve up the userEdit form
+			request.setAttribute("user", existingUser);
+			request.getRequestDispatcher("/updateProfile.jsp").forward(request, response);
 		}
-		//Step 5: Set existingUser to request and serve up the userEdit form
-		request.setAttribute("user", existingUser);
-		request.getRequestDispatcher("/updateProfile.jsp").forward(request, response);
+		else {
+			response.sendRedirect("http://localhost:8090/SourceMe/login.jsp");
+		}
+
 	}
 	
 	//method to update the user table base on the form data
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Retrieve value from the request
 		//int id = Integer.parseInt(request.getParameter("id"));
-		int id = 1;
+		//int id = 1;
+		
+		HttpSession session = request.getSession();
+		String idString = (String) session.getAttribute("userId");
+		int id = Integer.parseInt(idString);
+		
 		String role = request.getParameter("role");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
@@ -161,6 +178,13 @@ public class UserServlet extends HttpServlet {
 		}
 		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
 		response.sendRedirect("http://localhost:8090/SourceMe/register.jsp");
+	}
+	
+	public static void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("userId");
+		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+		response.sendRedirect("http://localhost:8090/SourceMe/login.jsp");
 	}
 
 }
