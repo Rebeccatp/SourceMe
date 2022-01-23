@@ -22,15 +22,16 @@ import javax.servlet.http.HttpServletResponse;
 public class questionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	//Step 1: Prepare list of variables used for database connections
+		 //Step 1: Prepare list of variables used for database connections
 		 private String jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
 		 private String jdbcUsername = "root";
 		 private String jdbcPassword = "password";
 		 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
 		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO question" + " (title, question, username) VALUES " +
 		 " (?, ?, ?);";
-		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where username =?";
-		 private static final String SELECT_ALL_QUESTIONS = "select * from question ";
+		 private static final String SELECT_QUESTION_BY_USERNAME = "select title, question, username from question where username =?";
+		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where id =?";
+		 private static final String SELECT_ALL_QUESTIONS = "select * from question";
 		 private static final String DELETE_QUESTIONS_SQL = "delete from question where username = ?;";
 		 private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ?;";
 		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
@@ -71,8 +72,9 @@ public class questionServlet extends HttpServlet {
 		 break;
 		 case "/update":
 		 break;
-		 default:
-		 listQuestions(request, response);
+		 case "/questionServlet/viewAnswer": viewAnswer(request, response);
+		 break;
+		 case "/questionServlet/dashboard":listQuestions(request, response);
 		 break;
 		 }
 		 } catch (SQLException ex) {
@@ -87,6 +89,39 @@ public class questionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	private void viewAnswer(HttpServletRequest request, HttpServletResponse response)
+	throws SQLException, ServletException, IOException {
+	//get parameter passed in the URL
+	int id = Integer.parseInt(request.getParameter("id"));
+	 System.out.println(id); 
+	Question existingQuestion = new Question(0,"", "", "");
+	// Step 1: Establishing a Connection
+	try (Connection connection = getConnection();
+	// Step 2:Create a statement using connection object
+	PreparedStatement preparedStatement =
+	connection.prepareStatement(SELECT_QUESTION_BY_ID);) {
+	preparedStatement.setInt(1, id);
+	System.out.println(id);
+	// Step 3: Execute the query or update query
+	ResultSet rs = preparedStatement.executeQuery();
+	// Step 4: Process the ResultSet object
+	while (rs.next()) {
+	 String title = rs.getString("title");
+	 String question = rs.getString("question");
+	 String username = rs.getString("username");
+	 
+	 existingQuestion = new Question(id,title, question, username);
+	}
+	} catch (SQLException e) {
+	System.out.println(e.getMessage());
+	}
+	//Step 5: Set existingUser to request and serve up the userEdit form
+	request.setAttribute("question", existingQuestion);
+	request.getRequestDispatcher("/viewAnswer.jsp").forward(request, response);
+	}
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
@@ -105,10 +140,11 @@ public class questionServlet extends HttpServlet {
 	  ResultSet rs = preparedStatement.executeQuery();
 	  // Step 5.3: Process the ResultSet object.
 	  while (rs.next()) {
+	  Integer id = rs.getInt("id");
 	  String title = rs.getString("title");
 	  String question = rs.getString("question");
 	  String username = rs.getString("username");
-	  questions.add(new Question(title, question, username));
+	  questions.add(new Question(id, title, question, username));
 	  }
 	  } catch (SQLException e) {
 	  System.out.println(e.getMessage());

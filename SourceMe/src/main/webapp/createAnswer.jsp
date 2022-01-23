@@ -41,6 +41,7 @@
   </ul>
 </nav>
 
+
 <!-- Create an answer container -->
 <div class="create-body">
     <div class="container">
@@ -48,27 +49,34 @@
         <div class="title">
     		<h2>Reply a comment</h2>
 		</div>
-    <form class="create-form" action="createAnswerServlet" method="post">
+    <form class="create-form" action="<%=request.getContextPath()%>/createAnswerServlet" method="post">
    
     	<!--Question-->  
           <div class="form-row mt-2">
             <div class="col">
                 <label class="qns-label">Question</label> 
-              	<p class="answer" name="question" id="question">1</p>
-              	<!-- <input type="text" class="form-control" name="question"> -->
+              	<!-- p class="answer" name="question" id="question">1</p -->
+              	<input type="text" class="form-control" name="question" value="${question.question}"  readonly> 
             </div>
-          </div>
+          </div> 
           
-    	
+    			<c:if test="${question != null}">
+		<input name="qnsId" type="hidden" value="${question.id}" />
+		</c:if>
  		<!--Username-->  
           <div class="form-row mt-2">
             <div class="col username">
-                <label style="font-size: 18px;">Username</label> 
-              	<p class="answer" name="username" id="username">jaslynylh</p>
-              	<!-- <input type="text" class="form-control" name="username"> -->
-            </div>
+                <label style="font-size: 18px;">Post By</label> 
+				<input type="text" class="form-control" name="username" value="${question.username}" readonly>     
+			</div>
           </div>
           
+          <div class="form-row mt-2">
+            <div class="col">
+                <label style="font-size: 18px;">Comment By</label> 
+              	<input type="text" class="form-control" value="jaslyn98" name="username" readonly>
+            </div>
+          </div>
           <!--My Answer-->  
           <div class="form-row mt-2">
             <div class="col">

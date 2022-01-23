@@ -1,11 +1,12 @@
 
 public class Answer {
 	 protected int id;
-	 public Answer(int id, int qnsId, String answer) {
+	 public Answer(int id, int qnsId, String username, String answers) {
 		super();
 		this.id = id;
 		this.qnsId = qnsId;
-		this.answer = answer;
+		this.username = username;
+		this.answers = answers;
 	}
 	public int getId() {
 		return id;
@@ -19,12 +20,20 @@ public class Answer {
 	public void setQnsId(int qnsId) {
 		this.qnsId = qnsId;
 	}
-	public String getAnswer() {
-		return answer;
+	public String getUsername() {
+		return username;
 	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getAnswers() {
+		return answers;
+	}
+	public void setAnswers(String answers) {
+		this.answers = answers;
 	}
 	protected int qnsId;
-	 protected String answer;
+	 protected String username;
+	 protected String answers;
+	 
 }
