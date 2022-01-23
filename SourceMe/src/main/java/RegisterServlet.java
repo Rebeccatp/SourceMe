@@ -3,7 +3,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,31 +52,61 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
-			//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-			PreparedStatement ps = con.prepareStatement("insert into USER values(?,?,?,?,?,?,?)");
-			//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
-			ps.setInt(1, 0);
-			ps.setString(2, firstName);
-			ps.setString(3, lastName);
-			ps.setString(4, number);
-			ps.setString(5, userName);
-			ps.setString(6, password);
-			ps.setString(7, email);
-			//Step 6: perform the query on the database using the prepared statement
-			int i = ps.executeUpdate();
-			//Step 7: check if the query had been successfully executed, return “You are successfully registered” via the response,
-			if (i > 0) {
+			
+			PreparedStatement ps1 = con.prepareStatement("select id from user where userName = ?;");
+			ps1.setString(1, userName);
+			ResultSet rs1 = ps1.executeQuery();
+			String idExisting = "";
+			while (rs1.next()) {
+				idExisting = rs1.getString("id");
+			}
+			if (!(isNumeric(idExisting))) {
+				try {
+					//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+					PreparedStatement ps2 = con.prepareStatement("insert into USER values(?,?,?,?,?,?,?)");
+					//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
+					ps2.setInt(1, 0);
+					ps2.setString(2, firstName);
+					ps2.setString(3, lastName);
+					ps2.setString(4, number);
+					ps2.setString(5, userName);
+					ps2.setString(6, password);
+					ps2.setString(7, email);
+					//Step 6: perform the query on the database using the prepared statement
+					int i2 = ps2.executeUpdate();
+					//Step 7: check if the query had been successfully executed, return “You are successfully registered” via the response,
+					if (i2 > 0) {
+						PrintWriter writer = response.getWriter();
+						writer.println("<h1>" + "You have successfully registered an account!" + "</h1>");
+						writer.close();
+					}
+				}
+				//Step 8: catch and print out any exception
+				catch (Exception exception) {
+					System.out.println(exception);
+					out.close();
+				}
+			}
+			else {
 				PrintWriter writer = response.getWriter();
-				writer.println("<h1>" + "You have successfully registered an account!" + "</h1>");
+				writer.println("<h1>" + "Username already exists!" + "</h1>");
 				writer.close();
 			}
-		}
-		//Step 8: catch and print out any exception
-		catch (Exception exception) {
-			System.out.println(exception);
-			out.close();
-		}
+		} catch (Exception exception) {
+				System.out.println(exception);
+				out.close();
+		}	
 		doGet(request, response);
+	}
+	
+	public static boolean isNumeric(String idString) {
+	    int idInt;
+	    try {
+	    	idInt = Integer.parseInt(idString);
+	        return true;
+	    } catch (NumberFormatException e) {
+	    }
+	    return false;
 	}
 
 }
