@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<th>UserName: </th>
-					<td><input type="text" name="userName" value="${user.userName}"></td>
+					<td><input type="text" name="userName" value="${user.userName}" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<th>Password: </th>

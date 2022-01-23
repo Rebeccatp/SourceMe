@@ -28,7 +28,7 @@ public class UserServlet extends HttpServlet {
 	//Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
 	private static final String SELECT_USER_BY_ID = "select role,firstName,lastName,number,userName,password,email from user where id = ?;";
 	private static final String DELETE_USER = "delete from user where id = ?;";
-	private static final String UPDATE_USER = "update user set role = ?, firstName = ?, lastName = ?, number = ?, userName = ?, password = ?, email = ? where id = ?;";
+	private static final String UPDATE_USER = "update user set role = ?, firstName = ?, lastName = ?, number = ?, password = ?, email = ? where id = ?;";
 	
 	//Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 	protected Connection getConnection() {
@@ -127,7 +127,6 @@ public class UserServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String number = request.getParameter("number");
-		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 	
@@ -138,10 +137,9 @@ public class UserServlet extends HttpServlet {
 			statement.setString(2, firstName);
 			statement.setString(3, lastName);
 			statement.setString(4, number);
-			statement.setString(5, userName);
-			statement.setString(6, password);
-			statement.setString(7, email);
-			statement.setInt(8, id);
+			statement.setString(5, password);
+			statement.setString(6, email);
+			statement.setInt(7, id);
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
