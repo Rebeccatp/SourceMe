@@ -34,7 +34,10 @@ public class questionServlet extends HttpServlet {
 		 private static final String SELECT_ALL_QUESTIONS = "select * from question";
 		 private static final String DELETE_QUESTIONS_SQL = "delete from question where username = ?;";
 		 private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ?;";
-		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
+
+			/*
+			 * private static final String SELECT_ALL_ANSWERS = "select * from answers";
+			 */		 //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 		 protected Connection getConnection() {
 		 Connection connection = null;
 		 try {
@@ -72,8 +75,6 @@ public class questionServlet extends HttpServlet {
 		 break;
 		 case "/update":
 		 break;
-		 case "/questionServlet/viewAnswer": viewAnswer(request, response);
-		 break;
 		 case "/questionServlet/dashboard":listQuestions(request, response);
 		 break;
 		 }
@@ -89,37 +90,6 @@ public class questionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	
-	private void viewAnswer(HttpServletRequest request, HttpServletResponse response)
-	throws SQLException, ServletException, IOException {
-	//get parameter passed in the URL
-	int id = Integer.parseInt(request.getParameter("id"));
-	 System.out.println(id); 
-	Question existingQuestion = new Question(0,"", "", "");
-	// Step 1: Establishing a Connection
-	try (Connection connection = getConnection();
-	// Step 2:Create a statement using connection object
-	PreparedStatement preparedStatement =
-	connection.prepareStatement(SELECT_QUESTION_BY_ID);) {
-	preparedStatement.setInt(1, id);
-	System.out.println(id);
-	// Step 3: Execute the query or update query
-	ResultSet rs = preparedStatement.executeQuery();
-	// Step 4: Process the ResultSet object
-	while (rs.next()) {
-	 String title = rs.getString("title");
-	 String question = rs.getString("question");
-	 String username = rs.getString("username");
-	 
-	 existingQuestion = new Question(id,title, question, username);
-	}
-	} catch (SQLException e) {
-	System.out.println(e.getMessage());
-	}
-	//Step 5: Set existingUser to request and serve up the userEdit form
-	request.setAttribute("question", existingQuestion);
-	request.getRequestDispatcher("/viewAnswer.jsp").forward(request, response);
-	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -132,10 +102,11 @@ public class questionServlet extends HttpServlet {
 	 throws SQLException, IOException, ServletException 
 	 {
 	 List <Question> questions = new ArrayList <>();
-	  try (Connection connection = getConnection();
+	  try (
+			  Connection connection = getConnection();
 	  // Step 5.1: Create a statement using connection object
-	  PreparedStatement preparedStatement = 
-	 connection.prepareStatement(SELECT_ALL_QUESTIONS);) {
+	  PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_QUESTIONS);
+			  ) {
 	  // Step 5.2: Execute the query or update query
 	  ResultSet rs = preparedStatement.executeQuery();
 	  // Step 5.3: Process the ResultSet object.

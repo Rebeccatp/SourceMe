@@ -90,7 +90,9 @@ crossorigin="anonymous">
 			<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete functions -->
 			<div class="align"><a href="edit?question=<c:out value='${question.question}' />">Edit</a></div>
 			<div class="align"><a href="delete?question=<c:out value='${question.question}' />">Delete</a></div>
-			<div class="align"><a href="viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a></div>
+			<div class="align"><a href="/SourceMe/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a></div>
+			
+			
 		</div>
 		
 	</div>

@@ -46,7 +46,7 @@ public class createAnswerServlet extends HttpServlet {
 		
 		//Step 2: retrieve the three parameters from the request from the web form
 		int qnsId = Integer.parseInt(request.getParameter("qnsId"));
-		String username = request.getParameter("username");
+		String postBy = request.getParameter("postBy");
 		String answers = request.getParameter("answer");
 		System.out.print(answers);
 		//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
@@ -60,9 +60,8 @@ public class createAnswerServlet extends HttpServlet {
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
 		 ps.setInt(1, 0);
 		 ps.setInt(2, qnsId);
-		 ps.setString(3, username);
+		 ps.setString(3, postBy);
 		 ps.setString(4, answers);
-		 System.out.print("testing");
 
 		//Step 6: perform the query on the database using the prepared statement
 		 int i = ps.executeUpdate();

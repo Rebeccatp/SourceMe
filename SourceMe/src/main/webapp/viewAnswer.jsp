@@ -76,27 +76,29 @@
 		</div>
 		
 		<!-- Answer -->
-		<c:if test="${question != null}">
-		<input name="id" type="hidden" value="<c:out
-		value='${question.id}' />" />
-		</c:if>
-		
-		<div class="question-con">
+		<label class="comment-header">Comments:</label> 			
+		<div class="answer-con">
 			
 			<!-- For each user in the database, display their 
 			information accordingly -->
-			<div class="label-cont">
-				<div>
-					<div class="alignment">
-						<label>Comments:</label> 
-						<p>lalalalala</p>
-					</div>
-					
-				</div>
-			</div>
-			
+						 <c:forEach items="${answerList}" var="answer">
+						 <c:choose>
+						 <c:when test="${question.id == answer.qnsId}">
+						 
+							<div class="answer-div">
+								<div class="align"><p>${answer.answers}</p></div>
+								<div class="edit-delete">
+									<div class="align"><a href="/SourceMe/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a></div>
+									<div class="align"><a href="/SourceMe/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a></div>
+								</div>
+							</div>
+							</c:when>
+							</c:choose>
+						</c:forEach>	 
 			
 		</div>
+		
+	   
 </div>
 
 </body>

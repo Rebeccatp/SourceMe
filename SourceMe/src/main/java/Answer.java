@@ -1,11 +1,11 @@
 
 public class Answer {
 	 protected int id;
-	 public Answer(int id, int qnsId, String username, String answers) {
+	 public Answer(int id, int qnsId, String postBy, String answers) {
 		super();
 		this.id = id;
 		this.qnsId = qnsId;
-		this.username = username;
+		this.postBy = postBy;
 		this.answers = answers;
 	}
 	public int getId() {
@@ -20,11 +20,11 @@ public class Answer {
 	public void setQnsId(int qnsId) {
 		this.qnsId = qnsId;
 	}
-	public String getUsername() {
-		return username;
+	public String getPostBy() {
+		return postBy;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPostBy(String postBy) {
+		this.postBy = postBy;
 	}
 	public String getAnswers() {
 		return answers;
@@ -33,7 +33,7 @@ public class Answer {
 		this.answers = answers;
 	}
 	protected int qnsId;
-	 protected String username;
+	 protected String postBy;
 	 protected String answers;
 	 
 }
