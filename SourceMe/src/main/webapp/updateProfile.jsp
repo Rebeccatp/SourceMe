@@ -79,7 +79,7 @@
 	<div class="container" style="margin-top: 40px; margin-bottom: 40px">
 		<h2>Delete Account</h2>
 		<br>
-		<a href="delete?id=<c:out value='${user.id}' />"><button class="btn btn-danger">Delete Account</button></a>
+		<a href="delete?id=${user.id}"><button class="btn btn-danger">Delete Account</button></a>
 	</div>
 
 </body>

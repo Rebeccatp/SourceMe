@@ -60,11 +60,9 @@ public class UserServlet extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch (action) {
-/**
 				case "/UserServlet/delete":
 					deleteUser(request, response);
 					break;
-*/
 				case "/UserServlet/edit":
 					showEditForm(request, response);
 					break;
@@ -149,6 +147,19 @@ public class UserServlet extends HttpServlet {
 */
 		//refresh update profile page
 		response.setHeader("Refresh", "0; URL=http://localhost:8090/SourceMe/UserServlet/edit");
+	}
+	
+	//method to delete user
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		//Step 1: Retrieve value from the request
+		int id = Integer.parseInt(request.getParameter("id"));
+		//Step 2: Attempt connection with database and execute delete user SQL query
+		try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USER);) {
+			statement.setInt(1, id);
+			int i = statement.executeUpdate();
+		}
+		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+		response.sendRedirect("http://localhost:8090/SourceMe/register.jsp");
 	}
 
 }
