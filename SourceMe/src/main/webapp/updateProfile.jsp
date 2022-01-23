@@ -45,43 +45,41 @@
 	<div class="container" style="margin-top: 20px">
 		<h2>Update Profile</h2>
 		<br>
-		<form action="UpdateProfileServlet" method="post">
+		<form action="update" method="post">
 			<table>
 				<tr>
 					<th>First Name: </th>
-					<td><input type="text" name="firstName" size="20"></td>
+					<td><input type="text" name="firstName" value="${user.firstName}"></td>
 				</tr>
 				<tr>
 					<th>Last Name: </th>
-					<td><input type="text" name="lastName" size="20"></td>
+					<td><input type="text" name="lastName" value="${user.lastName}"></td>
 				</tr>
 				<tr>
 					<th>Contact Details: </th>
-					<td><input type="number" name="number" size="20"></td>
+					<td><input type="text" name="number" value="${user.number}"></td>
 				</tr>
 				<tr>
 					<th>UserName: </th>
-					<td><input type="text" name="userName" size="20"></td>
+					<td><input type="text" name="userName" value="${user.userName}"></td>
 				</tr>
 				<tr>
 					<th>Password: </th>
-					<td><input type="password" name="password" size="20"></td>
+					<td><input type="password" name="password" value="${user.password}"></td>
 				</tr>
 				<tr>
 					<th>Email: </th>
-					<td><input type="text" name="email" size="20"></td>
+					<td><input type="text" name="email" value="${user.email}"></td>
 				</tr>
 			</table>
 			<br>
-			<input class="btn btn-primary" type="submit" value="Update Profile" />
+			<input class="button-submit" type="submit" value="Update Profile" />
 		</form>
 	</div>
 	<div class="container" style="margin-top: 40px; margin-bottom: 40px">
 		<h2>Delete Account</h2>
 		<br>
-		<!-- COPIED FROM LAB, MODIFY LINE BELOW LATER -->
-		<!-- <a href="delete?name=<c:out value='${user.name}' />">Delete Account</a> -->
-		<input class="btn btn-danger" type="submit" value="Temp Delete Account Btn. Modify later" />
+		<a href="delete?id=<c:out value='${user.id}' />"><button class="btn btn-danger">Delete Account</button></a>
 	</div>
 
 </body>
