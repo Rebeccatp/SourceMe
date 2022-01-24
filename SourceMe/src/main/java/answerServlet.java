@@ -235,7 +235,7 @@ public class answerServlet extends HttpServlet {
 		 System.out.println(id);
 		 }
 		 //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
-		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+		 response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
 		}
 		
 		
