@@ -36,11 +36,6 @@
 	<servlet-name>tutorialServlet</servlet-name>
 	<servlet-class>tutorialServlet</servlet-class>
 </servlet>
-<servlet>
-	<servlet-name>UserServlet</servlet-name>
-	<servlet-class>UserServlet</servlet-class>
-</servlet>
- 
 
  <servlet-mapping>
  <servlet-name>tutorialServlet</servlet-name>
@@ -51,13 +46,11 @@
  <url-pattern>/tutorialServlet/update</url-pattern>
  <url-pattern>/tutorialServlet/delete</url-pattern>
  </servlet-mapping>
-<servlet-mapping>
-	<servlet-name>tutorialServlet</servlet-name>
-	<url-pattern>/tutorialServlet/dashboard</url-pattern>
-	<url-pattern>/tutorialServlet/edit</url-pattern>
-	<url-pattern>/tutorialServlet/update</url-pattern>
-	<url-pattern>/tutorialServlet/delete</url-pattern>
-</servlet-mapping>
+
+<servlet>
+	<servlet-name>UserServlet</servlet-name>
+	<servlet-class>UserServlet</servlet-class>
+</servlet>
 <servlet-mapping>
 	<servlet-name>UserServlet</servlet-name>
 	<url-pattern>/UserServlet/edit</url-pattern>
