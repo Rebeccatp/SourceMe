@@ -27,14 +27,11 @@
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
-   <li class="nav-item">
+   <li class="nav-item" style="margin-left: 110px">
       <a class="nav-link" href="#">Sign In</a>
     </li>
         <li class="nav-item">
       <a class="nav-link" href="#">Sign Up</a>
-    </li>
-    <li>
-    <div class="btn-add-qns">Add Your Question</div>
     </li>
   </ul>
 </nav>
