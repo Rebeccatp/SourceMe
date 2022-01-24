@@ -8,7 +8,7 @@
 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
 crossorigin="anonymous">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<style type="text/css"><%@include file="/css/header.css" %></style>
 <style type="text/css">
   <%@include file="/css/questions.css" %>
 </style>
@@ -23,10 +23,10 @@ crossorigin="anonymous">
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
+    <a href="<%=request.getContextPath()%>/home.jsp"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home.jsp">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
@@ -40,7 +40,7 @@ crossorigin="anonymous">
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
+    <div class="btn-add-qns"><a href="questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>

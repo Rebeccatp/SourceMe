@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<style type="text/css"><%@include file="/css/header.css" %></style>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/editQuestion.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -19,10 +19,10 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
+    <a href="<%=request.getContextPath()%>/home.jsp"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home.jsp">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
@@ -36,11 +36,9 @@
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns">Add Your Question</div>
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
-     
-  
 </nav>
 
 <nav class="navbar navbar-expand-md navbar-light">
@@ -77,7 +75,7 @@ Edit
 
 <div class="alignment">
 <fieldset class="form-group">
-<input type="text" value='${currentQuestion.username}' class="form-control" name="username" required="required">
+<input type="text" value='${currentQuestion.username}' class="form-control" name="username" required="required" readonly>
 </fieldset>
 </div>
 

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<style type="text/css"><%@include file="/css/header.css" %></style>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/createAnswer.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -16,13 +16,10 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
+    <a href="<%=request.getContextPath()%>/home.jsp"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">All Questions</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home.jsp">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">All Tutorials</a>
@@ -36,7 +33,7 @@
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns">Add Your Question</div>
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>
@@ -49,7 +46,7 @@
         <div class="title">
     		<h2>Reply a comment</h2>
 		</div>
-    <form class="create-form" action="<%=request.getContextPath()%>/createAnswerServlet" method="post">
+    <form class="create-form" action="createAnswer" method="post">
    
     	<!--Question-->  
           <div class="form-row mt-2">

@@ -73,7 +73,9 @@ public class answerServlet extends HttpServlet {
 				String action = request.getServletPath();
 				 try {
 				 switch (action) {
-				 case "/answerServlet/addAnswer": addAnswer(request, response);
+				 case "/answerServlet/addAnswer": showCreateAnswerForm(request, response);
+				 break;
+				 case "/answerServlet/createAnswer": createAnswer(request, response);
 				 break;
 				 case "/answerServlet/viewAnswer": viewAnswer(request, response);
 				 break;
@@ -146,7 +148,7 @@ public class answerServlet extends HttpServlet {
 			}
 	
 	// create answer form
-	private void addAnswer(HttpServletRequest request, HttpServletResponse response)
+	private void showCreateAnswerForm(HttpServletRequest request, HttpServletResponse response)
 	throws SQLException, ServletException, IOException {
 		//get parameter passed in the URL
 		int qnsId = Integer.parseInt(request.getParameter("qnsId"));
@@ -176,6 +178,7 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("question", existingQuestion);
 	request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
 	}
+	
 	
 	
 	//method to get parameter, query database for existing user data and redirect to user edit page
@@ -232,9 +235,51 @@ public class answerServlet extends HttpServlet {
 		 System.out.println(id);
 		 }
 		 //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
-		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+		 response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
 		}
 		
+		
+				private void createAnswer(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, IOException {
+					//Step 1: Initialize a PrintWriter object to return the html values via the response
+					PrintWriter out = response.getWriter();
+					
+					//Step 2: retrieve the three parameters from the request from the web form
+					int qnsId = Integer.parseInt(request.getParameter("qnsId"));
+					String postBy = request.getParameter("postBy");
+					String answers = request.getParameter("answer");
+					System.out.print(answers);
+					//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
+					try {
+					 Class.forName("com.mysql.jdbc.Driver");
+					 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
+					 
+					//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+					PreparedStatement ps = con.prepareStatement("insert into answers values(?,?,?,?)");
+					
+					//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
+					 ps.setInt(1, 0);
+					 ps.setInt(2, qnsId);
+					 ps.setString(3, postBy);
+					 ps.setString(4, answers);
+
+					//Step 6: perform the query on the database using the prepared statement
+					 int i = ps.executeUpdate();
+					 
+					
+					 
+					//Step 7: check if the query had been successfully execute, return “You are successfully registered” via the response,
+					 if (i > 0){
+							  response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
+						 }
+					}
+					
+					//Step 8: catch and print out any exception
+					catch (Exception exception) {
+					 System.out.println(exception);
+					 out.close();
+					}
+				}
 		
 		//method to delete user
 		private void deleteAnswer(HttpServletRequest request, HttpServletResponse response)
