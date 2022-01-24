@@ -56,29 +56,40 @@ crossorigin="anonymous">
 <tbody>
 <c:forEach var="question" items="${listQuestions}">
 <div class="question-con">
-	
-	<!-- For each user in the database, display their 
-	information accordingly -->
-	<div class="label-cont">
-	
-		
-		<div>
-			<div class="alignment">
-				<label><b>Title:</b></label> 
-				<label><c:out value="${question.title}" /></label>
-			</div>
-			
-			<div class="alignment">
-				<label><b>Question:</b></label> 
-				<label><c:out value="${question.question}" /></label>
-			</div>
-			<div class="alignment">
-				<label><b>Username:</b></label>
-				<label><c:out value="${question.username}" /></label> 
-			</div>
-		</div>
+<!-- For each user in the database, display their
+information accordingly -->
+<div class="label-cont">
 
-	</div>
+
+<div>
+<div class="alignment">
+<label><b>Title:</b></label>
+<label><c:out value="${question.title}" /></label>
+</div>
+
+<div class="alignment">
+<label><b>Question:</b></label>
+<label><c:out value="${question.question}" /></label>
+</div>
+<div class="alignment">
+<label><b>Username:</b></label>
+<label><c:out value="${question.username}" /></label>
+</div>
+</div>
+<div class="linksAndButton">
+<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete/view answer functions -->
+<div class="align"><a href="edit?id=<c:out value='${question.id}' />">Edit</a>
+<img src="<%=request.getContextPath()%>/assets/edit.png" width="20px"></div>
+<div class="align"><a href="delete?id=<c:out value='${question.id}' />">Delete</a>
+<img src="<%=request.getContextPath()%>/assets/remove.png" width="20px"></div>
+<div class="align"><a href="/SourceMe/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a>
+<img src="<%=request.getContextPath()%>/assets/question.png" width="20px"></div>
+<form action="bookmarkServlet" method="post" class="align">
+<a href="bookmark?id=<c:out value='${question.id}' />">Add to bookmark</a>
+<img src="<%=request.getContextPath()%>/assets/bookmark (1).png" width="20px">
+</form>
+</div>
+</div>
 </div>
 </c:forEach>
 </tbody>
