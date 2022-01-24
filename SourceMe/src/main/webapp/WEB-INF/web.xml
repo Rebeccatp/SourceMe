@@ -10,6 +10,8 @@
 <servlet-name>questionServlet</servlet-name>
 <url-pattern>/questionServlet/questions</url-pattern>
 <url-pattern>/questionServlet/edit</url-pattern>
+<url-pattern>/questionServlet/questionForm</url-pattern>
+<url-pattern>/questionServlet/createQuestion</url-pattern>
 <url-pattern>/questionServlet/update</url-pattern>
 <url-pattern>/questionServlet/delete</url-pattern>
 <url-pattern>/questionServlet/bookmark</url-pattern>
@@ -23,6 +25,7 @@
 <servlet-mapping>
 <servlet-name>answerServlet</servlet-name>
 <url-pattern>/answerServlet/addAnswer</url-pattern>
+<url-pattern>/answerServlet/createAnswer</url-pattern>
 <url-pattern>/answerServlet/viewAnswer</url-pattern>
 <url-pattern>/answerServlet/editAnswer</url-pattern>
 <url-pattern>/answerServlet/updateAnswer</url-pattern>
@@ -38,6 +41,7 @@
  <servlet-name>tutorialServlet</servlet-name>
 <url-pattern>/tutorialServlet/dashboard</url-pattern>
 <url-pattern>/tutorialServlet/create</url-pattern>
+<url-pattern>/tutorialServlet/createTutorials</url-pattern>
  <url-pattern>/tutorialServlet/edit</url-pattern>
  <url-pattern>/tutorialServlet/update</url-pattern>
  <url-pattern>/tutorialServlet/delete</url-pattern>

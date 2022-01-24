@@ -40,7 +40,7 @@ crossorigin="anonymous">
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
+    <div class="btn-add-qns"><a href="questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>

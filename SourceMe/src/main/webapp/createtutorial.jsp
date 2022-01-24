@@ -48,7 +48,7 @@
 				<div class="title">
 					<h2>Create Tutorial</h2>
 				</div>
-				<form class="create-form" action="<%=request.getContextPath()%>/createTutorial" method="post">
+				<form class="create-form" action="createTutorials" method="post">
 					<!--Title-->
 					<div class="form-row mt-2">
 						<div class="col">

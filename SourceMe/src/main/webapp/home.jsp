@@ -26,7 +26,7 @@
       <a class="nav-link" href="#">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Tutorials</a>
+      <a class="nav-link" href="tutorialServlet/dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
@@ -37,7 +37,7 @@
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
+    <div class="btn-add-qns"><a href="questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>

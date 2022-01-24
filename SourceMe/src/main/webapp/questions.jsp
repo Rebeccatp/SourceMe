@@ -46,7 +46,7 @@
 <div class="title">
 <h2>Question</h2>
 </div>
-<form class="create-form" action="questions" method="post">
+<form class="create-form" action="createQuestion" method="post">
 <!--Remarks-->
 <div class="form-row mt-2">
 <div class="col">

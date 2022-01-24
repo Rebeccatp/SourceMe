@@ -46,7 +46,7 @@
         <div class="title">
     		<h2>Reply a comment</h2>
 		</div>
-    <form class="create-form" action="<%=request.getContextPath()%>/createAnswerServlet" method="post">
+    <form class="create-form" action="createAnswer" method="post">
    
     	<!--Question-->  
           <div class="form-row mt-2">
