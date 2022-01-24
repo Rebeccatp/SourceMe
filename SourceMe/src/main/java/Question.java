@@ -1,17 +1,13 @@
 
 public class Question {
-	protected Integer id;
-	public Question(Integer id, String title, String question, String username) {
+
 		super();
 		this.id = id;
 		this.title = title;
 		this.question = question;
 		this.username = username;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
+
 		this.id = id;
 	}
 	public String getTitle() {
@@ -32,7 +28,4 @@ public class Question {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	protected String title;
-	protected String question;
-	protected String username;
 }
