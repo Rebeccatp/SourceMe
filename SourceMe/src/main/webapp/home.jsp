@@ -7,7 +7,7 @@
 <title>SourceMe</title>
 
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<style type="text/css"><%@include file="/css/header.css" %></style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -20,16 +20,13 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
+    <a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Questions</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">All Tutorials</a>
+      <a class="nav-link" href="tutorialServlet/dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
@@ -40,7 +37,7 @@
       <a class="nav-link" href="#">Sign Up</a>
     </li>
     <li>
-    <div class="btn-add-qns">Add Your Question</div>
+    <div class="btn-add-qns"><a href="questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
     </li>
   </ul>
 </nav>
@@ -51,7 +48,7 @@
 	    
 </div>
 	<div class="buttons">
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-questions">All Questions</button>
+		<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
 		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
 	</div>
 </body>

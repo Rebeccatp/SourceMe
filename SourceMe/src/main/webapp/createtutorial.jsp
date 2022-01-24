@@ -26,7 +26,7 @@
 	      <a class="nav-link" href="#">All Questions</a>
 	    </li>
 	     <li class="nav-item">
-	      <a class="nav-link" href="tutorialServlet/dashboard">All Tutorials</a>
+	      <a class="nav-link" href="dashboard">All Tutorials</a>
 	    </li>
 	  </ul>
 	  <ul class="navbar-nav col-lg-3">
@@ -48,7 +48,7 @@
 				<div class="title">
 					<h2>Create Tutorial</h2>
 				</div>
-				<form class="create-form" action="createTutorial" method="post">
+				<form class="create-form" action="createTutorials" method="post">
 					<!--Title-->
 					<div class="form-row mt-2">
 						<div class="col">
