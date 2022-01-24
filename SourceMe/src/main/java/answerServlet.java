@@ -232,7 +232,7 @@ public class answerServlet extends HttpServlet {
 		 System.out.println(id);
 		 }
 		 //Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
-		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/dashboard");
+		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
 		}
 		
 		
@@ -248,6 +248,6 @@ public class answerServlet extends HttpServlet {
 		 int i = statement.executeUpdate();
 		 }
 		 //Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
-		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/dashboard");
+		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
 		}
 }

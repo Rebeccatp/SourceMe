@@ -7,10 +7,11 @@
 
 <servlet-mapping>
 <servlet-name>questionServlet</servlet-name>
-<url-pattern>/questionServlet/dashboard</url-pattern>
+<url-pattern>/questionServlet/questions</url-pattern>
 <url-pattern>/questionServlet/edit</url-pattern>
 <url-pattern>/questionServlet/update</url-pattern>
 <url-pattern>/questionServlet/delete</url-pattern>
+<url-pattern>/questionServlet/bookmark</url-pattern>
 </servlet-mapping>
 
 <servlet>

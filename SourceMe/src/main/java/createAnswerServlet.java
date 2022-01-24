@@ -70,7 +70,7 @@ public class createAnswerServlet extends HttpServlet {
 		 
 		//Step 7: check if the query had been successfully execute, return “You are successfully registered” via the response,
 		 if (i > 0){
-				  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/dashboard");
+				  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
 			 }
 		}
 		

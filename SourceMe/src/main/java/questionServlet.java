@@ -29,7 +29,6 @@ public class questionServlet extends HttpServlet {
 		 //Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
 		 private static final String INSERT_QUESTIONS_SQL = "INSERT INTO question" + " (title, question, username) VALUES " +
 		 " (?, ?, ?);";
-		 private static final String SELECT_QUESTION_BY_USERNAME = "select title, question, username from question where username =?";
 		 private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where id =?";
 		 private static final String SELECT_ALL_QUESTIONS = "select * from question";
 		 private static final String DELETE_QUESTIONS_SQL = "delete from question where username = ?;";
@@ -65,22 +64,15 @@ public class questionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Step 4: Depending on the request servlet path, determine the function to invoke using the follow switch statement.
 		String action = request.getServletPath();
-		 try {
-		 switch (action) {
-		 case "/insert":
-		 break;
-		 case "/delete":
-		 break;
-		 case "/edit":
-		 break;
-		 case "/update":
-		 break;
-		 case "/questionServlet/dashboard":listQuestions(request, response);
-		 break;
-		 }
-		 } catch (SQLException ex) {
-		 throw new ServletException(ex);
-		 }
+		try {
+			switch (action) {
+			case "/questionServlet/questions":
+			listQuestions(request, response);
+			break;
+			}
+			} catch (SQLException ex) {
+			throw new ServletException(ex);
+			}
 
 		
 		// TODO Auto-generated method stub
