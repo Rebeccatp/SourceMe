@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class createAnswerServlet
+ * Servlet implementation class addAnswer
  */
 @WebServlet("/createAnswerServlet")
 public class createAnswerServlet extends HttpServlet {
@@ -42,16 +41,14 @@ public class createAnswerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		response.setContentType("text/html");
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
 		
 		//Step 2: retrieve the three parameters from the request from the web form
-		Integer q = Integer.parseInt(request.getParameter("question"));
-		String a = request.getParameter("answer");
-		String u = request.getParameter("username");
-		
+		int qnsId = Integer.parseInt(request.getParameter("qnsId"));
+		String postBy = request.getParameter("postBy");
+		String answers = request.getParameter("answer");
+		System.out.print(answers);
 		//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
 		try {
 		 Class.forName("com.mysql.jdbc.Driver");
@@ -62,20 +59,19 @@ public class createAnswerServlet extends HttpServlet {
 		
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
 		 ps.setInt(1, 0);
-		 ps.setInt(2, q);
-		 ps.setString(3, u);
-		 ps.setString(4, a);
-		 System.out.print(ps);
+		 ps.setInt(2, qnsId);
+		 ps.setString(3, postBy);
+		 ps.setString(4, answers);
 
 		//Step 6: perform the query on the database using the prepared statement
 		 int i = ps.executeUpdate();
 		 
+		
+		 
 		//Step 7: check if the query had been successfully execute, return “You are successfully registered” via the response,
 		 if (i > 0){
-		PrintWriter writer = response.getWriter();
-		writer.println("<h1>" + "You have successfully inserted the answer!" +"</h1>");
-		writer.close();
-		}
+				  response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+			 }
 		}
 		
 		//Step 8: catch and print out any exception
@@ -83,7 +79,6 @@ public class createAnswerServlet extends HttpServlet {
 		 System.out.println(exception);
 		 out.close();
 		}
-		
 	}
 
 }

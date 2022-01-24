@@ -51,7 +51,7 @@
 	    
 </div>
 	<div class="buttons">
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-questions">All Questions</button>
+		<button onclick="window.location.href='/SourceMe/questionServlet'" type="button" class="btn-all-questions">All Questions</button>
 		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
 	</div>
 </body>

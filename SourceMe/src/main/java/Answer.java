@@ -1,11 +1,12 @@
 
 public class Answer {
 	 protected int id;
-	 public Answer(int id, int qnsId, String answer) {
+	 public Answer(int id, int qnsId, String postBy, String answers) {
 		super();
 		this.id = id;
 		this.qnsId = qnsId;
-		this.answer = answer;
+		this.postBy = postBy;
+		this.answers = answers;
 	}
 	public int getId() {
 		return id;
@@ -19,12 +20,20 @@ public class Answer {
 	public void setQnsId(int qnsId) {
 		this.qnsId = qnsId;
 	}
-	public String getAnswer() {
-		return answer;
+	public String getPostBy() {
+		return postBy;
 	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setPostBy(String postBy) {
+		this.postBy = postBy;
+	}
+	public String getAnswers() {
+		return answers;
+	}
+	public void setAnswers(String answers) {
+		this.answers = answers;
 	}
 	protected int qnsId;
-	 protected String answer;
+	 protected String postBy;
+	 protected String answers;
+	 
 }
