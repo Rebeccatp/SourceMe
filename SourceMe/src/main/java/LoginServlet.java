@@ -52,17 +52,20 @@ public class LoginServlet extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
 			
-			PreparedStatement ps1 = con.prepareStatement("select id from user where userName = ? and password = ?;");
+			PreparedStatement ps1 = con.prepareStatement("select id, userName from user where userName = ? and password = ?;");
 			ps1.setString(1, userName);
 			ps1.setString(2, password);
 			ResultSet rs1 = ps1.executeQuery();
 			String idExisting = "";
+			String userNameExisting = "";
 			while (rs1.next()) {
 				idExisting = rs1.getString("id");
+				userNameExisting = rs1.getString("userName");
 			}
-			if (isNumeric(idExisting)) {
+			if (isNumeric(idExisting)) {				
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", idExisting);
+				session.setAttribute("userName", userNameExisting);
 				//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
 				response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/edit");
 			}
