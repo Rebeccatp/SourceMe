@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+
   <servlet>
 <servlet-name>questionServlet</servlet-name>
 <servlet-class>questionServlet</servlet-class>
@@ -27,5 +28,20 @@
 <url-pattern>/answerServlet/updateAnswer</url-pattern>
 <url-pattern>/answerServlet/deleteAnswer</url-pattern>
 </servlet-mapping>
+
+<servlet>
+ <servlet-name>tutorialServlet</servlet-name>
+ <servlet-class>tutorialServlet</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+ <servlet-name>tutorialServlet</servlet-name>
+<url-pattern>/tutorialServlet/dashboard</url-pattern>
+<url-pattern>/tutorialServlet/create</url-pattern>
+ <url-pattern>/tutorialServlet/edit</url-pattern>
+ <url-pattern>/tutorialServlet/update</url-pattern>
+ <url-pattern>/tutorialServlet/delete</url-pattern>
+ </servlet-mapping>
+
 
 </web-app>
