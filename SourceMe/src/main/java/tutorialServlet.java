@@ -150,6 +150,7 @@ public class tutorialServlet extends HttpServlet {
 		 System.out.println(existingTutorial);
 		 }
 		 
+		 // create tutorial form		 
 		 private void createTutorial(HttpServletRequest request, HttpServletResponse response)
 				 throws SQLException, ServletException, IOException {
 	

@@ -27,7 +27,7 @@
       <a class="nav-link" href="#">All Questions</a>
     </li>
      <li class="nav-item">
-      <a class="nav-link" href="tutorialServlet">All Tutorials</a>
+      <a class="nav-link" href="dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
