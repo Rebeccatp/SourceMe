@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -137,8 +138,16 @@ request.getRequestDispatcher("/questionManagement.jsp").forward(request, respons
 
 private void showQuestionForm(HttpServletRequest request, HttpServletResponse response)
 		throws SQLException, ServletException, IOException {
+	HttpSession session = request.getSession();
+	String idString = (String) session.getAttribute("userId");
+	if (idString != null) {
 		request.getRequestDispatcher("/questions.jsp").forward(request, response);
+	}
+else {
+	response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+}
 		}
+
 //method to get parameter, query database for existing question data and redirect to question edit page
 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 throws SQLException, ServletException, IOException {
@@ -166,17 +175,22 @@ System.out.println(e.getMessage());
 }
 //Step 5: Set existingQuestion to request and serve up the questionEdit form
 request.setAttribute("currentQuestion", existingQuestion);
+System.out.println(id);
 request.getRequestDispatcher("/editQuestion.jsp").forward(request, response);
 }
 
 private void createQuestion(HttpServletRequest request, HttpServletResponse response)
 		throws SQLException, IOException {
+	
+	HttpSession session = request.getSession();
+	String userName = (String) session.getAttribute("userName");
+	
 	//Step 1: Initialize a PrintWriter object to return the html values via the response
 			PrintWriter out = response.getWriter();
 			//Step 2: retrieve the three parameters from the request from the web form
 			String t = request.getParameter("title");
 			String q = request.getParameter("question");
-			String u = request.getParameter("username");
+			String u = userName;
 			//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
 			try {
 			 Class.forName("com.mysql.jdbc.Driver");
@@ -211,6 +225,8 @@ private void createQuestion(HttpServletRequest request, HttpServletResponse resp
 			 System.out.println(exception);
 			 out.close();
 			}
+	
+
 		}
 
 

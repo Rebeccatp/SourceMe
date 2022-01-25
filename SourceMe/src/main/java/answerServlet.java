@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class createAnswerServlet
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AnswerServlet")
 public class answerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	
 	//Step 1: Prepare list of variables used for database connections
 	 private String jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
@@ -68,6 +70,7 @@ public class answerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter();
+		
 		
 		//Step 4: Depending on the request servlet path, determine the function to invoke using the follow switch statement.
 				String action = request.getServletPath();
@@ -150,6 +153,9 @@ public class answerServlet extends HttpServlet {
 	// create answer form
 	private void showCreateAnswerForm(HttpServletRequest request, HttpServletResponse response)
 	throws SQLException, ServletException, IOException {
+		HttpSession session = request.getSession();
+		String idString = (String) session.getAttribute("userId");
+		if (idString != null) {
 		//get parameter passed in the URL
 		int qnsId = Integer.parseInt(request.getParameter("qnsId"));
 		 System.out.println(qnsId); 
@@ -177,6 +183,10 @@ public class answerServlet extends HttpServlet {
 		System.out.println(existingQuestion);
 		request.setAttribute("question", existingQuestion);
 	request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
+		}
+		else {
+			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+		}
 	}
 	
 	
@@ -286,13 +296,29 @@ public class answerServlet extends HttpServlet {
 		throws SQLException, IOException {
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
+		int qnsId = 0;
+		try (Connection connection = getConnection();
+				// Step 2:Create a statement using connection object
+				PreparedStatement preparedStatement =
+				connection.prepareStatement(SELECT_ANSWER_BY_ID);) {
+				preparedStatement.setInt(1, id);
+				// Step 3: Execute the query or update query
+				ResultSet rs = preparedStatement.executeQuery();
+				// Step 4: Process the ResultSet object
+				while (rs.next()) {
+				qnsId = rs.getInt("qnsId");
+				}
+				} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				}
 		 //Step 2: Attempt connection with database and execute delete user SQL query
 		 try (Connection connection = getConnection(); PreparedStatement statement =
+				 
 		connection.prepareStatement(DELETE_ANSWER_SQL);) {
 		 statement.setInt(1, id);
 		 int i = statement.executeUpdate();
 		 }
 		 //Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
-		 response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+		 response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
 		}
 }

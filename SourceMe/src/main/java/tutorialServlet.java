@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -157,8 +158,14 @@ public class tutorialServlet extends HttpServlet {
 		 // create tutorial form		 
 		 private void createTutorial(HttpServletRequest request, HttpServletResponse response)
 				 throws SQLException, ServletException, IOException {
-	
+			 HttpSession session = request.getSession();
+				String role = (String) session.getAttribute("role");
+				if (role == "Admin") {
 				 request.getRequestDispatcher("/createtutorial.jsp").forward(request, response);
+				}
+				else {
+					response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/logout");
+				}
 				 }
 		 
 		 private void createTutorials(HttpServletRequest request, HttpServletResponse response)

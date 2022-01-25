@@ -54,10 +54,19 @@
 <servlet-mapping>
 	<servlet-name>UserServlet</servlet-name>
 	<url-pattern>/UserServlet/edit</url-pattern>
+	<url-pattern>/UserServlet/login</url-pattern>
+	<url-pattern>/UserServlet/loginPage</url-pattern>
+	<url-pattern>/UserServlet/register</url-pattern>
+	<url-pattern>/UserServlet/registerPage</url-pattern>
 	<url-pattern>/UserServlet/update</url-pattern>
 	<url-pattern>/UserServlet/delete</url-pattern>
 	<url-pattern>/UserServlet/logout</url-pattern>
 </servlet-mapping>
 
+
+  <servlet>
+<servlet-name>home</servlet-name>
+<servlet-class>home</servlet-class>
+</servlet>
 
 </web-app>
