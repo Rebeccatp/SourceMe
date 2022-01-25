@@ -127,6 +127,7 @@ request.setAttribute("listQuestions", questions);
 request.getRequestDispatcher("/questionManagement.jsp").forward(request, response);
 }
 
+
 //method to get parameter, query database for existing question data and redirect to question edit page
 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 throws SQLException, ServletException, IOException {
@@ -156,6 +157,7 @@ System.out.println(e.getMessage());
 request.setAttribute("currentQuestion", existingQuestion);
 request.getRequestDispatcher("/editQuestion.jsp").forward(request, response);
 }
+
 
 
 
