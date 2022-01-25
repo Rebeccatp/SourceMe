@@ -49,7 +49,7 @@
 </div>
 	<div class="buttons">
 		<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
+		<button onclick="window.location.href='/SourceMe/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
 	</div>
 </body>
 </html>

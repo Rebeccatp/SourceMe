@@ -42,15 +42,17 @@
 	  </ul>
 	</nav>
 
-	<div class="container" style="margin-top:20px">
+	<div class="container" style="margin-top:20px; margin-left: 95px">
 		<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
 	</div>
 	<div class="container" style="margin-top: 20px">
-		<h2>Update Profile</h2>
+		<h2 style="margin-left: 505px;">Profile</h2>
 		<br>
-		<form action="update" method="post">
+		<br>
+		<form action="update" method="post" style="margin-left: 400px;">
 			<table>
-				<tr>
+			<div class="role">
+			<tr>
 					<th>Role: </th>
 					<td>
 						<select name="role">
@@ -59,39 +61,51 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
+				</div>
+			<div class="firstName">
+			<tr>
 					<th>First Name: </th>
 					<td><input type="text" name="firstName" value="${user.firstName}"></td>
 				</tr>
-				<tr>
+				</div>
+			<div class="lastName">
+			<tr>
 					<th>Last Name: </th>
 					<td><input type="text" name="lastName" value="${user.lastName}"></td>
 				</tr>
-				<tr>
+				</div>
+			<div class="number">	<tr>
 					<th>Contact Details: </th>
 					<td><input type="text" name="number" value="${user.number}"></td>
 				</tr>
+				</div>
+			<div class="username">
 				<tr>
 					<th>UserName: </th>
 					<td><input type="text" name="userName" value="${user.userName}" readonly="readonly"></td>
 				</tr>
-				<tr>
+				</div>
+			<div class="password">	<tr>
 					<th>Password: </th>
 					<td><input type="password" name="password" value="${user.password}"></td>
 				</tr>
+				</div>
+			<div>
 				<tr>
 					<th>Email: </th>
 					<td><input type="text" name="email" value="${user.email}"></td>
 				</tr>
+				</div>
 			</table>
 			<br>
-			<input class="button-submit" type="submit" value="Update Profile" />
+			<br>
+			<input class="btn btn-primary" type="submit" value="Save changes" style="width: 320px; text-align: center;"/>
 		</form>
 	</div>
 	<div class="container" style="margin-top: 40px; margin-bottom: 40px">
 		<h2>Delete Account</h2>
 		<br>
-		<a href="delete?id=${user.id}"><button class="btn btn-danger">Delete Account</button></a>
+		<a href="delete?id=${user.id}"><button class="btn btn-danger" style="margin-left: 400px; width: 320px;">Delete</button></a>
 	</div>
 
 </body>

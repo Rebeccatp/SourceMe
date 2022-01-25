@@ -43,11 +43,13 @@
 	</nav>
 	
 	<div class="container" style="margin-top: 20px">
-		<h2>Register</h2>
+		<h2 style="margin-left: 510px;">Register</h2>
 		<br>
-		<form action="RegisterServlet" method="post" >
+		<br>
+		<form action="RegisterServlet" method="post" style="margin-left: 410px">
 			<table>
-				<tr>
+			<div>
+			<tr>
 					<th>Role: </th>
 					<td>
 						<select name="role">
@@ -56,35 +58,61 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
+			</div>
+			
+			<div class="firstName">
+			<tr>
 					<th>First Name: </th>
 					<td><input type="text" name="firstName" size="20"></td>
 				</tr>
+			</div>
+			
+			<div class="lastName">
 				<tr>
 					<th>Last Name: </th>
 					<td><input type="text" name="lastName" size="20"></td>
 				</tr>
-				<tr>
+			</div>
+			
+			<div class="number">
+			<tr>
 					<th>Contact Details: </th>
 					<td><input type="text" name="number" size="20"></td>
 				</tr>
+			</div>
+			
+			<div class="username">
 				<tr>
-					<th>UserName: </th>
+					<th>Username: </th>
 					<td><input type="text" name="userName" size="20"></td>
 				</tr>
+			</div>
+			
+			<div class="password">
 				<tr>
 					<th>Password: </th>
 					<td><input type="password" name="password" size="20"></td>
 				</tr>
-				<tr>
+			</div>
+			
+			<div class="email">
+			<tr>
 					<th>Email: </th>
 					<td><input type="text" name="email" size="20"></td>
 				</tr>
+			</div>
+				
 			</table>
 			<br>
-			<input class="btn btn-primary" type="submit" value="Register" />
+			<br>
+			<input class="btn btn-primary" type="submit" value="Register" style="margin-left: 120px"/>
 		</form>
 	</div>
+<br>
+	<br>
+	<br>
+	<p style="margin-left: 520px">Already have an account? <a href="<%=request.getContextPath()%>/login.jsp">Login</a></p>
+
 
 </body>
 </html>

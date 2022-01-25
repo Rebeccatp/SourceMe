@@ -42,24 +42,35 @@
 	  </ul>
 	</nav>
 	
-	<div class="container" style="margin-top: 20px">
-		<h2>Login</h2>
+	<div class="container" style="margin-top: 20px;">
+		<h2 style="margin-left: 520px">Login</h2>
 		<br>
-		<form action="LoginServlet" method="post">
+		<form action="LoginServlet" method="post" style="margin-left: 430px">
 			<table>
-				<tr>
+			<div class="username" >
+			<tr>
 					<th>UserName: </th>
 					<td><input type="text" name="userName" size="20"></td>
 				</tr>
+			</div>
+			<br>
+			<div class="password">
 				<tr>
 					<th>Password: </th>
 					<td><input type="password" name="password" size="20"></td>
 				</tr>
+				</div>	
+				
 			</table>
 			<br>
-			<input class="btn btn-primary" type="submit" value="Login" />
+			<br>
+			<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
 	    </form>
 	</div>
+	<br>
+	<br>
+	<br>
+	<p style="margin-left: 520px">Do not have an account? <a href="<%=request.getContextPath()%>/register.jsp">click here</a></p>
 
 </body>
 </html>
