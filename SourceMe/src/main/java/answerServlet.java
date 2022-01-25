@@ -182,7 +182,8 @@ public class answerServlet extends HttpServlet {
 		}
 		System.out.println(existingQuestion);
 		request.setAttribute("question", existingQuestion);
-	request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
+		request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
+
 		}
 		else {
 			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");

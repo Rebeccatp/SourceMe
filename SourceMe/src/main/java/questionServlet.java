@@ -148,6 +148,7 @@ else {
 }
 		}
 
+
 //method to get parameter, query database for existing question data and redirect to question edit page
 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 throws SQLException, ServletException, IOException {
@@ -228,6 +229,7 @@ private void createQuestion(HttpServletRequest request, HttpServletResponse resp
 	
 
 		}
+
 
 
 //method to update the question table base on the form data

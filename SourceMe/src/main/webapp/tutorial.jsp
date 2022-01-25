@@ -68,7 +68,11 @@
 	<h2>Tutorials</h2>
 </div>
 <div>
-<div class="btn-add-tutorial" onclick="location.href='create'">Create Tutorial</div>
+<c:choose>
+	<c:when test="${sessionScope['role'] == 'Admin'}">
+		<div class="btn-add-tutorial" onclick="location.href='create'">Create Tutorial</div>
+	</c:when>
+</c:choose>
 <c:forEach var="tutorial" items="${listTutorials}">
 <!-- Tutorial container -->
 <div class="create-body">

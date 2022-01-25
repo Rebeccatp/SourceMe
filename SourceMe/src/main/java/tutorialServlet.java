@@ -158,15 +158,9 @@ public class tutorialServlet extends HttpServlet {
 		 // create tutorial form		 
 		 private void createTutorial(HttpServletRequest request, HttpServletResponse response)
 				 throws SQLException, ServletException, IOException {
-			 HttpSession session = request.getSession();
-				String role = (String) session.getAttribute("role");
-				if (role == "Admin") {
+			 
 				 request.getRequestDispatcher("/createtutorial.jsp").forward(request, response);
 				}
-				else {
-					response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/logout");
-				}
-				 }
 		 
 		 private void createTutorials(HttpServletRequest request, HttpServletResponse response)
 					throws SQLException, IOException {
