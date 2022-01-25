@@ -11,11 +11,14 @@ import javax.servlet.RequestDispatcher;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -72,6 +75,12 @@ switch (action) {
 case "/questionServlet/delete":
 deleteQuestion(request, response);
 break;
+case "/questionServlet/questionForm":
+	showQuestionForm(request, response);
+break;
+case "/questionServlet/createQuestion": 
+	createQuestion(request, response);
+break;
 case "/questionServlet/edit":
 showEditForm(request, response);
 break;
@@ -127,6 +136,18 @@ request.setAttribute("listQuestions", questions);
 request.getRequestDispatcher("/questionManagement.jsp").forward(request, response);
 }
 
+private void showQuestionForm(HttpServletRequest request, HttpServletResponse response)
+		throws SQLException, ServletException, IOException {
+	HttpSession session = request.getSession();
+	String idString = (String) session.getAttribute("userId");
+	if (idString != null) {
+		request.getRequestDispatcher("/questions.jsp").forward(request, response);
+	}
+else {
+	response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+}
+		}
+
 
 //method to get parameter, query database for existing question data and redirect to question edit page
 private void showEditForm(HttpServletRequest request, HttpServletResponse response)
@@ -155,9 +176,59 @@ System.out.println(e.getMessage());
 }
 //Step 5: Set existingQuestion to request and serve up the questionEdit form
 request.setAttribute("currentQuestion", existingQuestion);
+System.out.println(id);
 request.getRequestDispatcher("/editQuestion.jsp").forward(request, response);
 }
 
+private void createQuestion(HttpServletRequest request, HttpServletResponse response)
+		throws SQLException, IOException {
+	
+	HttpSession session = request.getSession();
+	String userName = (String) session.getAttribute("userName");
+	
+	//Step 1: Initialize a PrintWriter object to return the html values via the response
+			PrintWriter out = response.getWriter();
+			//Step 2: retrieve the three parameters from the request from the web form
+			String t = request.getParameter("title");
+			String q = request.getParameter("question");
+			String u = userName;
+			//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
+			try {
+			 Class.forName("com.mysql.jdbc.Driver");
+			 Connection con = DriverManager.getConnection(
+			 "jdbc:mysql://localhost:3306/sourceme", "root", "password");
+			//Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+			 PreparedStatement ps = con.prepareStatement("insert into question values(?,?,?,?)");
+			//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
+			ps.setInt(1, 0);
+			 ps.setString(2, t);
+			 ps.setString(3, q);
+			 ps.setString(4, u);
+			//Step 6: perform the query on the database using the prepared statement
+			 int i = ps.executeUpdate();
+			//Step 7: check if the query had been successfully execute, return “question added” via the response,
+			 if (i > 0){
+			PrintWriter writer = response.getWriter();
+			writer.println("<br>");
+			writer.println("<a href='http://localhost:8090/SourceMe/questionServlet/questions' style='color: #9A9A9A; text-decoration:none;'>" 
+			+ "Back to main" + 
+					"</a>");
+			writer.println("<h1 style='text-align: center; color: #586BA4; margin-top: 190px'>" + "Your question has been added!" + 
+			"</h1>");
+			writer.println("<h3 style='text-align: center; color: #586BA4'>" + "To view it, click on 'Back to main' which is "
+					+ "located at the top left of the screen to go back to the list of question page" + 
+			"</h3>");
+			writer.close(); 
+			} 
+			}
+			//Step 8: catch and print out any exception
+			catch (Exception exception) {
+			 System.out.println(exception);
+			 out.close();
+			}
+	
+
+		}
 
 
 

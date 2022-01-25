@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css" crossorigin="anonymous">
 <style type="text/css"><%@include file="/css/header.css" %></style>
@@ -23,33 +24,56 @@
     <a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Tutorials</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/tutorialServlet/dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
+   <c:choose>
+	 <c:when test="${sessionScope['userId'] != null}">
+	 
+
+<li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+    </li>
+  
+    	</c:when>
+<c:when test="${sessionScope['userId'] == null}">
+	 
+
    <li class="nav-item">
-      <a class="nav-link" href="#">Sign In</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
     </li>
-        <li class="nav-item">
-      <a class="nav-link" href="#">Sign Up</a>
+       <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
     </li>
+    		</c:when>
+</c:choose>
+    <li> 
+
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
+    </li>
+    <c:choose>
+    <c:when test="${sessionScope['userId'] != null }">
     <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
-    </li>
+    <div class="logout-btn">
+<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+</div></li>
+    </c:when>
+    </c:choose>
+    	
   </ul>
 </nav>
 
 <div class="container">
   <img src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
   <div class="centered">Welcome to SourceMe!</div>
-	    
 </div>
 	<div class="buttons">
 		<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
-		<button onclick="window.location.href='/SourceMe/createAnswer.jsp'" type="button" class="btn-all-tutorials">All Tutorials</button>
+		<button onclick="window.location.href='/SourceMe/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
 	</div>
 </body>
 </html>

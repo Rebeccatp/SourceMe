@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/createtutorial.css" crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -13,71 +14,83 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<!-- NAV BAR -->
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
+    <a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Questions</a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link" href="#">All Tutorials</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/tutorialServlet/dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
-   <li class="nav-item">
-      <a class="nav-link" href="#">Sign In</a>
+   <c:choose>
+	 <c:when test="${sessionScope['userId'] != null}">
+	 
+
+<li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
     </li>
-        <li class="nav-item">
-      <a class="nav-link" href="#">Sign Up</a>
-    </li>
-    <li>
-    <div class="btn-add-qns">Add Your Question</div>
-    </li>
-  </ul>
-     
   
+    	</c:when>
+<c:when test="${sessionScope['userId'] == null}">
+	 
+
+   <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+    </li>
+       <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+    </li>
+    		</c:when>
+</c:choose>
+    <li> 
+
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
+    </li>
+    <c:choose>
+    <c:when test="${sessionScope['userId'] != null }">
+    <li>
+    <div class="logout-btn">
+<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+</div></li>
+    </c:when>
+    </c:choose>
+    	
+  </ul>
 </nav>
-
-<!-- Create an tutorial container -->
-<div class="create-body">
-<div class="container">
-<div>
-<div class="title">
-<h2>Create Tutorial</h2>
-</div>
-<form class="create-form">
-<!--Remarks-->
-<div class="form-row mt-2">
-<div class="col">
-<label class="title-label">Title</label>
-<p class="input-Title"><input type="text" name="title" class="form-control"></p>
-</div>
-</div>
-
-
-
-<!--Remarks-->
-<div class="form-row mt-2">
-<div class="col">
-<label class="tutorial-label">Content</label>
-<textarea rows="5" class="form-control" id="tutorial"></textarea>
-</div>
-</div>
-
-<div class="submit-btn">
-<button type="button" class="button-submit" id="submitAnswer">Submit Tutorial</button>
-</div>
-
-</form>
-</div>
-
-</div>
-
-</div>
+	<!-- Create an tutorial container -->
+	<div class="create-body">
+		<div class="container">
+			<div>
+				<div class="title">
+					<h2>Create Tutorial</h2>
+				</div>
+				<form class="create-form" action="createTutorials" method="post">
+					<!--Title-->
+					<div class="form-row mt-2">
+						<div class="col">
+							<label class="title-label">Title</label>
+							<p class="input-Title"><input type="text" name="title" class="form-control"></p>
+						</div>
+					</div>
+					<!--Content-->
+					<div class="form-row mt-2">
+						<div class="col">
+							<label class="tutorial-label">Content</label>
+							<textarea name="content" rows="5" class="form-control" id="tutorial"></textarea>
+						</div>
+					</div>
+					<div class="submit-btn">
+						<button type="submit" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
