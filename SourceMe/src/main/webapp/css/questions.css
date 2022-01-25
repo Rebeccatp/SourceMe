@@ -4,7 +4,17 @@ display:inline-block;
 margin-right:10px;
 }
 
+.align-two {
+display:inline-block;
+margin-right:10px;
+color: red;
+}
 
+.align-two:hover {
+display:inline-block;
+margin-right:10px;
+color: red;
+}
 
 .question-con {
 border: 2px solid #F3F3F3;
@@ -14,17 +24,11 @@ margin-left: auto;
 margin-right: auto
 }
 
-
-
 .label-cont{
 text-align: center;
 padding-top: 20px;
 padding-bottom: 20px;
 }
-
-
-
-
 
 .text-center{
 	margin-top: 50px;

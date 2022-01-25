@@ -64,6 +64,7 @@
   </ul>
 </nav>
 	
+
 <div class="container" style="margin-top: 20px;">
 <h2 style="margin-left: 520px">Login</h2>
 <br>
@@ -94,6 +95,37 @@
 <br>
 <p style="margin-left: 520px">Do not have an account? <a href="<%=request.getContextPath()%>/UserServlet/registerPage">click here</a></p>
 
+
+
+	<div class="container" style="margin-top: 20px;">
+		<h2 style="margin-left: 520px">Login</h2>
+		<br>
+		<form action="LoginServlet" method="post" style="margin-left: 430px">
+			<table>
+			<div class="username" >
+			<tr>
+					<th>UserName: </th>
+					<td><input type="text" name="userName" size="20"></td>
+				</tr>
+			</div>
+			<br>
+			<div class="password">
+				<tr>
+					<th>Password: </th>
+					<td><input type="password" name="password" size="20"></td>
+				</tr>
+				</div>	
+				
+			</table>
+			<br>
+			<br>
+			<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
+	    </form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<p style="margin-left: 520px">Do not have an account? <a href="<%=request.getContextPath()%>/register.jsp">click here</a></p>
 
 
 </body>
