@@ -19,33 +19,50 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav col-lg-9">
     <li class="nav-item active">
-    <a href="<%=request.getContextPath()%>/home.jsp"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
+    <a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<%=request.getContextPath()%>/home.jsp">Home</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">All Tutorials</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/tutorialServlet/dashboard">All Tutorials</a>
     </li>
   </ul>
   <ul class="navbar-nav col-lg-3">
-   <li class="nav-item">
-      <a class="nav-link" href="#">Sign In</a>
-    </li>
-        <li class="nav-item">
-      <a class="nav-link" href="#">Sign Up</a>
-    </li>
-    <li>
-    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questions.jsp" class="add-qn-link" >Add Your Question</a></div>
-    </li>
-  </ul>
-</nav>
+   <c:choose>
+	 <c:when test="${sessionScope['userId'] != null}">
+	 
 
-<nav class="navbar navbar-expand-md navbar-light">
-<ul class="navbar-nav">
-<li><a href="<%=request.getContextPath()%>/questionServlet/questions"
-class="nav-link">Back to questions</a></li>
-</ul>
+<li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+    </li>
+  
+    	</c:when>
+<c:when test="${sessionScope['userId'] == null}">
+	 
+
+   <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+    </li>
+       <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+    </li>
+    		</c:when>
+</c:choose>
+    <li> 
+
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
+    </li>
+    <c:choose>
+    <c:when test="${sessionScope['userId'] != null }">
+    <li>
+    <div class="logout-btn">
+<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+</div></li>
+    </c:when>
+    </c:choose>
+    	
+  </ul>
 </nav>
 
 <div>
@@ -91,10 +108,21 @@ class="nav-link">Back to questions</a></li>
 						 
 							<div class="answer-div">
 								<div class="align"><p>${answer.answers}</p></div>
-								<div class="edit-delete">
+								
+								   <c:choose>
+	 <c:when test="${sessionScope['userName'] != answer.postBy}">
+	 
+  
+    	</c:when>
+<c:when test="${sessionScope['userName'] == answer.postBy}">
+	 								<div class="edit-delete">
 									<div class="align"><a href="/SourceMe/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a></div>
 									<div class="align"><a href="/SourceMe/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a></div>
 								</div>
+
+		</c:when>
+</c:choose>
+
 							</div>
 							</c:when>
 							</c:choose>
