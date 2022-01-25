@@ -21,6 +21,9 @@
 	font-size: 13px
 }
 
+.logout-btn{
+	margin-left:10px;
+}
 .btn-add-qns{
 	background-color: #586BA4;
    	color: white;
