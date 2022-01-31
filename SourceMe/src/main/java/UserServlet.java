@@ -314,6 +314,7 @@ public class UserServlet extends HttpServlet {
 	
 	//method to delete user
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		HttpSession session = request.getSession();
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Step 2: Attempt connection with database and execute delete user SQL query
@@ -321,8 +322,11 @@ public class UserServlet extends HttpServlet {
 			statement.setInt(1, id);
 			int i = statement.executeUpdate();
 		}
+		session.removeAttribute("userId");
+		session.removeAttribute("userName");
+		session.removeAttribute("role");
 		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
-		response.sendRedirect("http://localhost:8090/SourceMe/register.jsp");
+		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	}
 	
 	public static void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
