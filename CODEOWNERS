@@ -1,0 +1,34 @@
+# This owner will be the default owner for everything in
+# the repo. Unless a later match takes precedence,
+# @Rebeccatp will be requested for
+# review when someone opens a pull request.
+*       @Rebeccatp
+
+# Tutorials (Owned by Rebecca)
+/SourceMe/src/main/java/Tutorial.java @Rebeccatp
+/SourceMe/src/main/java/tutorialServlet.java @Rebeccatp
+/SourceMe/src/main/webapp/createtutorial.jsp @Rebeccatp
+/SourceMe/src/main/webapp/tutorial.jsp @Rebeccatp
+/SourceMe/src/main/webapp/tutorialEdit.jsp @Rebeccatp
+
+# Answers (Owned by Jaslyn)
+/SourceMe/src/main/java/Answer.java @jaslynyap
+/SourceMe/src/main/java/answerServlet.java @jaslynyap
+/SourceMe/src/main/webapp/createAnswer.jsp @jaslynyap
+/SourceMe/src/main/webapp/editAnswer.jsp @jaslynyap
+/SourceMe/src/main/webapp/viewAnswer.jsp @jaslynyap
+
+# Questions (Owned by Zann)
+/SourceMe/src/main/java/Question.javaa @Zannlxe
+/SourceMe/src/main/java/addQuestionServlet.java @Zannlxe
+/SourceMe/src/main/java/questionServlet.java @Zannlxe
+/SourceMe/src/main/webapp/editQuestion.jsp @Zannlxe
+/SourceMe/src/main/webapp/questionManagement.jsp @Zannlxe
+/SourceMe/src/main/webapp/questions.jsp @Zannlxe
+
+# Users (Owned by Amanda)
+/SourceMe/src/main/java/User.java @BoomPotato
+/SourceMe/src/main/java/UserServlet.java @BoomPotato
+/SourceMe/src/main/webapp/login.jsp @BoomPotato
+/SourceMe/src/main/webapp/register.jsp @BoomPotato
+/SourceMe/src/main/webapp/updateProfile.jsp @BoomPotato
