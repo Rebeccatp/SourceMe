@@ -1,0 +1,19 @@
+cff-version: 1.0.0
+message: "This software is part of a school project. If you use this software, please cite it as below."
+authors:
+- family-name: "Ngoh"
+  given-name: "Rebecca"
+  github-profile: "https://github.com/Rebeccatp"
+- family-name: "Yap"
+  given-name: "Jaslyn"
+  github-profile: "https://github.com/jaslynyap"
+- family-name: "Lee"
+  given-name: "Zann"
+  github-profile: "https://github.com/Zannlxe"
+- family-name: "Kong"
+  given-name: "Amanda"
+  github-profile: "https://github.com/BoomPotato"
+title: "SourceMe"
+version: 1.0.0
+date-released: 06-02-2022
+url: "https://github.com/Rebeccatp/SourceMe"
