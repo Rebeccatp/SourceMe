@@ -9,7 +9,9 @@ SourceMe is a forum web application made for a DevOps school project, built by a
   <li>Amanda Kong</li>
 </ul>
 
-Users can ask questions, answer questions, read tutorials, and <i><b>bookmark questions</b></i> (not currently working).
+It is a Java project, built using Eclipse IDE.
+
+Users of the website can create accounts, ask questions, answer questions, read tutorials, and <i><b>bookmark questions</b></i> (not currently working).
 
 We couldn't implement our bookmark feature due to time constraints, but we're planning to work on it in the future. Please ignore any bookmark-related files for the time being.
 
