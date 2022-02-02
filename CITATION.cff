@@ -1,5 +1,5 @@
 cff-version: 1.0.0
-message: "This software is part of a school project. If you use this software, please cite it as below."
+message: "SourceMe is a website created for an assignment. The purpose of the assignment is to understand version control. If you use this software, please cite it as below."
 authors:
 - family-names: "Ngoh"
   given-names: "Rebecca"
