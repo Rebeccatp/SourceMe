@@ -293,7 +293,7 @@ public class UserServlet extends HttpServlet {
 			session.removeAttribute("role");
 		}
 		//Step 3: redirect back to UserServlet 
-		response.sendRedirect("http://localhost:8090/SourceMe/registerPage");
+		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	}
 	
 	public static void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
