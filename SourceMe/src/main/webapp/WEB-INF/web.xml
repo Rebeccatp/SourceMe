@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+
+  <servlet>
+<servlet-name>questionServlet</servlet-name>
+<servlet-class>questionServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>questionServlet</servlet-name>
+<url-pattern>/questionServlet/questions</url-pattern>
+<url-pattern>/questionServlet/edit</url-pattern>
+<url-pattern>/questionServlet/questionForm</url-pattern>
+<url-pattern>/questionServlet/createQuestion</url-pattern>
+<url-pattern>/questionServlet/update</url-pattern>
+<url-pattern>/questionServlet/delete</url-pattern>
+<url-pattern>/questionServlet/bookmark</url-pattern>
+</servlet-mapping>
+
 <servlet>
- <servlet-name>tutorialServlet</servlet-name>
- <servlet-class>tutorialServlet</servlet-class>
- </servlet>
- 
+<servlet-name>answerServlet</servlet-name>
+<servlet-class>answerServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>answerServlet</servlet-name>
+<url-pattern>/answerServlet/addAnswer</url-pattern>
+<url-pattern>/answerServlet/createAnswer</url-pattern>
+<url-pattern>/answerServlet/viewAnswer</url-pattern>
+<url-pattern>/answerServlet/editAnswer</url-pattern>
+<url-pattern>/answerServlet/updateAnswer</url-pattern>
+<url-pattern>/answerServlet/deleteAnswer</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>tutorialServlet</servlet-name>
+	<servlet-class>tutorialServlet</servlet-class>
+</servlet>
+
  <servlet-mapping>
  <servlet-name>tutorialServlet</servlet-name>
 <url-pattern>/tutorialServlet/dashboard</url-pattern>
+<url-pattern>/tutorialServlet/create</url-pattern>
+<url-pattern>/tutorialServlet/createTutorials</url-pattern>
  <url-pattern>/tutorialServlet/edit</url-pattern>
  <url-pattern>/tutorialServlet/update</url-pattern>
  <url-pattern>/tutorialServlet/delete</url-pattern>
  </servlet-mapping>
+
+<servlet>
+	<servlet-name>UserServlet</servlet-name>
+	<servlet-class>UserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>UserServlet</servlet-name>
+	<url-pattern>/UserServlet/edit</url-pattern>
+	<url-pattern>/UserServlet/login</url-pattern>
+	<url-pattern>/UserServlet/loginPage</url-pattern>
+	<url-pattern>/UserServlet/register</url-pattern>
+	<url-pattern>/UserServlet/registerPage</url-pattern>
+	<url-pattern>/UserServlet/update</url-pattern>
+	<url-pattern>/UserServlet/delete</url-pattern>
+	<url-pattern>/UserServlet/logout</url-pattern>
+</servlet-mapping>
+
+
+  <servlet>
+<servlet-name>home</servlet-name>
+<servlet-class>home</servlet-class>
+</servlet>
 
 </web-app>

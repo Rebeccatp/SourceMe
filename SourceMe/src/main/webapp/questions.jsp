@@ -1,17 +1,18 @@
+<!-- Designing of the page -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>SourceMe</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style type="text/css"><%@include file="/css/header.css" %></style>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createAnswer.css" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/addQuestions.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<title>SourceMe</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -63,53 +64,42 @@
   </ul>
 </nav>
 
-
 <!-- Create an answer container -->
 <div class="create-body">
-    <div class="container">
-    <div>
-        <div class="title">
-    		<h2>Reply a comment</h2>
-		</div>
-    <form class="create-form" action="createAnswer" method="post">
-   
-    	<!--Question-->  
-          <div class="form-row mt-2">
-            <div class="col">
-                <label class="qns-label">Question</label> 
-              	<!-- p class="answer" name="question" id="question">1</p -->
-              	<input type="text" class="form-control" name="question" value="${question.question}"  readonly> 
-            </div>
-          </div> 
-          
-    			<c:if test="${question != null}">
-					<input name="qnsId" type="hidden" value="${question.id}" />
-				</c:if>
-		
- 		<!--Username-->  
-          <div class="form-row mt-2">
-            <div class="col username">
-                <label style="font-size: 18px;">Post By</label> 
-				<input type="text" class="form-control" name="postBy" value="${sessionScope['userName']}" readonly>     
-			</div>
-          </div>
-          
-          <!--My Answer-->  
-          <div class="form-row mt-2">
-            <div class="col">
-                <label style="font-size: 18px;">My Answer</label> 
-              <input type="text" class="form-control" name="answer">
-            </div>
-          </div>
-          
-         <!-- Submit button -->
-      <div class="btn-all">
-          <button type="submit" class="button-submit" id="submitAnswer">Submit Answer</button>
-      </div> 
-        </form>
-    </div>
+<div class="container">
+<div>
+<div class="title">
+<h2>Question</h2>
 </div>
-      
+<form class="create-form" action="createQuestion" method="post">
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<input type="text" name="username" class="form-control" id="editText" value="${sessionScope['userName']}" readonly>
+<label class="title-label">Title</label>
+<input type="text" name="title" class="form-control" id="editText">
+</div>
+</div>
+
+
+
+<!--Remarks-->
+<div class="form-row mt-2">
+<div class="col">
+<label class="question-label">Question</label>
+<input type="text" name="question" class="form-control" id="editText" >
+</div>
+</div>
+
+<div class="submit-btn">
+<button type="submit" class="button-submit" id="submitQuestion">Submit</button>
+</div>
+
+</form>
+</div>
+
+</div>
+
 </div>
 </body>
 </html>

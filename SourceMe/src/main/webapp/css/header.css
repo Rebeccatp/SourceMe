@@ -21,6 +21,9 @@
 	font-size: 13px
 }
 
+.logout-btn{
+	margin-left:10px;
+}
 .btn-add-qns{
 	background-color: #586BA4;
    	color: white;
@@ -30,4 +33,15 @@
 }
 .navbar{
 	height:100px !important;
+}
+
+.add-qn-link {
+color: #F3F3F3;
+text-decoration: none;
+}
+
+
+.add-qn-link:hover {
+color: #F3F3F3;
+text-decoration: none;
 }

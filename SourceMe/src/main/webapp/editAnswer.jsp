@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style type="text/css"><%@include file="/css/header.css" %></style>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/createAnswer.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -69,47 +69,53 @@
     <div class="container">
     <div>
         <div class="title">
-    		<h2>Reply a comment</h2>
+<h2>Edit</h2>
+
+
 		</div>
-    <form class="create-form" action="createAnswer" method="post">
-   
-    	<!--Question-->  
-          <div class="form-row mt-2">
-            <div class="col">
-                <label class="qns-label">Question</label> 
-              	<!-- p class="answer" name="question" id="question">1</p -->
-              	<input type="text" class="form-control" name="question" value="${question.question}"  readonly> 
-            </div>
-          </div> 
-          
-    			<c:if test="${question != null}">
-					<input name="qnsId" type="hidden" value="${question.id}" />
-				</c:if>
+    <form class="create-form" action="updateAnswer" method="post">
+    	<!-- Answer Id -->
+    	<c:if test="${answer != null}">
+				<input type="hidden" name="id" value="<c:out
+				value='${answer.id}' />" />
+		</c:if>
+        <c:if test="${answer != null}">
+				<input type="hidden" name="ansId" value="<c:out
+				value='${answer.id}' />" />
+		</c:if>
+        <!-- Question Id -->
+        <c:if test="${answer != null}">
+				<input type="hidden" name="qnsId" value="<c:out
+				value='${answer.qnsId}' />" />
+		</c:if>
+		<!-- Post By -->
+		<c:if test="${answer != null}">
+				<input type="hidden" name="postBy" value="<c:out
+				value='${answer.postBy}' />" />
+		</c:if>
 		
- 		<!--Username-->  
-          <div class="form-row mt-2">
-            <div class="col username">
-                <label style="font-size: 18px;">Post By</label> 
-				<input type="text" class="form-control" name="postBy" value="${sessionScope['userName']}" readonly>     
-			</div>
-          </div>
-          
-          <!--My Answer-->  
+		
+          <!--My Answer-->
           <div class="form-row mt-2">
             <div class="col">
                 <label style="font-size: 18px;">My Answer</label> 
-              <input type="text" class="form-control" name="answer">
+              <input type="text" class="form-control" name="answer" value="${answer.answers}">
             </div>
-          </div>
+          </div>	 
+
+							
           
          <!-- Submit button -->
       <div class="btn-all">
-          <button type="submit" class="button-submit" id="submitAnswer">Submit Answer</button>
+          <button type="submit" class="button-submit" id="editAnswer">Edit Answer</button>
       </div> 
         </form>
     </div>
 </div>
       
 </div>
+
+
+
 </body>
 </html>

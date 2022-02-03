@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<meta charset="ISO-8859-1">
 	<title>SourceMe - Login</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css" crossorigin="anonymous">
@@ -14,52 +15,86 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm bg-light navbar-light">
-	  <ul class="navbar-nav col-lg-9">
-	    <li class="nav-item active">
-	    <img src="<%=request.getContextPath()%>/assets/logo.png" width="120px">
-	    </li>
-	    <li class="nav-item">
-	      <a class="nav-link" href="#">Home</a>
-	    </li>
-	    <li class="nav-item">
-	      <a class="nav-link" href="#">All Questions</a>
-	    </li>
-	         <li class="nav-item">
-	      <a class="nav-link" href="#">All Tutorials</a>
-	    </li>
-	  </ul>
-	  <ul class="navbar-nav col-lg-3">
-	  	<li class="nav-item">
-	      <a class="nav-link" href="<%=request.getContextPath()%>/register.jsp">Register</a>
-	    </li>
-	        <li class="nav-item">
-	      <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">Login</a>
-	    </li>
-	    <li>
-	    <div class="btn-add-qns">Add Your Question</div>
-	    </li>
-	  </ul>
-	</nav>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav col-lg-9">
+    <li class="nav-item active">
+    <a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png"  width="120px"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/tutorialServlet/dashboard">All Tutorials</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav col-lg-3">
+   <c:choose>
+	 <c:when test="${sessionScope['userId'] != null}">
+	 
+
+<li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+    </li>
+  
+    	</c:when>
+<c:when test="${sessionScope['userId'] == null}">
+	 
+
+   <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+    </li>
+       <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+    </li>
+    		</c:when>
+</c:choose>
+    <li> 
+
+    <div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
+    </li>
+    <c:choose>
+    <c:when test="${sessionScope['userId'] != null }">
+    <li>
+    <div class="logout-btn">
+<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+</div></li>
+    </c:when>
+    </c:choose>
+    	
+  </ul>
+</nav>
 	
-	<div class="container" style="margin-top: 20px">
-		<h2>Login</h2>
-		<br>
-		<form action="LoginServlet" method="post">
-			<table>
-				<tr>
-					<th>UserName: </th>
-					<td><input type="text" name="userName" size="20"></td>
-				</tr>
-				<tr>
-					<th>Password: </th>
-					<td><input type="password" name="password" size="20"></td>
-				</tr>
-			</table>
-			<br>
-			<input class="btn btn-primary" type="submit" value="Login" />
-	    </form>
-	</div>
+<div class="container" style="margin-top: 20px;">
+<h2 style="margin-left: 520px">Login</h2>
+<br>
+<form action="login" method="post" style="margin-left: 430px">
+<table>
+<div class="username" >
+<tr>
+<th>Username: </th>
+<td><input type="text" name="userName" size="20"></td>
+</tr>
+</div>
+<br>
+<div class="password">
+<tr>
+<th>Password: </th>
+<td><input type="password" name="password" size="20"></td>
+</tr>
+</div>
+
+</table>
+<br>
+<br>
+<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
+</form>
+</div>
+<br>
+<br>
+<br>
+<p style="margin-left: 520px">Do not have an account? <a href="<%=request.getContextPath()%>/UserServlet/registerPage">click here</a></p>
+
+
 
 </body>
 </html>
