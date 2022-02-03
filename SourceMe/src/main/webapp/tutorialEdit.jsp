@@ -5,8 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SourceMe</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createtutorial.css" crossorigin="anonymous">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
+<style type="text/css"><%@include file="/css/createtutorial.css" %></style>
+	<style type="text/css"><%@include file="/css/header.css" %></style>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -63,6 +63,8 @@
     	
   </ul>
 </nav>
+
+<div class="createTutorial">
 	<!-- Create an tutorial container -->
 	<div class="create-body">
 		<div class="container">
@@ -95,6 +97,7 @@ value='${tutorial.id}' />" />
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
