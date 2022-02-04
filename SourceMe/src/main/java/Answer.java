@@ -1,7 +1,10 @@
-
 public class Answer {
-	 protected int id;
-	 public Answer(int id, int qnsId, String postBy, String answers) {
+	protected int id;
+	protected int qnsId;
+	protected String postBy;
+	protected String answers;
+	 
+	public Answer(int id, int qnsId, String postBy, String answers) {
 		super();
 		this.id = id;
 		this.qnsId = qnsId;
@@ -32,8 +35,5 @@ public class Answer {
 	public void setAnswers(String answers) {
 		this.answers = answers;
 	}
-	protected int qnsId;
-	 protected String postBy;
-	 protected String answers;
 	 
 }

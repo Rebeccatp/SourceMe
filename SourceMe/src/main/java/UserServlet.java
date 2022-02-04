@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -26,12 +24,10 @@ public class UserServlet extends HttpServlet {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "password";
-	
 	//Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
-	private static final String SELECT_USER_BY_ID = "select role,firstName,lastName,number,userName,password,email from user where id = ?;";
-	private static final String DELETE_USER = "delete from user where id = ?;";
-	private static final String UPDATE_USER = "update user set role = ?, firstName = ?, lastName = ?, number = ?, password = ?, email = ? where id = ?;";
-	
+	private static final String SELECT_USER_BY_ID = "select role, firstName, lastName, number, userName, password, email from user where id = ?";
+	private static final String DELETE_USER = "delete from user where id = ?";
+	private static final String UPDATE_USER = "update user set role = ?, firstName = ?, lastName = ?, number = ?, password = ?, email = ? where id = ?";
 	//Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 	protected Connection getConnection() {
 	Connection connection = null;
@@ -62,35 +58,26 @@ public class UserServlet extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch (action) {
-				case "/UserServlet/edit":
-					showEditForm(request, response);
-					break;
-				case "/UserServlet/login":
-					loginUser(request, response);
-					break;
-				case "/UserServlet/loginPage":
-					loginPage(request, response);
-					break;
-				case "/UserServlet/register":
-					registerUser(request, response);
-					break;
-				case "/UserServlet/registerPage":
-					registerPage(request, response);
-					break;
-				case "/UserServlet/update":
-					updateUser(request, response);
-					break;
-				case "/UserServlet/delete":
-					deleteUser(request, response);
-					break;
-				case "/UserServlet/logout":
-					logoutUser(request, response);
-					break;
+				case "/UserServlet/edit": showEditForm(request, response);
+				break;
+				case "/UserServlet/login": loginUser(request, response);
+				break;
+				case "/UserServlet/loginPage": loginPage(request, response);
+				break;
+				case "/UserServlet/register": registerUser(request, response);
+				break;
+				case "/UserServlet/registerPage": registerPage(request, response);
+				break;
+				case "/UserServlet/update": updateUser(request, response);
+				break;
+				case "/UserServlet/delete": deleteUser(request, response);
+				break;
+				case "/UserServlet/logout": logoutUser(request, response);
+				break;
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
 		}
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -102,16 +89,14 @@ public class UserServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	//method to get parameter, query database for existing user data and redirect to user edit page
+	//Method to get parameter, query database for existing user data and redirect to user edit page
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-		//get userId from session storage
+		//Get userId from session storage
 		HttpSession session = request.getSession();
 		String idString = (String) session.getAttribute("userId");
-		
 		if (idString != null) {
 			int id = Integer.parseInt(idString);
 			User existingUser = new User(0, "", "", "", "", "", "", "");
-			
 			// Step 1: Establishing a Connection
 			try (Connection connection = getConnection();
 			// Step 2: Create a statement using connection object
@@ -140,69 +125,61 @@ public class UserServlet extends HttpServlet {
 		else {
 			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
 		}
-
 	}
 	
-	 // create login form		 
-	 private void loginPage(HttpServletRequest request, HttpServletResponse response)
-			 throws SQLException, ServletException, IOException {
-
-			 request.getRequestDispatcher("/login.jsp").forward(request, response);
-			 }
+	// create login form		 
+	private void loginPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
+	}
 	
-	 // create register form		 
-	 private void registerPage(HttpServletRequest request, HttpServletResponse response)
-			 throws SQLException, ServletException, IOException {
-
-			 request.getRequestDispatcher("/register.jsp").forward(request, response);
-			 }
-	 //	Login
+	// create register form		 
+	private void registerPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		request.getRequestDispatcher("/register.jsp").forward(request, response);
+	}
+	
+	// Login
 	private void loginUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
-				PrintWriter out = response.getWriter();
-				//Step 2: retrieve the two parameters from the request from the web form
-				String userName = request.getParameter("userName");
-				String password = request.getParameter("password");
-				
-				
-				//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
-					
-					PreparedStatement ps1 = con.prepareStatement("select id, userName, role from user where userName = ? and password = ?;");
-					ps1.setString(1, userName);
-					ps1.setString(2, password);
-					ResultSet rs1 = ps1.executeQuery();
-					String idExisting = "";
-					String userNameExisting = "";
-					String roleExisting ="";
-					while (rs1.next()) {
-						idExisting = rs1.getString("id");
-						userNameExisting = rs1.getString("userName");
-						roleExisting = rs1.getString("role");
-					}
-					if (isNumeric(idExisting)) {				
-						HttpSession session = request.getSession();
-						session.setAttribute("userId", idExisting);
-						session.setAttribute("userName", userNameExisting);
-						session.setAttribute("role", roleExisting);
-						//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
-						response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/edit");
-					}
-					else {
-						PrintWriter writer = response.getWriter();
-						writer.println("<h1>" + "Wrong username or password!" + "</h1>");
-						writer.close();
-					}
-				} catch (Exception exception) {
-						System.out.println(exception);
-						out.close();
-				}	
-				
+		PrintWriter out = response.getWriter();
+		//Step 2: retrieve the two parameters from the request from the web form
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		//Step 3: attempt connection to database using JDBC
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
+			PreparedStatement ps1 = con.prepareStatement("select id, userName, role from user where userName = ? and password = ?");
+			ps1.setString(1, userName);
+			ps1.setString(2, password);
+			ResultSet rs1 = ps1.executeQuery();
+			String idExisting = "";
+			String userNameExisting = "";
+			String roleExisting ="";
+			while (rs1.next()) {
+				idExisting = rs1.getString("id");
+				userNameExisting = rs1.getString("userName");
+				roleExisting = rs1.getString("role");
+			}
+			if (isNumeric(idExisting)) {				
+				HttpSession session = request.getSession();
+				session.setAttribute("userId", idExisting);
+				session.setAttribute("userName", userNameExisting);
+				session.setAttribute("role", roleExisting);
+				//Step 3: direct to UserServlet update profile page
+				response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/edit");
+			}
+			else {
+				PrintWriter writer = response.getWriter();
+				writer.println("<h1>" + "Wrong username or password!" + "</h1>");
+				writer.close();
+			}
+		} catch (Exception exception) {
+			System.out.println(exception);
+			out.close();
+		}	
 	}
 	
-		//	Register
+	//Register
 	private void registerUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
@@ -214,13 +191,11 @@ public class UserServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		
-		//Step 3: attempt connection to database using JDBC, you can change the username and password accordingly using the phpMyAdmin > User Account dashboard
+		//Step 3: attempt connection to database using JDBC
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
-			
-			PreparedStatement ps1 = con.prepareStatement("select id from user where userName = ?;");
+			PreparedStatement ps1 = con.prepareStatement("select id from user where userName = ?");
 			ps1.setString(1, userName);
 			ResultSet rs1 = ps1.executeQuery();
 			String idExisting = "";
@@ -242,9 +217,9 @@ public class UserServlet extends HttpServlet {
 					ps2.setString(8, email);
 					//Step 6: perform the query on the database using the prepared statement
 					int i2 = ps2.executeUpdate();
-					//Step 7: check if the query had been successfully executed, return “You are successfully registered” via the response,
+					//Step 7: check if the query had been successfully executed, return Â“You are successfully registeredÂ” via the response
 					if (i2 > 0) {
-						//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+						//Step 3: redirect back to UserServlet login page
 						response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
 					}
 				}
@@ -260,41 +235,36 @@ public class UserServlet extends HttpServlet {
 				writer.close();
 			}
 		} catch (Exception exception) {
-				System.out.println(exception);
-				out.close();
-		}	
-				
+			System.out.println(exception);
+			out.close();
+		}		
 	}
+	
 	public static boolean isNumeric(String idString) {
 	    int idInt;
 	    try {
 	    	idInt = Integer.parseInt(idString);
 	        return true;
 	    } catch (NumberFormatException e) {
+	    	System.out.println(e);
 	    }
 	    return false;
 	}
 	
-	//method to update the user table base on the form data
-	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-		//Step 1: Retrieve value from the request
-		//int id = Integer.parseInt(request.getParameter("id"));
-		//int id = 1;
-		
+	//Method to update the user table base on the form data
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {		
 		HttpSession session = request.getSession();
 		String idString = (String) session.getAttribute("userId");
 		int id = Integer.parseInt(idString);
-		
 		String role = request.getParameter("role");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String number = request.getParameter("number");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-	
 		//Step 2: Attempt connection with database and execute update user SQL query
-		try (Connection connection = getConnection(); PreparedStatement statement =
-			connection.prepareStatement(UPDATE_USER);) {
+		try (Connection connection = getConnection(); 
+		PreparedStatement statement = connection.prepareStatement(UPDATE_USER);) {
 			statement.setString(1, role);
 			statement.setString(2, firstName);
 			statement.setString(3, lastName);
@@ -304,28 +274,25 @@ public class UserServlet extends HttpServlet {
 			statement.setInt(7, id);
 			int i = statement.executeUpdate();
 		}
-		//Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
-/**
-		response.sendRedirect("http://localhost:8090/HelloWorldJavaEE/UserServlet/dashboard");
-*/
-		//refresh update profile page
+		//Refresh update profile page
 		response.setHeader("Refresh", "0; URL=http://localhost:8090/SourceMe/UserServlet/edit");
 	}
 	
-	//method to delete user
+	//Method to delete user
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		HttpSession session = request.getSession();
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Step 2: Attempt connection with database and execute delete user SQL query
-		try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USER);) {
+		try (Connection connection = getConnection(); 
+		PreparedStatement statement = connection.prepareStatement(DELETE_USER);) {
 			statement.setInt(1, id);
 			int i = statement.executeUpdate();
 		}
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
 		session.removeAttribute("role");
-		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+		//Step 3: redirect back to UserServlet register page
 		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	}
 	
@@ -334,8 +301,7 @@ public class UserServlet extends HttpServlet {
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
 		session.removeAttribute("role");
-		//Step 3: redirect back to UserServlet dashboard (note: remember to change the url to your project name)
+		//Step 3: redirect back to UserServlet login page
 		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
 	}
-
 }
