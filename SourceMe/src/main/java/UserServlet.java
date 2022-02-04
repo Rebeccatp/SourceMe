@@ -217,7 +217,7 @@ public class UserServlet extends HttpServlet {
 					ps2.setString(8, email);
 					//Step 6: perform the query on the database using the prepared statement
 					int i2 = ps2.executeUpdate();
-					//Step 7: check if the query had been successfully executed, return “You are successfully registered” via the response
+					//Step 7: check if the query had been successfully executed, return Â“You are successfully registeredÂ” via the response
 					if (i2 > 0) {
 						//Step 3: redirect back to UserServlet login page
 						response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
@@ -280,6 +280,7 @@ public class UserServlet extends HttpServlet {
 	
 	//Method to delete user
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		HttpSession session = request.getSession();
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Step 2: Attempt connection with database and execute delete user SQL query
@@ -287,12 +288,11 @@ public class UserServlet extends HttpServlet {
 		PreparedStatement statement = connection.prepareStatement(DELETE_USER);) {
 			statement.setInt(1, id);
 			int i = statement.executeUpdate();
-			HttpSession session = request.getSession();
-			session.removeAttribute("userId");
-			session.removeAttribute("userName");
-			session.removeAttribute("role");
 		}
-		//Step 3: redirect back to UserServlet 
+		session.removeAttribute("userId");
+		session.removeAttribute("userName");
+		session.removeAttribute("role");
+		//Step 3: redirect back to UserServlet register page
 		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	}
 	

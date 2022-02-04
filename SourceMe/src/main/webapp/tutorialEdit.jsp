@@ -60,7 +60,7 @@
 		  </ul>
 		</nav>
 		
-		<!-- Create an tutorial container -->
+		<!-- Create a tutorial container -->
 		<div class="create-body">
 			<div class="container">
 				<div>
