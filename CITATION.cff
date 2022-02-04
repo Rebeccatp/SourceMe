@@ -1,0 +1,19 @@
+cff-version: 1.0.0
+message: "SourceMe is a website created for an assignment. The purpose of the assignment is to understand version control. If you use this software, please cite it as below."
+authors:
+- family-names: "Ngoh"
+  given-names: "Rebecca"
+  github-profile: "https://github.com/Rebeccatp"
+- family-names: "Yap"
+  given-names: "Jaslyn"
+  github-profile: "https://github.com/jaslynyap"
+- family-names: "Lee"
+  given-names: "Zann"
+  github-profile: "https://github.com/Zannlxe"
+- family-names: "Kong"
+  given-names: "Amanda"
+  github-profile: "https://github.com/BoomPotato"
+title: "SourceMe"
+version: 1.0.0
+date-released: 06-02-2022
+url: "https://github.com/Rebeccatp/SourceMe"
