@@ -63,7 +63,7 @@
 		<div class="title">
 			<h2>Tutorials</h2>
 		</div>
-		<div>
+		<div class="viewTutorials">
 			<c:choose>
 				<c:when test="${sessionScope['role'] == 'Admin'}">
 					<div class="btn-add-tutorial" onclick="location.href='create'">Create Tutorial</div>
