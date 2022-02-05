@@ -5,13 +5,11 @@
 		<meta charset="ISO-8859-1">
 		<title>SourceMe</title>
 		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<style type="text/css"><%@include file="/css/header.css" %></style>
-		<style type="text/css"><%@include file="/css/home.css" %></style>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/createtutorial.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
@@ -35,24 +33,24 @@
 		    		</li>
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
-			   		<li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
-			    	</li>
-			      <li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
-			    	</li>
+		   			<li class="nav-item">
+		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		    		</li>
+		     		<li class="nav-item">
+		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		    		</li>
 		    	</c:when>
 				</c:choose>
 		    <li>
-		    	<div class="btn-add-qns">
-		    		<a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a>
-		    	</div>
+		    	<div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
 		    </li>
 		    <c:choose>
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right">
+									<button class="btn btn-secondary">Logout</button>
+								</a>
 							</div>
 						</li>
 		    	</c:when>
@@ -60,13 +58,32 @@
 		  </ul>
 		</nav>
 		
-		<div class="container">
-		  <img src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
-		  <div class="centered">Welcome to SourceMe!</div>
-		</div>
-		<div class="buttons">
-			<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
-			<button onclick="window.location.href='/SourceMe/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
+		<!-- Create an tutorial container -->
+		<div class="create-body">
+			<div class="container">
+				<div>
+					<div class="title">
+						<h2>Create Tutorial</h2>
+					</div>
+					<form class="create-form" action="createTutorials" method="post">
+						<div class="form-row mt-2">
+							<div class="col">
+								<label class="title-label">Title</label>
+								<p class="input-Title"><input type="text" name="title" class="form-control"></p>
+							</div>
+						</div>
+						<div class="form-row mt-2">
+							<div class="col">
+								<label class="tutorial-label">Content</label>
+								<textarea name="content" rows="5" class="form-control" id="tutorial"></textarea>
+							</div>
+						</div>
+						<div class="submit-btn">
+							<button type="submit" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+						</div>	
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
