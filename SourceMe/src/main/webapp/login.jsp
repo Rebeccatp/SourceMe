@@ -68,19 +68,19 @@
 					<div class="username">
 						<tr>
 							<th>Username: </th>
-							<td><input type="text" name="userName" size="20"></td>
+							<td><input type="text" id="userName" name="userName" size="20"></td>
 						</tr>
 					</div>
 					<br>
 					<div class="password">
 						<tr>
 							<th>Password: </th>
-							<td><input type="password" name="password" size="20"></td>
+							<td><input type="password" id="password" name="password" size="20"></td>
 						</tr>
 					</div>
 				</table>
 				<br><br>
-				<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
+				<input class="btn btn-primary" id="submit" type="submit" value="Login" style="margin-left: 110px"/>
 			</form>
 		</div>
 		<br><br><br>
