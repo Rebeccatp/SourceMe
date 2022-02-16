@@ -50,7 +50,7 @@
 			  	<c:when test="${sessionScope['userId'] != null }">
 			  		<li>
 			    		<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right">
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right">
 									<button class="btn btn-secondary">Logout</button>
 								</a>
 							</div>
