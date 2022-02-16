@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
@@ -65,8 +65,8 @@
 		  <div class="centered">Welcome to SourceMe!</div>
 		</div>
 		<div class="buttons">
-			<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
-			<button onclick="window.location.href='/SourceMe/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
+			<button onclick="window.location.href='<%=request.getContextPath()%>/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
+			<button onclick="window.location.href='<%=request.getContextPath()%>/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
 		</div>
 	</body>
 </html>
