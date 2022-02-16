@@ -5,8 +5,8 @@
 		<meta charset="ISO-8859-1">
 		<title>SourceMe</title>
 		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css" crossorigin="anonymous">
 		<style type="text/css"><%@include file="/css/header.css" %></style>
+		<style type="text/css"><%@include file="/css/home.css" %></style>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
@@ -65,8 +65,8 @@
 		  <div class="centered">Welcome to SourceMe!</div>
 		</div>
 		<div class="buttons">
-			<button onclick="window.location.href='/SourceMe/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
-			<button onclick="window.location.href='/SourceMe/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
+			<button onclick="window.location.href='<%=request.getContextPath()%>/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
+			<button onclick="window.location.href='<%=request.getContextPath()%>/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
 		</div>
 	</body>
 </html>

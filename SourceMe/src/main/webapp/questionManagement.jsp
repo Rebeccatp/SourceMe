@@ -51,7 +51,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right">
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right">
 									<button class="btn btn-secondary">Logout</button>
 								</a>
 							</div>
@@ -100,7 +100,7 @@
 											</c:when>
 										</c:choose>
 										<div class="align">
-											<a href="/SourceMe/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a>
+											<a href="<%=request.getContextPath()%>/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a>
 											<img src="<%=request.getContextPath()%>/assets/question.png" width="20px">
 										</div>
 										<form action="bookmarkServlet" method="post" class="align">

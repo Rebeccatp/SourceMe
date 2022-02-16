@@ -162,7 +162,7 @@ public class tutorialServlet extends HttpServlet {
 			int i = ps.executeUpdate();
 			//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
 			if (i > 0) {
-				response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
+				response.sendRedirect("dashboard");
 				PrintWriter writer = response.getWriter();
 				writer.println("<h1>" + "You have successfully created a tutorial!" + "</h1>");
 				writer.close(); 
@@ -191,7 +191,7 @@ public class tutorialServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to tutorialServlet
-		response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
+		response.sendRedirect("dashboard");
 	}
 
 	//DELETE
@@ -207,6 +207,6 @@ public class tutorialServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to tutorialServlet dashboard
-		response.sendRedirect("http://localhost:8090/SourceMe/tutorialServlet/dashboard");
+		response.sendRedirect("dashboard");
 	}
 }

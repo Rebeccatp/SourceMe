@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
@@ -99,10 +99,10 @@
 									<c:when test="${sessionScope['userName'] == answer.postBy}">
 		 								<div class="edit-delete">
 											<div class="align">
-												<a href="/SourceMe/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a>
+												<a href="<%=request.getContextPath()%>/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a>
 											</div>
 											<div class="align">
-												<a href="/SourceMe/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a>
+												<a href="<%=request.getContextPath()%>/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a>
 											</div>
 										</div>
 									</c:when>

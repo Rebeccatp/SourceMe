@@ -50,7 +50,7 @@
 			  	<c:when test="${sessionScope['userId'] != null }">
 			  		<li>
 			    		<div class="logout-btn">
-								<a href="http://localhost:8090/SourceMe/UserServlet/logout" style="float:right">
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right">
 									<button class="btn btn-secondary">Logout</button>
 								</a>
 							</div>
@@ -63,7 +63,7 @@
 		<div class="title">
 			<h2>Tutorials</h2>
 		</div>
-		<div>
+		<div class="viewTutorials">
 			<c:choose>
 				<c:when test="${sessionScope['role'] == 'Admin'}">
 					<div class="btn-add-tutorial" onclick="location.href='create'">Create Tutorial</div>

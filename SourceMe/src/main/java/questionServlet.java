@@ -118,11 +118,12 @@ public class questionServlet extends HttpServlet {
 	private void showQuestionForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		HttpSession session = request.getSession();
 		String idString = (String) session.getAttribute("userId");
+		String contextPath = request.getContextPath();
 		if (idString != null) {
 			request.getRequestDispatcher("/questions.jsp").forward(request, response);
 		}
 		else {
-			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+			response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
 	}
 	
@@ -180,7 +181,7 @@ public class questionServlet extends HttpServlet {
 			if (i > 0) {
 				PrintWriter writer = response.getWriter();
 				writer.println("<br>");
-				writer.println("<a href='http://localhost:8090/SourceMe/questionServlet/questions' style='color: #9A9A9A; text-decoration:none;'>" + "Back to main" + "</a>");
+				writer.println("<a href='questions' style='color: #9A9A9A; text-decoration:none;'>" + "Back to main" + "</a>");
 				writer.println("<h1 style='text-align: center; color: #586BA4; margin-top: 190px'>" + "Your question has been added!" + "</h1>");
 				writer.println("<h3 style='text-align: center; color: #586BA4'>" + "To view it, click on 'Back to main' which is " + "located at the top left of the screen to go back to the list of question page" + "</h3>");
 				writer.close(); 
@@ -210,7 +211,7 @@ public class questionServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to questionServlet (note: remember to change the url to your project name)
-		response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+		response.sendRedirect("questions");
 	}
 	
 	//Method to delete question
@@ -224,6 +225,6 @@ public class questionServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		//Step 3: redirect back to questionServlet main page (note: remember to change the url to your project name)
-		response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+		response.sendRedirect("questions");
 	}
 }

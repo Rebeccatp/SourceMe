@@ -130,6 +130,7 @@ public class answerServlet extends HttpServlet {
 	
 	private void showCreateAnswerForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		HttpSession session = request.getSession();
+		String contextPath = request.getContextPath();
 		String idString = (String) session.getAttribute("userId");
 		if (idString != null) {
 			//Get parameter passed in the URL
@@ -156,7 +157,7 @@ public class answerServlet extends HttpServlet {
 			request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
 		}
 		else {
-			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+			response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
 	}
 	
@@ -202,7 +203,7 @@ public class answerServlet extends HttpServlet {
 			statement.setInt(4, id);
 			int i = statement.executeUpdate();
 		}
-		response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
+		response.sendRedirect("viewAnswer?id=" + qnsId);
 	}
 	
 	private void createAnswer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -227,7 +228,7 @@ public class answerServlet extends HttpServlet {
 			int i = ps.executeUpdate();
 			//Step 7: check if the query had been successfully executed
 			if (i > 0) {
-				response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
+				response.sendRedirect("viewAnswer?id=" + qnsId);
 			}
 		}
 		//Step 8: catch and print out any exception
@@ -260,6 +261,6 @@ public class answerServlet extends HttpServlet {
 			statement.setInt(1, id);
 			int i = statement.executeUpdate();
 		}
-		response.sendRedirect("http://localhost:8090/SourceMe/answerServlet/viewAnswer?id=" + qnsId);
+		response.sendRedirect("viewAnswer?id=" + qnsId);
 	}
 }
