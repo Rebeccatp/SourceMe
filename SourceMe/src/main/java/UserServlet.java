@@ -123,7 +123,7 @@ public class UserServlet extends HttpServlet {
 			request.getRequestDispatcher("/updateProfile.jsp").forward(request, response);
 		}
 		else {
-			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+			response.sendRedirect("loginPage");
 		}
 	}
 	
