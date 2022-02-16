@@ -166,7 +166,7 @@ public class UserServlet extends HttpServlet {
 				session.setAttribute("userName", userNameExisting);
 				session.setAttribute("role", roleExisting);
 				//Step 3: direct to UserServlet update profile page
-				response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/edit");
+				response.sendRedirect("edit");
 			}
 			else {
 				PrintWriter writer = response.getWriter();
@@ -220,7 +220,7 @@ public class UserServlet extends HttpServlet {
 					//Step 7: check if the query had been successfully executed, return You are successfully registered via the response
 					if (i2 > 0) {
 						//Step 3: redirect back to UserServlet login page
-						response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+						response.sendRedirect("loginPage");
 					}
 				}
 				//Step 8: catch and print out any exception
@@ -275,7 +275,7 @@ public class UserServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		//Refresh update profile page
-		response.setHeader("Refresh", "0; URL=http://localhost:8090/SourceMe/UserServlet/edit");
+		response.setHeader("Refresh", "0; URL=edit");
 	}
 	
 	//Method to delete user
@@ -293,7 +293,7 @@ public class UserServlet extends HttpServlet {
 		session.removeAttribute("userName");
 		session.removeAttribute("role");
 		//Step 3: redirect back to UserServlet register page
-		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/registerPage");
+		response.sendRedirect("registerPage");
 	}
 	
 	public static void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -302,6 +302,6 @@ public class UserServlet extends HttpServlet {
 		session.removeAttribute("userName");
 		session.removeAttribute("role");
 		//Step 3: redirect back to UserServlet login page
-		response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+		response.sendRedirect("loginPage");
 	}
 }
