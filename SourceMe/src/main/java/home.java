@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -31,23 +29,19 @@ public class home extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String action = request.getServletPath();
-		 try {
-		 switch (action) {
-		 case "/home": home(request, response);
-		 break;
-		 
-		 }
-		 } catch (SQLException ex) {
-		 throw new ServletException(ex);
-		 }
+		try {
+			switch (action) {
+				case "/home": home(request, response);
+				break;
+			}
+		} catch (SQLException ex) {
+			throw new ServletException(ex);
+		}
 	}
-	
-	 // create tutorial form		 
-	 private void home(HttpServletRequest request, HttpServletResponse response)
-			 throws SQLException, ServletException, IOException {
-
-			 request.getRequestDispatcher("/home.jsp").forward(request, response);
-			 }
+	 
+	private void home(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		request.getRequestDispatcher("/home.jsp").forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
