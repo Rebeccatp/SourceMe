@@ -29,15 +29,15 @@
 		  	<c:choose>
 					<c:when test="${sessionScope['userId'] != null}">
 						<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+		      		<a id="profileNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
 		    		</li>
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 		   			<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		      		<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 		    		</li>
 		      	<li class="nav-item">
-		     			<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		     			<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 		    		</li>
 		    	</c:when>
 				</c:choose>
@@ -68,19 +68,19 @@
 					<div class="username">
 						<tr>
 							<th>Username: </th>
-							<td><input type="text" name="userName" size="20"></td>
+							<td><input id="loginUsername" type="text" name="userName" size="20"></td>
 						</tr>
 					</div>
 					<br>
 					<div class="password">
 						<tr>
 							<th>Password: </th>
-							<td><input type="password" name="password" size="20"></td>
+							<td><input id="loginPassword" type="password" name="password" size="20"></td>
 						</tr>
 					</div>
 				</table>
 				<br><br>
-				<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
+				<input id="loginBtn" class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
 			</form>
 		</div>
 		<br><br><br>

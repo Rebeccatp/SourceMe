@@ -61,7 +61,7 @@
 		</nav>
 		
 		<div class="container">
-		  <img src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
+		  <img id="homePageImg" src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
 		  <div class="centered">Welcome to SourceMe!</div>
 		</div>
 		<div class="buttons">
