@@ -34,10 +34,10 @@
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 						<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		      		<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 		    		</li>
 		      	<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		      		<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 		    		</li>
 		    	</c:when>
 				</c:choose>

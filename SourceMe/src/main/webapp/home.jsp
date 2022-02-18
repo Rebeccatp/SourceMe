@@ -36,10 +36,10 @@
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 			   		<li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+			      	<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 			    	</li>
 			      <li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+			      	<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 			    	</li>
 		    	</c:when>
 				</c:choose>
@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button id="logoutBtn" class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
