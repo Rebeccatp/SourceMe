@@ -2,7 +2,6 @@ package SourceMe;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,8 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class UserTest {
-
+public class UserSeleniumTest {
+	
 	private String registerFirstname = "selenium";
 	private String registerLastname = "selenium";
 	private String registerNumber = "1111111";
@@ -30,7 +29,7 @@ public class UserTest {
 	
   @Test
   public void registerLoginUpdateDelete() {
-	  // define the chrome driver
+// define the chrome driver
 	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  // navigate to "home"

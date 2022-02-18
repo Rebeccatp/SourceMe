@@ -90,7 +90,7 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	//Method to get parameter, query database for existing user data and redirect to user edit page
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+	public void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		//Get userId from session storage
 		HttpSession session = request.getSession();
 		String idString = (String) session.getAttribute("userId");
@@ -128,17 +128,17 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	// create login form		 
-	private void loginPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+	public void loginPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 	
 	// create register form		 
-	private void registerPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+	public void registerPage(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		request.getRequestDispatcher("/register.jsp").forward(request, response);
 	}
 	
 	// Login
-	private void loginUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	public void loginUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
 		//Step 2: retrieve the two parameters from the request from the web form
@@ -180,7 +180,7 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	//Register
-	private void registerUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	public void registerUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
 		//Step 2: retrieve the six parameters from the request from the web form
@@ -252,7 +252,7 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	//Method to update the user table base on the form data
-	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {		
+	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {		
 		HttpSession session = request.getSession();
 		String idString = (String) session.getAttribute("userId");
 		int id = Integer.parseInt(idString);
@@ -279,7 +279,7 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	//Method to delete user
-	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		HttpSession session = request.getSession();
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -296,7 +296,7 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("registerPage");
 	}
 	
-	public static void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
