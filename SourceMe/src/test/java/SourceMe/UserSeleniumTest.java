@@ -367,7 +367,7 @@ public class UserSeleniumTest {
 	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
-// REGISTER USER FAIL (USERNAME ALREADY EXISTS)
+// REGISTER FAIL (USERNAME ALREADY EXISTS)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	  
 	  // fill in registration form
@@ -389,7 +389,7 @@ public class UserSeleniumTest {
 	  // check for error message
 	  driver.findElements(By.xpath("//*[contains(text(), 'Username already exists!')]"));
 	  
-// REGISTER USER SUCCESS
+// REGISTER SUCCESS
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
 	  
 	  // fill in registration form
@@ -526,7 +526,7 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void navigateToProfile() {
+  public void navigateToProfilePage() {
 	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 
@@ -725,7 +725,7 @@ public class UserSeleniumTest {
 	  existingEmail2 = "user1@email.com";
 	  
 	  existingRole3 = "User";
-	  existingFirstname3 = "Jesse";
+	  existingFirstname3 = "Jessie";
 	  existingLastname3 = "Doe";
 	  existingNumber3 = "12345678";
 	  existingUsername3 = "user2";
