@@ -6,7 +6,10 @@ import java.sql.SQLException;
 
 public class UserCollection {
 	
-    public UserCollection() {
+	User mockUser;
+	
+    public UserCollection(User mockUser) {
+    	this.mockUser = mockUser;
     }
 	
 	//Step 1: Prepare list of variables used for database connections
@@ -164,7 +167,7 @@ public class UserCollection {
 				userNameExisting = rs1.getString("userName");
 				roleExisting = rs1.getString("role");
 			}
-			if (isNumeric(idExisting)) {				
+			if (mockUser.isNumeric(idExisting)) {				
 				msg = idExisting;
 			}
 			else {

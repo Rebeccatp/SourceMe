@@ -4,7 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Console;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 /**
  * 
@@ -17,6 +19,7 @@ import com.gargoylesoftware.htmlunit.javascript.host.Console;
 class UserJUnitTest {
 	
 	private UserCollection uc;
+	private User mockUser = mock(User.class);
 	
 	// create user
 	private String createRole;
@@ -52,7 +55,7 @@ class UserJUnitTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		uc = new UserCollection();
+		uc = new UserCollection(mockUser);
 		
 		// create user
 		createRole = "Admin";
@@ -118,7 +121,6 @@ class UserJUnitTest {
 		assertTrue(result.number.equals(existingUser.number));
 		assertTrue(result.password.equals(existingUser.password));
 		assertTrue(result.email.equals(existingUser.email));
-		
 	}
 
 	/**
@@ -146,6 +148,11 @@ class UserJUnitTest {
 	 */
 	@Test
 	void testLogin() {
+// LOGIN SUCCESS
+		when(mockUser.isNumeric(String.valueOf(existingUser.id))).thenReturn(true);
+		assertEquals(String.valueOf(existingUser.id), uc.login(existingUser.userName, existingUser.password));
+		verify(mockUser).isNumeric(String.valueOf(existingUser.id));
+		
 // LOGIN FAIL (WRONG USERNAME)
 		String result1 = uc.login(wrongUsername, existingUser.password);
 		assertTrue(result1.equals("wrong username or password"));
@@ -157,10 +164,6 @@ class UserJUnitTest {
 // LOGIN FAIL (WRONG USERNAME AND PASSWORD)
 		String result3 = uc.login(wrongUsername, wrongPassword);
 		assertTrue(result3.equals("wrong username or password"));
-		
-// LOGIN SUCCESS
-		String result4 = uc.login(existingUser.userName, existingUser.password);
-		assertTrue(result4.equals(String.valueOf(existingUser.id)));
 	}
 	
 	/**
