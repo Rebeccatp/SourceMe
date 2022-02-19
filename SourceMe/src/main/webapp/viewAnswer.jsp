@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right" id="logout"><button class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
@@ -61,7 +61,7 @@
 		</nav>
 		
 		<div>
-	  	<div class="btn-add-answer" onclick="location.href='<%=request.getContextPath()%>/answerServlet/addAnswer?qnsId=<c:out value='${question.id}' />'">
+	  	<div class="btn-add-answer" name="btn-add-answer" onclick="location.href='<%=request.getContextPath()%>/answerServlet/addAnswer?qnsId=<c:out value='${question.id}' />'">
 	  		Add Your Answer
 	  	</div>
 			<!-- Question -->
@@ -87,8 +87,6 @@
 			<label class="comment-header">Comments:</label> 			
 			<div class="answer-con">
 				<c:forEach items="${answerList}" var="answer">
-					<c:choose>
-						<c:when test="${question.id == answer.qnsId}">
 							<div class="answer-div">
 								<div class="align">
 									<p>${answer.answers}</p>
@@ -99,17 +97,15 @@
 									<c:when test="${sessionScope['userName'] == answer.postBy}">
 		 								<div class="edit-delete">
 											<div class="align">
-												<a href="<%=request.getContextPath()%>/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a>
+												<a name="editAnswer" href="<%=request.getContextPath()%>/answerServlet/editAnswer?id=<c:out value='${answer.id}'/>">Edit</a>
 											</div>
 											<div class="align">
-												<a href="<%=request.getContextPath()%>/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a>
+												<a name="btnDel" href="<%=request.getContextPath()%>/answerServlet/deleteAnswer?id=<c:out value='${answer.id}'/>">Delete</a>
 											</div>
 										</div>
 									</c:when>
 								</c:choose>
 							</div>
-						</c:when>
-					</c:choose>
 				</c:forEach>	 
 			</div>
 		</div>
