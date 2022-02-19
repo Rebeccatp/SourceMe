@@ -3,51 +3,175 @@ package com.sddevops.SourceMe;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 
 public class TutorialTest {
-  @Test
-  public void f() {
-	// define the chrome driver
-		  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
-
-		  // define the drive instance
-		 WebDriver driver = new ChromeDriver();
-		 // nagivate the browser to this url
-		 driver.get("http://localhost:8090/SourceMe/home");
-		 // Guest
-		 driver.findElement(By.linkText("All Tutorials")).click();
-
-		  // Admin
-		 driver.findElement(By.linkText("Sign In")).click();
-		 driver.findElement(By.id("userName")).sendKeys("test");
-		 driver.findElement(By.id("password")).sendKeys("1");
-		 driver.findElement(By.id("submit")).submit();
-		 driver.findElement(By.linkText("All Tutorials")).click();
-		 driver.findElement(By.id("createTutorial")).click();
-		 driver.findElement(By.id("title")).sendKeys("testing");
-		 driver.findElement(By.id("content")).sendKeys("Tutorials testing");
-		 driver.findElement(By.id("submitAnswer")).submit();
-		 driver.findElement(By.linkText("Edit")).click();
-		 driver.findElement(By.id("title")).sendKeys("testing devops");
-		 driver.findElement(By.id("tutorial")).sendKeys("Tutorials testing devops");
-		 driver.findElement(By.id("submitAnswer")).submit();
-		 driver.findElement(By.linkText("Delete")).click();
-		 driver.findElement(By.linkText("Logout")).click();
-		 // User
-		 driver.findElement(By.id("userName")).sendKeys("usertest");
-		 driver.findElement(By.id("password")).sendKeys("1");
-		 driver.findElement(By.id("submit")).submit();
-		 driver.findElement(By.linkText("All Tutorials")).click();
-  }
+	 private WebDriver driver;	
+	 private JavascriptExecutor scroll;
+	 
+	 
+	 @Test
+	  public void getAllTutorials() throws InterruptedException{
+		  // nagivate the browser to this url
+		  	driver.get("http://localhost:8090/SourceMe/home");
+			 Thread.sleep(2000);
+			 //	Get all tutorials
+			 driver.findElement(By.linkText("All Tutorials")).click();
+			 scroll.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+			 Thread.sleep(2000);
+			 System.out.println("GetAll");
+	  }
+	 
+	 @Test
+	  public void createTutorial() throws InterruptedException{
+		  // nagivate the browser to this url
+		  	driver.get("http://localhost:8090/SourceMe/home");
+			 Thread.sleep(2000);
+			 //Click on 'sign in' button 			 
+			 driver.findElement(By.linkText("Sign In")).click();
+			 Thread.sleep(2000);
+			 //Enter credentials for Admin
+			 driver.findElement(By.id("userName")).sendKeys("test");
+			 driver.findElement(By.id("password")).sendKeys("1");
+			 Thread.sleep(2000);
+			 //Click on 'login' button
+			 driver.findElement(By.id("submit")).submit();
+			 Thread.sleep(2000);
+			 //Click on 'All tutorials' button on navigation bar 
+			 driver.findElement(By.linkText("All Tutorials")).click();
+			 Thread.sleep(2000);
+			 //Click on 'create tutorial' button 
+			 driver.findElement(By.id("createTutorial")).click();
+			 Thread.sleep(2000);
+			 //Enter title and content 
+			 driver.findElement(By.id("title")).sendKeys("testing");
+			 driver.findElement(By.id("content")).sendKeys("Tutorials testing");
+			 Thread.sleep(1000);
+			 scroll.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+			 Thread.sleep(2000);
+			 //Click on 'submit tutorial' button 
+			 driver.findElement(By.id("submitAnswer")).submit();
+			 scroll.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+			 Thread.sleep(2000);
+			 //logout
+			 driver.findElement(By.linkText("Logout")).click();
+			 Thread.sleep(2000);
+			 System.out.println("Create");
+	  }
+	 
+	 
+	 
+	 @Test
+	  public void getTutorialById() throws InterruptedException{
+		  // nagivate the browser to this url
+		  	driver.get("http://localhost:8090/SourceMe/home");
+			 Thread.sleep(2000);
+			 //Click on 'sign in' button 
+			 driver.findElement(By.linkText("Sign In")).click();
+			 Thread.sleep(2000);
+			 //Enter credentials for Admin 
+			 driver.findElement(By.id("userName")).sendKeys("test");
+			 driver.findElement(By.id("password")).sendKeys("1");
+			 Thread.sleep(2000);
+			 //Click on 'login' button 
+			 driver.findElement(By.id("submit")).submit();
+			 Thread.sleep(2000);
+			 //Click on "All tutorials" button 
+			 driver.findElement(By.linkText("All Tutorials")).click();
+			 Thread.sleep(2000);	
+			 //Click on 'edit' button 
+			 driver.findElement(By.linkText("Edit")).click();
+			 Thread.sleep(2000);
+			 //logout
+			 driver.findElement(By.linkText("Logout")).click();
+			 Thread.sleep(2000);
+			 System.out.println("GetByid");
+	  }
+	 
+	 @Test
+	  public void editTutorialById() throws InterruptedException{
+		  // nagivate the browser to this url
+		  	driver.get("http://localhost:8090/SourceMe/home");
+			 Thread.sleep(2000);
+			 //Click on 'sign in' button 
+			 driver.findElement(By.linkText("Sign In")).click();
+			 Thread.sleep(2000);
+			 //Enter credentials for Admin 
+			 driver.findElement(By.id("userName")).clear();
+			 driver.findElement(By.id("password")).clear();
+			 Thread.sleep(1000);
+			 driver.findElement(By.id("userName")).sendKeys("test");
+			 Thread.sleep(1000);
+			 driver.findElement(By.id("password")).sendKeys("1");
+			 Thread.sleep(2000);
+			 //Click on 'login' button
+			 driver.findElement(By.id("submit")).submit();
+			 Thread.sleep(2000);
+			 //Click on "All tutorials" button 
+			 driver.findElement(By.linkText("All Tutorials")).click();
+			 Thread.sleep(2000);	
+			 //Click on 'edit' button 
+			 driver.findElement(By.linkText("Edit")).click();
+			 Thread.sleep(2000);
+			 //Make changes to title/content 
+			 driver.findElement(By.id("title")).sendKeys("testing devops");
+			 driver.findElement(By.id("tutorial")).sendKeys("Tutorials testing devops");
+			 Thread.sleep(2000);
+			 //Click on 'submit tutorial'
+			 driver.findElement(By.id("submitAnswer")).submit();
+			 Thread.sleep(2000);
+			 //logout
+			 driver.findElement(By.linkText("Logout")).click();
+			 Thread.sleep(2000);
+			 System.out.println("Update");
+	  }
+	 
+	 @Test
+	  public void deleteTutorial() throws InterruptedException{
+		  // nagivate the browser to this url
+		  	driver.get("http://localhost:8090/SourceMe/home");
+			 Thread.sleep(2000);
+			 //Click on 'sign in' button 
+			 driver.findElement(By.linkText("Sign In")).click();
+			 Thread.sleep(2000);
+			 //Enter credentials for Admin 
+			 driver.findElement(By.id("userName")).sendKeys("test");
+			 driver.findElement(By.id("password")).sendKeys("1");
+			 Thread.sleep(2000);
+			 //Click on 'login' button
+			 driver.findElement(By.id("submit")).submit();
+			 Thread.sleep(2000);
+			 //Click on "All tutorials" button 
+			 driver.findElement(By.linkText("All Tutorials")).click();
+			 Thread.sleep(2000);
+			 //Click on 'delete' button
+			 driver.findElement(By.linkText("Delete")).click();
+			 Thread.sleep(2000);
+			
+			 //logout
+			 driver.findElement(By.linkText("Logout")).click();
+			 Thread.sleep(2000);
+			 System.out.println("Delete");
+	  }
+	
   @BeforeTest
   public void beforeTest() {
+		// define the chrome driver
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
+
+	  // define the drive instance
+	 driver = new ChromeDriver();
+	 
+	 scroll = (JavascriptExecutor) driver;
   }
 
   @AfterTest
   public void afterTest() {
+	//Quit the ChromeDriver and close all associated window at the end of test
+	  driver.quit();
   }
 
 }
