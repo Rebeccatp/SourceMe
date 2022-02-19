@@ -176,7 +176,7 @@ public class UserCollection {
 		return msg;
 	}
 	
-	public static boolean isNumeric(String idString) {
+	public boolean isNumeric(String idString) {
 	    int idInt;
 	    try {
 	    	idInt = Integer.parseInt(idString);

@@ -240,7 +240,7 @@ public class UserServlet extends HttpServlet {
 		}		
 	}
 	
-	public static boolean isNumeric(String idString) {
+	public boolean isNumeric(String idString) {
 	    int idInt;
 	    try {
 	    	idInt = Integer.parseInt(idString);

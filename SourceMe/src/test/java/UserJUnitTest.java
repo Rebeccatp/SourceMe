@@ -162,5 +162,19 @@ class UserJUnitTest {
 		String result4 = uc.login(existingUser.userName, existingUser.password);
 		assertTrue(result4.equals(String.valueOf(existingUser.id)));
 	}
+	
+	/**
+	 * Test method for {@link User#isNumeric(java.lang.String)}.
+	 */
+	@Test
+	void testIsNumeric() {
+// ID IS NOT NUMERIC (USER DOES NOT EXIST)
+		boolean result1 = uc.isNumeric("dummy text 123");
+		assertFalse(result1);
+		
+// ID IS NUMERIC (USER EXISTS)
+		boolean result2 = uc.isNumeric(String.valueOf(existingUser.id));
+		assertTrue(result2);
+	}
 
 }
