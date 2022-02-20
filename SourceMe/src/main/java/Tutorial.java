@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tutorial {
-	
+	TutorialCollection mockTutorialCollection;
 	
 	//Step 1: Prepare list of variables used for database connections
 		private String jdbcURL = "jdbc:mysql://localhost:3306/sourceMe";
@@ -37,6 +37,10 @@ public class Tutorial {
 	protected Number id;
 	protected String title;
 	protected String content;
+	
+	public Tutorial(TutorialCollection mockTutorialCollection) {
+    	this.mockTutorialCollection = mockTutorialCollection;
+    }
 	
 	public Tutorial(Number id, String title, String content) {
 		super();
@@ -108,33 +112,33 @@ public class Tutorial {
 		}		
 	}
 	
-	public boolean createTutorial(String title, String content) {
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
-			//Step 4: Implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-			PreparedStatement ps = con.prepareStatement("insert into tutorials values(?,?,?)");
-			//Step 5: Parse in the data retrieved from the web form request into the prepared statement accordingly
-			ps.setInt(1, 0);
-			ps.setString(2, title);
-			ps.setString(3, content);
-			//Step 6: Perform the query on the database using the prepared statement
-			int i = ps.executeUpdate();
-			System.out.println(i);
-			//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
-			return true;
-		}
-		//Step 8: catch and print out any exception
-		catch (Exception exception) {
-			System.out.println(exception);
-			return false;
-		}
-		
+	public boolean createTutorial(String title, String content, String role) {
+		if(mockTutorialCollection.ifAdmin(role)) {	
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
+				//Step 4: Implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+				PreparedStatement ps = con.prepareStatement("insert into tutorials values(?,?,?)");
+				//Step 5: Parse in the data retrieved from the web form request into the prepared statement accordingly
+				ps.setInt(1, 0);
+				ps.setString(2, title);
+				ps.setString(3, content);
+				//Step 6: Perform the query on the database using the prepared statement
+				int i = ps.executeUpdate();
+				System.out.println(i);
+				//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
+				return true;
+			}
+			//Step 8: catch and print out any exception
+			catch (Exception exception) {
+				System.out.println(exception);
+				return false;
+			}
+		}return false;
 	}
 	
-	public boolean updateTutorialById(Integer tutorialid, String updateTitle, String updateContent) {
-
+	public boolean updateTutorialById(Integer tutorialid, String updateTitle, String updateContent, String role) {
+		if(mockTutorialCollection.ifAdmin(role)) {	
 		try (Connection connection = getConnection(jdbcURL, jdbcUsername, jdbcPassword, classname);
 				PreparedStatement statement = connection.prepareStatement(UPDATE_TUTORIAL_SQL);) {
 					statement.setString(1, updateTitle);
@@ -148,19 +152,22 @@ public class Tutorial {
 					System.out.println(exception);
 					return false;
 				}
+		}return false;
 	}
 	
-	public boolean deleteTutorialById(Integer tutorialid) {
-		//Step 2: Attempt connection with database and execute delete tutorial SQL query
-		try (Connection connection = getConnection(jdbcURL, jdbcUsername, jdbcPassword, classname); 
-		PreparedStatement statement = connection.prepareStatement(DELETE_TUTORIAL_SQL);) {
-			statement.setInt(1, tutorialid);
-			int i = statement.executeUpdate();
-			return true;
-		}catch (Exception exception) {
-			// TODO Auto-generated catch block
-			System.out.println(exception);
-			return false;
-		}
+	public boolean deleteTutorialById(Integer tutorialid, String role) {
+		if(mockTutorialCollection.ifAdmin(role)) {	
+			//Step 2: Attempt connection with database and execute delete tutorial SQL query
+			try (Connection connection = getConnection(jdbcURL, jdbcUsername, jdbcPassword, classname); 
+			PreparedStatement statement = connection.prepareStatement(DELETE_TUTORIAL_SQL);) {
+				statement.setInt(1, tutorialid);
+				int i = statement.executeUpdate();
+				return true;
+			}catch (Exception exception) {
+				// TODO Auto-generated catch block
+				System.out.println(exception);
+				return false;
+			}
+		}return false;
 	}
 }

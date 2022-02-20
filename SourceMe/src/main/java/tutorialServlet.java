@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -95,11 +96,16 @@ public class tutorialServlet extends HttpServlet {
 	protected void createTutorials(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Initialize a PrintWriter object to return the html values via the response
 		PrintWriter out = response.getWriter();
+		String contextPath = request.getContextPath();
 		//Step 2: Retrieve the two parameters from the request from the web form
+		HttpSession session = request.getSession();
+		String userRole = (String) session.getAttribute("role");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		if (tutorial.createTutorial(title, content) == true) {
+		if (tutorial.createTutorial(title, content, userRole) == true) {
 			response.sendRedirect("dashboard");
+		}else {
+			response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
 	
 	}
@@ -108,24 +114,34 @@ public class tutorialServlet extends HttpServlet {
 	//method to update the tutorial table base on the form data
 	protected void updateTutorial(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		String contextPath = request.getContextPath();
+		HttpSession session = request.getSession();
+		String userRole = (String) session.getAttribute("role");
 		//Step 1: Retrieve value from the request
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		//Step 3: redirect back to tutorialServlet
-		if (tutorial.updateTutorialById(id, title, content) == true) {
+		if (tutorial.updateTutorialById(id, title, content,userRole) == true) {
 			response.sendRedirect("dashboard");
+		}else {
+			response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
 	}
 
 	//DELETE
 	//method to delete tutorial
 	protected void deleteTutorial(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		String contextPath = request.getContextPath();
+		HttpSession session = request.getSession();
+		String userRole = (String) session.getAttribute("role");
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		//Step 3: redirect back to tutorialServlet dashboard
-		if (tutorial.deleteTutorialById(id) == true) {
+		if (tutorial.deleteTutorialById(id, userRole) == true) {
 			response.sendRedirect("dashboard");
+		}else {
+			response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
 	}
 }
