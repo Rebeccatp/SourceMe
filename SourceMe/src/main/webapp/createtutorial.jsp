@@ -69,13 +69,13 @@
 						<div class="form-row mt-2">
 							<div class="col">
 								<label class="title-label">Title</label>
-								<p class="input-Title"><input type="text" name="title" class="form-control"></p>
+								<p class="input-Title"><input type="text" id="title" name="title" class="form-control"></p>
 							</div>
 						</div>
 						<div class="form-row mt-2">
 							<div class="col">
 								<label class="tutorial-label">Content</label>
-								<textarea name="content" rows="5" class="form-control" id="tutorial"></textarea>
+								<textarea name="content" rows="5" id="content" class="form-control" id="tutorial"></textarea>
 							</div>
 						</div>
 						<div class="submit-btn">
