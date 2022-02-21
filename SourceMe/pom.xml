@@ -26,6 +26,12 @@
         <junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
         <junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
+
+    </properties>
+
+        <junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+        <junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
  
 
     </properties>
@@ -38,7 +44,7 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -64,7 +70,7 @@
             <artifactId>${selenium.artifactId}</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>${testng.groupId}</groupId>
             <artifactId>${testng.artifactId}</artifactId>
@@ -78,7 +84,7 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
     </dependencies>
 
     <build>
