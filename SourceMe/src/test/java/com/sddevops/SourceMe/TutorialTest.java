@@ -158,7 +158,7 @@ public class TutorialTest {
   @BeforeTest
   public void beforeTest() {
 		// define the chrome driver
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
 
 	  // define the drive instance
 	 driver = new ChromeDriver();
