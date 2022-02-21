@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Connection;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -35,7 +36,11 @@ class tutorialCollectionTest {
 	private String role;
 	private String classname;
 	private String classnameErr;
-	
+	private Tutorial tutorialById;
+	private Tutorial tutorialBy0;
+	private Connection connection;
+	private Connection connectionError;
+	private Connection connectionError2;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -70,17 +75,17 @@ class tutorialCollectionTest {
 	void testGetConnection() {
 		
 		//Act (Get the correct connection parameters)
-		var connection = tutorial.getConnection(jdbcURL, jdbcUsername, jdbcPassword,classname);
+		connection = tutorial.getConnection(jdbcURL, jdbcUsername, jdbcPassword,classname);
 		//Assert
 		assertNotNull(connection);
 		
 		//Act (Get the incorrect username and password (SQLException))
-		var connectionError = tutorial.getConnection(jdbcURL, usernameerr, passworderr,classname);
+		connectionError = tutorial.getConnection(jdbcURL, usernameerr, passworderr,classname);
 		//Assert
 		assertNull(connectionError);
 		
 		//Act (Get the incorrect classname (ClassNotFoundException))
-		var connectionError2 = tutorial.getConnection(jdbcURL, jdbcUsername, jdbcPassword, classnameErr);
+		connectionError2 = tutorial.getConnection(jdbcURL, jdbcUsername, jdbcPassword, classnameErr);
 		//Assert
 		assertNull(connectionError2);
 	}
@@ -100,12 +105,12 @@ class tutorialCollectionTest {
 	void testGetTutorialById() {
 		
 		//Act (Get tutorial by id)
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		//Assert (check that is it not null)
 		assertNotNull(tutorialById);
 		
 		//Act (Get Tutorial by id(0))
-		var tutorialBy0 = tutorial.getTutorialById(0);
+		tutorialBy0 = tutorial.getTutorialById(0);
 		//Assert (check that it is null)
 		assertNull(tutorialBy0);
 	}
@@ -113,19 +118,11 @@ class tutorialCollectionTest {
 	@Test
 	void testCreateTutorial() {
 		
-		//	Assert the number of tutorials
-//		List<Tutorial> testTc = tutorial.getAllTutorials();
-//		assertFalse(testTc.isEmpty());
-//		int beforeCreate = testTc.size();
-		
 		// Act
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
 		
 		//Act & Assert (Check if return true value)
-		assertTrue(tutorial2.createTutorial(t1, c1,role));
-		
-		// Assert (Check if the size increased)
-//		assertEquals(tutorial.getAllTutorials().size(), beforeCreate +1);		
+		assertTrue(tutorial2.createTutorial(t1, c1,role));	
 		
 		//check if mocktutorial collection is being used
 		verify(mockTutorialCollection).ifAdmin(role);
@@ -210,37 +207,37 @@ class tutorialCollectionTest {
 	
 	@Test
 	void testgetId() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		assertNotNull(tutorialById.getId());
 	}
 	
 	@Test
 	void testgetTitle() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		assertNotNull(tutorialById.getTitle());
 	}
 	@Test
 	void testgetContent() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		assertNotNull(tutorialById.getContent());
 	}
 	
 	@Test
 	void testsetId() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		tutorialById.setId(setId);
 		assertEquals(tutorialById.getId(), setId);
 	}
 	
 	@Test
 	void testsetTitle() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		tutorialById.setTitle(t3);
 		assertSame(tutorialById.getTitle(), t3);
 	}
 	@Test
 	void testsetContent() {
-		var tutorialById = tutorial.getTutorialById(tutorialId);
+		tutorialById = tutorial.getTutorialById(tutorialId);
 		tutorialById.setContent(c3);
 		assertSame(tutorialById.getContent(), c3);
 	}
