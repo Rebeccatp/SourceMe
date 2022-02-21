@@ -3,22 +3,7 @@
 <suite parallel="none" name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test" verbose="2">
     <classes>
-      <class name="com.sddevops.SourceMe.AnswerTest"/>
+      <class name="SourceMe.UserSeleniumTest"/>
     </classes>
   </test> <!-- Default test -->
-  <test parallel="none" name="Default test(failed)">
-    <classes>
-      <class name="com.sddevops.SourceMe.AnswerTest">
-        <methods>
-          <include name="aCreateAnswer"/>
-          <include name="bGetAnswerByQnsId"/>
-          <include name="beforeTest"/>
-          <include name="eDeleteAnswerById"/>
-          <include name="cGetAnswerById"/>
-          <include name="afterTest"/>
-          <include name="dUpdateAnswerById"/>
-        </methods>
-      </class> <!-- com.sddevops.SourceMe.AnswerTest -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
