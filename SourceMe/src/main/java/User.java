@@ -67,4 +67,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public boolean isNumeric(String idString) {
+	    int idInt;
+	    try {
+	    	idInt = Integer.parseInt(idString);
+	        return true;
+	    } catch (NumberFormatException e) {
+	    }
+	    return false;
+	}
 }

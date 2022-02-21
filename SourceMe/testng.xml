@@ -8,6 +8,7 @@
 
       <class name="com.sddevops.SourceMe.TutorialTest"/>
 
+      <class name="SourceMe.UserSeleniumTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

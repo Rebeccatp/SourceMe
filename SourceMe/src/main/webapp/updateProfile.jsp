@@ -34,10 +34,10 @@
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 		   			<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		      		<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 		    		</li>
 		      	<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		      		<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 		    		</li>
 		    	</c:when>
 				</c:choose>
@@ -51,7 +51,7 @@
 		    		<li>
 		    			<div class="logout-btn">
 								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right">
-									<button class="btn btn-secondary">Logout</button>
+									<button id="logoutBtn" class="btn btn-secondary">Logout</button>
 								</a>
 							</div>
 						</li>
@@ -69,7 +69,7 @@
 						<tr>
 							<th>Role: </th>
 							<td>
-								<select name="role">
+								<select id="updateRole" name="role">
 									<option>${user.role}</option>
 									<option>${user.role == "Admin" ? "User" : "Admin"}</option>
 								</select>
@@ -79,45 +79,45 @@
 					<div class="firstName">
 						<tr>
 							<th>First Name: </th>
-							<td><input type="text" name="firstName" value="${user.firstName}"></td>
+							<td><input id="updateFirstname" type="text" name="firstName" value="${user.firstName}"></td>
 						</tr>
 					</div>
 					<div class="lastName">
 						<tr>
 							<th>Last Name: </th>
-							<td><input type="text" name="lastName" value="${user.lastName}"></td>
+							<td><input id="updateLastname" type="text" name="lastName" value="${user.lastName}"></td>
 						</tr>
 					</div>
 					<div class="number">
 						<tr>
 							<th>Contact Details: </th>
-							<td><input type="text" name="number" value="${user.number}"></td>
+							<td><input id="updateNumber" type="text" name="number" value="${user.number}"></td>
 						</tr>
 					</div>
 					<div class="username">
 						<tr>
 							<th>Username: </th>
-							<td><input type="text" name="userName" value="${user.userName}" readonly="readonly"></td>
+							<td><input id="username" type="text" name="userName" value="${user.userName}" readonly="readonly"></td>
 						</tr>
 					</div>
 					<div class="password">
 						<tr>
 							<th>Password: </th>
-							<td><input type="password" name="password" value="${user.password}"></td>
+							<td><input id="updatePassword" type="password" name="password" value="${user.password}"></td>
 						</tr>
 					</div>
 					<div>
 						<tr>
 							<th>Email: </th>
-							<td><input type="text" name="email" value="${user.email}"></td>
+							<td><input id="updateEmail" type="text" name="email" value="${user.email}"></td>
 						</tr>
 					</div>
 				</table>
 				<br><br>
-				<input class="btn btn-primary" type="submit" value="Save changes" style="width: 320px; margin-bottom: 20px; text-align: center;"/>
+				<input id="updateBtn" class="btn btn-primary" type="submit" value="Save changes" style="width: 320px; margin-bottom: 20px; text-align: center;"/>
 			</form>
 			<a href="delete?id=${user.id}">
-				<button class="btn btn-danger" style="margin-left: 400px; width: 320px;">Delete</button>
+				<button id="deleteBtn" class="btn btn-danger" style="margin-left: 400px; width: 320px;">Delete</button>
 			</a>
 		</div>
 		<div class="container" style="margin-top: 40px; margin-bottom: 40px">

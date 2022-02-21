@@ -39,7 +39,7 @@
 			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage" id="signin">Sign In</a>
 			    	</li>
 			      <li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+			      	<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 			    	</li>
 		    	</c:when>
 				</c:choose>
@@ -52,7 +52,7 @@
 		    	<c:when test="${sessionScope['userId'] != null }">
 		    		<li>
 		    			<div class="logout-btn">
-								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button class="btn btn-secondary">Logout</button></a>
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right"><button id="logoutBtn" class="btn btn-secondary">Logout</button></a>
 							</div>
 						</li>
 		    	</c:when>
@@ -61,7 +61,7 @@
 		</nav>
 		
 		<div class="container">
-		  <img src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
+		  <img id="homePageImg" src="<%=request.getContextPath()%>/assets/bg.png" alt="background" style="width:100%;">
 		  <div class="centered">Welcome to SourceMe!</div>
 		</div>
 		<div class="buttons">
