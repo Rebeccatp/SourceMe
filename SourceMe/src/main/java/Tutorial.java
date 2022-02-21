@@ -1,7 +1,8 @@
-
 public class Tutorial {
-
 	protected Number id;
+	protected String title;
+	protected String content;
+	
 	public Tutorial(Number id, String title, String content) {
 		super();
 		this.id = id;
@@ -26,6 +27,4 @@ public class Tutorial {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	protected String title;
-	 protected String content;
 }

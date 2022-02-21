@@ -25,7 +25,8 @@ public class Question {
 	private static final String SELECT_ALL_QUESTIONS = "select * from question ";
 	private static final String DELETE_QUESTIONS_SQL = "delete from question where id = ?;";
 	private static final String UPDATE_QUESTIONS_SQL = "update question set title = ?,question= ?, username = ? where id = ?;";
-	//Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
+	
+  //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
 	protected Connection getConnection() {
 	Connection connection = null;
 	try {
@@ -38,12 +39,13 @@ public class Question {
 	}
 	return connection;
 	}
-
+  
+public class Question {
 	protected int id;
 	protected String title;
 	protected String question;
 	protected String username;
-
+  
 	public Question(int id, String title, String question, String username) {
 		super();
 		this.id = id;
@@ -51,7 +53,6 @@ public class Question {
 		this.question = question;
 		this.username = username;
 	}
-
 	public int getId() {
 		return id;
 	}

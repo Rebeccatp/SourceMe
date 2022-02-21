@@ -43,6 +43,7 @@
 .buttons{
 	text-align: center;
 	margin-top:50px;
+
 }
 
 .btn-add-qns{
@@ -51,4 +52,6 @@
     padding: 6px 10px 6px 10px;
     border-radius: 5px;
     cursor: pointer;
+  
+	margin-bottom: 55px;
 }

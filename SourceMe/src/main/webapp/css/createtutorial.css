@@ -60,4 +60,7 @@ align-content: center;
     padding: 6px 10px 6px 10px;
     border-radius: 5px;
     cursor: pointer;
+  
+.createTutorial{
+	margin-bottom:55px;
 }
