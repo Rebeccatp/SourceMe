@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-02-19T17:51:22Z" name="Default suite" finished-at="2022-02-19T17:52:28Z" duration-ms="65483">
+    <groups>
+    </groups>
+    <test started-at="2022-02-19T17:51:22Z" name="Default test" finished-at="2022-02-19T17:52:28Z" duration-ms="65483">
+      <class name="com.sddevops.SourceMe.AnswerTest">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:51:22Z" name="beforeTest" finished-at="2022-02-20T01:51:23Z" duration-ms="1169" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="aCreateAnswer()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:51:23Z" name="aCreateAnswer" finished-at="2022-02-20T01:51:51Z" duration-ms="27971" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aCreateAnswer -->
+        <test-method signature="bGetAnswerByQnsId()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:51:51Z" name="bGetAnswerByQnsId" finished-at="2022-02-20T01:51:58Z" duration-ms="6429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bGetAnswerByQnsId -->
+        <test-method signature="cGetAnswerById()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:51:58Z" name="cGetAnswerById" finished-at="2022-02-20T01:52:06Z" duration-ms="8510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cGetAnswerById -->
+        <test-method signature="dUpdateAnswerById()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:52:06Z" name="dUpdateAnswerById" finished-at="2022-02-20T01:52:19Z" duration-ms="12830" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dUpdateAnswerById -->
+        <test-method signature="eDeleteAnswerById()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:52:19Z" name="eDeleteAnswerById" finished-at="2022-02-20T01:52:28Z" duration-ms="8548" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- eDeleteAnswerById -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.sddevops.SourceMe.AnswerTest@39a2bb97]" started-at="2022-02-20T01:52:28Z" name="afterTest" finished-at="2022-02-20T01:52:28Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.sddevops.SourceMe.AnswerTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
