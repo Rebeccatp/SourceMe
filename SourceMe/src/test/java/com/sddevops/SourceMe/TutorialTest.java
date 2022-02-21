@@ -11,10 +11,8 @@ import org.testng.annotations.AfterTest;
 public class TutorialTest {
 	 private WebDriver driver;	
 	 private JavascriptExecutor scroll;
-	 
-	 
 	 @Test
-	  public void getAllTutorials() throws InterruptedException{
+	  public void a_getAllTutorials() throws InterruptedException{
 		  // nagivate the browser to this url
 		  	driver.get("http://localhost:8090/SourceMe/home");
 			 Thread.sleep(2000);
@@ -26,7 +24,7 @@ public class TutorialTest {
 	  }
 	 
 	 @Test
-	  public void createTutorial() throws InterruptedException{
+	  public void b_createTutorial() throws InterruptedException{
 		  // nagivate the browser to this url
 		  	driver.get("http://localhost:8090/SourceMe/home");
 			 Thread.sleep(2000);
@@ -65,7 +63,7 @@ public class TutorialTest {
 	 
 	 
 	 @Test
-	  public void getTutorialById() throws InterruptedException{
+	  public void c_getTutorialById() throws InterruptedException{
 		  // nagivate the browser to this url
 		  	driver.get("http://localhost:8090/SourceMe/home");
 			 Thread.sleep(2000);
@@ -92,7 +90,7 @@ public class TutorialTest {
 	  }
 	 
 	 @Test
-	  public void editTutorialById() throws InterruptedException{
+	  public void d_editTutorialById() throws InterruptedException{
 		  // nagivate the browser to this url
 		  	driver.get("http://localhost:8090/SourceMe/home");
 			 Thread.sleep(2000);
@@ -130,7 +128,7 @@ public class TutorialTest {
 	  }
 	 
 	 @Test
-	  public void deleteTutorial() throws InterruptedException{
+	  public void e_deleteTutorial() throws InterruptedException{
 		  // nagivate the browser to this url
 		  	driver.get("http://localhost:8090/SourceMe/home");
 			 Thread.sleep(2000);
@@ -170,8 +168,6 @@ public class TutorialTest {
 
   @AfterTest
   public void afterTest() {
-	//Quit the ChromeDriver and close all associated window at the end of test
-	  driver.quit();
   }
 
 }
