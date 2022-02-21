@@ -47,8 +47,8 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// fill up the login details
-		driver.findElement(By.name("userName")).sendKeys("jaslynylh");
-		driver.findElement(By.name("password")).sendKeys("123");
+		driver.findElement(By.name("userName")).sendKeys("Ad");
+		driver.findElement(By.name("password")).sendKeys("admin@123");
 		Thread.sleep(950);
 
 		// hit login button
