@@ -69,7 +69,7 @@
 <nav class="navbar navbar-expand-md navbar-light">
 <ul class="navbar-nav">
 <li><a href="<%=request.getContextPath()%>/questionServlet/questions"
-class="nav-link">Back to question</a></li>
+class="nav-link" name="Back">Back to question</a></li>
 </ul>
 </nav>
 <div class="container col-md-6">
@@ -125,7 +125,7 @@ Edit
 
 
 <div class="save-btn">
-<button type="submit" class="btn btn-success">Save changes</button>
+<button type="submit" class="btn btn-success" name="save changes">Save changes</button>
 </div>
 
 

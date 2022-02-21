@@ -109,7 +109,7 @@ information accordingly -->
 <div class="align"><a href="edit?id=<c:out value='${question.id}' />">Edit</a>
 <img src="<%=request.getContextPath()%>/assets/edit.png" width="20px"></div>
 
-<div class="align-two"><a href="delete?id=<c:out value='${question.id}'/>">Delete</a>
+<div class="align-two"><a href="delete?id=<c:out value='${question.id}'/>" name="deleteQn">Delete</a>
 <img src="<%=request.getContextPath()%>/assets/remove.png" width="20px"></div>
 
     	</c:when>

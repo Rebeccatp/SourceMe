@@ -87,7 +87,7 @@
 </table>
 <br>
 <br>
-<input class="btn btn-primary" type="submit" value="Login" style="margin-left: 110px"/>
+<input class="btn btn-primary" type="submit" name="Login" value="Login" style="margin-left: 110px"/>
 </form>
 </div>
 <br>

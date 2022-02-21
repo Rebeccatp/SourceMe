@@ -56,7 +56,7 @@ pageEncoding="ISO-8859-1"%>
 
 
 
-<div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link" >Add Your Question</a></div>
+<div class="btn-add-qns"><a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link">Add Your Question</a></div>
 </li>
 <c:choose>
 <c:when test="${sessionScope['userId'] != null }">

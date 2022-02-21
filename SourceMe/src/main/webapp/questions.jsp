@@ -92,7 +92,7 @@
 </div>
 
 <div class="submit-btn">
-<button type="submit" class="button-submit" id="submitQuestion">Submit</button>
+<button type="submit" class="button-submit" id="submitQuestion" name="submit">Submit</button>
 </div>
 
 </form>
