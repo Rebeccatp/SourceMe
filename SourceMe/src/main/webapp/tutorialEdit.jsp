@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+	</div>
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>SourceMe</title>
@@ -74,7 +75,7 @@
 								<c:if test="${tutorial != null}">
 									<input name="id"  type="hidden" value="<c:out value='${tutorial.id}' />" />
 								</c:if>
-								<p class="input-Title"><input type="text" name="title" class="form-control" value="<c:out value='${tutorial.title}' />"></p>
+								<p class="input-Title"><input type="text" name="title" class="form-control" id="title" value="<c:out value='${tutorial.title}' />"></p>
 							</div>
 						</div>
 						<div class="form-row mt-2">
@@ -86,7 +87,7 @@
 							</div>
 						</div>
 						<div class="submit-btn">
-							<button type="submit" class="button-submit" id="submitAnswer">Submit Tutorial</button>
+							<button type="submit" class="button-submit" id="submitAnswer" >Submit Tutorial</button>
 						</div>	
 					</form>
 				</div>

@@ -3,7 +3,14 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
+
+      <class name="com.sddevops.SourceMe.AnswerTest"/>
+
+      <class name="com.sddevops.SourceMe.TutorialTest"/>
+
       <class name="SourceMe.UserSeleniumTest"/>
+      
+      <class name="SourceMe.NewTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
