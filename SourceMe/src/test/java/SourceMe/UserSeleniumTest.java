@@ -417,7 +417,7 @@ public class UserSeleniumTest {
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername3);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword3);
 	  driver.findElement(By.id("loginBtn")).click();
-	  Assert.assertEquals("http://localhost:8090/SourceMe/UserServlet/edit", driver.getCurrentUrl());
+	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  // click on delete account button
 	  driver.findElement(By.id("deleteBtn")).click();
@@ -435,18 +435,18 @@ public class UserSeleniumTest {
   
   @BeforeTest
   public void beforeTest() {
-	  existingUsername1 = "admin1";
+	  existingUsername1 = "jane";
 	  existingPassword1 = "password";
 	  
 	  existingRole2 = "User";
 	  existingFirstname2 = "John";
 	  existingLastname2 = "Doe";
 	  existingNumber2 = "12345678";
-	  existingUsername2 = "user1";
+	  existingUsername2 = "john";
 	  existingPassword2 = "password";
-	  existingEmail2 = "user1@email.com";
+	  existingEmail2 = "john@email.com";
 	  
-	  existingUsername3 = "user2";
+	  existingUsername3 = "james";
 	  existingPassword3 = "password";
 	  
 	  registerRole = "User";

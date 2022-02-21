@@ -67,10 +67,10 @@ class UserJUnitTest {
 		createEmail = "twilight@email.com";
 		
 		// get user by id
-		existingUser = new User(16, "Admin", "Jane", "Doe", "12345678", "admin1", "password", "admin1@email.com");
+		existingUser = new User(16, "Admin", "Jane", "Doe", "12345678", "jane", "password", "jane@email.com");
 		
 		// update user by id
-		updateId = "48";
+		updateId = "47";
 		updateRole = "User";
 		updateFirstname = "Rainbow";
 		updateLastname = "Dash";
