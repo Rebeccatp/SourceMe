@@ -63,9 +63,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // NAVIGATE TO REGISTER PAGE FROM LOGIN PAGE	  
@@ -77,9 +77,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
   }
   
@@ -97,9 +97,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // NAVIGATE TO LOGIN PAGE FROM REGISTER PAGE	  
@@ -111,9 +111,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
   }
   
@@ -137,7 +137,7 @@ public class UserSeleniumTest {
 	  driver.findElement(By.id("registerEmail")).sendKeys(registerEmail);
 	  
 	  // submit registration form
-	  driver.findElement(By.id("registerBtn")).click();
+	  driver.findElement(By.id("register")).click();
 	  Thread.sleep(2000);
 	  
 	  // check if navigated to "register"
@@ -161,7 +161,7 @@ public class UserSeleniumTest {
 	  driver.findElement(By.id("registerEmail")).sendKeys(registerEmail);
 	  
 	  // submit registration form
-	  driver.findElement(By.id("registerBtn")).click();
+	  driver.findElement(By.id("register")).click();
 	  Thread.sleep(2000);
 	  
 	  // check if navigated to "loginPage"
@@ -182,7 +182,7 @@ public class UserSeleniumTest {
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  
 	  // submit login form
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  
 	  // check if navigated to "login"
@@ -196,7 +196,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(wrongPassword);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/login");
 	  driver.findElements(By.xpath("//*[contains(text(), 'Wrong username or password!')]"));
@@ -206,7 +206,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(wrongUsername);
 	  driver.findElement(By.id("loginPassword")).sendKeys(wrongPassword);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/login");
 	  driver.findElements(By.xpath("//*[contains(text(), 'Wrong username or password!')]"));
@@ -216,7 +216,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  
 	  // check if navigated to "edit"
@@ -237,9 +237,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // NAVIGATE TO HOME PAGE FROM REGISTER PAGE
@@ -251,9 +251,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // NAVIGATE TO HOME PAGE FROM PROFILE PAGE
@@ -262,7 +262,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -275,8 +275,8 @@ public class UserSeleniumTest {
 	  // visible: profile & logout; invisible: login & register
 	  driver.findElement(By.linkText(existingUsername1));
 	  driver.findElement(By.id("logoutBtn"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signinNav']")).size() == 0);
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signupNav']")).size() == 0);
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signin']")).size() == 0);
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signup']")).size() == 0);
   }
   
   @Test
@@ -293,9 +293,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // NAVIGATE TO PROFILE PAGE FROM HOME PAGE
@@ -304,7 +304,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -319,8 +319,8 @@ public class UserSeleniumTest {
 	  // visible: profile & logout; invisible: login & register
 	  driver.findElement(By.linkText(existingUsername1));
 	  driver.findElement(By.id("logoutBtn"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signinNav']")).size() == 0);
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signupNav']")).size() == 0);
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signin']")).size() == 0);
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='signup']")).size() == 0);
   }
   
   @Test
@@ -334,7 +334,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername2);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword2);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -400,7 +400,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -416,9 +416,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
 	  
 // LOGOUT FROM PROFILE PAGE
@@ -427,7 +427,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -443,9 +443,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
   }
   
@@ -460,7 +460,7 @@ public class UserSeleniumTest {
 	  Thread.sleep(2000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername3);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword3);
-	  driver.findElement(By.id("loginBtn")).click();
+	  driver.findElement(By.id("login")).click();
 	  Thread.sleep(2000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
@@ -473,9 +473,9 @@ public class UserSeleniumTest {
 	  
 	  // check navbar items
 	  // visible: login & register; invisible: profile & logout
-	  driver.findElement(By.id("signinNav"));
-	  driver.findElement(By.id("signupNav"));
-	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profileNav']")).size() == 0);
+	  driver.findElement(By.id("signin"));
+	  driver.findElement(By.id("signup"));
+	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='profile']")).size() == 0);
 	  Assert.assertTrue(driver.findElements(By.xpath("//a[@id='logoutBtn']")).size() == 0);
   }
   
