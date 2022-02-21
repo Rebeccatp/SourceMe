@@ -1,21 +1,126 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<form action="UpdateProfileServlet" method="post">
-    First Name: <input type="text" name="firstName" size="20"><br>
-    Last Name: <input type="text" name="lastName" size="20"><br>
-    Contact Details: <input type="number" name="number" size="20"><br>
-    UserName: <input type="text" name="userName" size="20"><br>
-    Password: <input type="password" name="password" size="20"><br>
-    Email: <input type="text" name="email" size= "20"><br>
-    <input type="submit" value="updateProfile" />
-</form>
-
-</body>
+	<head>
+		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		<meta charset="ISO-8859-1">
+		<title>SourceMe - Update Profile</title>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/updateProfile.css" crossorigin="anonymous">
+		<style type="text/css"><%@include file="/css/header.css" %></style>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-sm bg-light navbar-light">
+		  <ul class="navbar-nav col-lg-9">
+		    <li class="nav-item active">
+		    	<a href="#"><img src="<%=request.getContextPath()%>/assets/logo.png" width="120px"></a>
+		    </li>
+		    <li class="nav-item">
+		    	<a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a>
+		    </li>
+		    <li class="nav-item">
+		    	<a class="nav-link" href="<%=request.getContextPath()%>/tutorialServlet/dashboard">All Tutorials</a>
+		    </li>
+		  </ul>
+		  <ul class="navbar-nav col-lg-3">
+		  	<c:choose>
+					<c:when test="${sessionScope['userId'] != null}">
+						<li class="nav-item">
+		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+		    		</li>
+		    	</c:when>
+					<c:when test="${sessionScope['userId'] == null}">
+		   			<li class="nav-item">
+		      		<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		    		</li>
+		      	<li class="nav-item">
+		      		<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		    		</li>
+		    	</c:when>
+				</c:choose>
+		    <li>
+		    	<div class="btn-add-qns">
+		    		<a href="<%=request.getContextPath()%>/questionServlet/questionForm" class="add-qn-link">Add Your Question</a>
+		    	</div>
+		    </li>
+		    <c:choose>
+		    	<c:when test="${sessionScope['userId'] != null }">
+		    		<li>
+		    			<div class="logout-btn">
+								<a href="<%=request.getContextPath()%>/UserServlet/logout" style="float:right">
+									<button id="logoutBtn" class="btn btn-secondary">Logout</button>
+								</a>
+							</div>
+						</li>
+		    	</c:when>
+		   	</c:choose>
+		  </ul>
+		</nav>
+		
+		<div class="container" style="margin-top: 20px">
+			<h2 style="margin-left: 505px;">Profile</h2>
+			<br><br>
+			<form action="update" method="post" style="margin-left: 400px;">
+				<table>
+					<div class="role">
+						<tr>
+							<th>Role: </th>
+							<td>
+								<select id="updateRole" name="role">
+									<option>${user.role}</option>
+									<option>${user.role == "Admin" ? "User" : "Admin"}</option>
+								</select>
+							</td>
+						</tr>
+					</div>
+					<div class="firstName">
+						<tr>
+							<th>First Name: </th>
+							<td><input id="updateFirstname" type="text" name="firstName" value="${user.firstName}"></td>
+						</tr>
+					</div>
+					<div class="lastName">
+						<tr>
+							<th>Last Name: </th>
+							<td><input id="updateLastname" type="text" name="lastName" value="${user.lastName}"></td>
+						</tr>
+					</div>
+					<div class="number">
+						<tr>
+							<th>Contact Details: </th>
+							<td><input id="updateNumber" type="text" name="number" value="${user.number}"></td>
+						</tr>
+					</div>
+					<div class="username">
+						<tr>
+							<th>Username: </th>
+							<td><input id="username" type="text" name="userName" value="${user.userName}" readonly="readonly"></td>
+						</tr>
+					</div>
+					<div class="password">
+						<tr>
+							<th>Password: </th>
+							<td><input id="updatePassword" type="password" name="password" value="${user.password}"></td>
+						</tr>
+					</div>
+					<div>
+						<tr>
+							<th>Email: </th>
+							<td><input id="updateEmail" type="text" name="email" value="${user.email}"></td>
+						</tr>
+					</div>
+				</table>
+				<br><br>
+				<input id="updateBtn" class="btn btn-primary" type="submit" value="Save changes" style="width: 320px; margin-bottom: 20px; text-align: center;"/>
+			</form>
+			<a href="delete?id=${user.id}">
+				<button id="deleteBtn" class="btn btn-danger" style="margin-left: 400px; width: 320px;">Delete</button>
+			</a>
+		</div>
+		<div class="container" style="margin-top: 40px; margin-bottom: 40px">
+		</div>
+	</body>
 </html>

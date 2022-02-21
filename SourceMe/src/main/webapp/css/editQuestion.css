@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+/* .title{
+margin-top: 50px;
+} */
+.title h2{
+text-align: center;
+}
+
+.title-label{
+font-size: 20px;
+}
+
+.question-label{
+font-size: 20px;
+}
+
+.save-btn{
+text-align: center;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.btn-success{
+border: none;
+border-radius: 5px;
+color: white;
+padding: 5px 145px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+/* margin-left: 150px; */
+align-content: center;
+/* margin-top: 30px; */
+}
+
+
