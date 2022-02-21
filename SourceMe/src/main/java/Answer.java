@@ -9,6 +9,11 @@ import java.util.List;
 
 
 public class Answer {
+	AnswerCollection mockAnswerCollection;
+    public Answer(AnswerCollection mockAnswerCollection) {
+        this.mockAnswerCollection = mockAnswerCollection;
+    }
+    
 	protected int id;
 	protected int qnsId;
 	protected String postBy;
@@ -165,7 +170,8 @@ public class Answer {
 				
 	}
 	
-	public boolean createAnswer(Integer id, Integer qnsId, String postBy, String answers) {
+	public boolean createAnswer(Integer id, Integer qnsId, String postBy, String answers, String userId) {
+		if(mockAnswerCollection.ifId(userId)) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
@@ -184,7 +190,9 @@ public class Answer {
 				// TODO Auto-generated catch block
 				System.out.println(exception);
 				return false;
-				}
+				} 
+		}
+		return false;
 	}
 	
 	public boolean editAnswer(Integer qnsId, String postBy, String answer, int id) {

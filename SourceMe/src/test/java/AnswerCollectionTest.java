@@ -7,14 +7,16 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 class AnswerCollectionTest {
 
 	private Answer answer;
+	private Answer answer2;
 	private int updateId;
 	private int deleteId;
-	private int deleteId2;
 	private String postBy;
 	private String answers;
 	private Integer answerId;
@@ -27,15 +29,18 @@ class AnswerCollectionTest {
 	private String driverErr;
 	private String usernameErr;
 	private String passwordErr;
+	private AnswerCollection mockAnswerCollection = mock(AnswerCollection.class);
+    private String userid;
     
 	@BeforeEach
 	void setUp() throws Exception {
+	    answer2 = new Answer(mockAnswerCollection);
+	    userid = "12";
 		answerId = 1;
 		questionId = 5;
 		answer = new Answer(0,0,null,null);
 		updateId = 84;
-		deleteId = 210;
-		deleteId2 = 0;
+		deleteId = 236;
 		postBy = "jaslynylh";
 		answers = "123";
 		jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
@@ -97,7 +102,6 @@ class AnswerCollectionTest {
 
 	@Test
 	void testShowCreateAnswerForm() {
-//		fail("Not yet implemented");
 		var question = answer.showCreateAnswerForm(questionId);
 		//if the question is not equals to null it will be true
 		assertFalse(question.equals(null));
@@ -105,7 +109,6 @@ class AnswerCollectionTest {
 	
 	@Test
 	void testShowEditForm() {
-//		fail("Not yet implemented");
 		var currentAnswer = answer.showEditForm(updateId);
 		//if the currentAnswer is not equals to null it will be true
 		assertFalse(currentAnswer.equals(null));
@@ -113,18 +116,20 @@ class AnswerCollectionTest {
 	
 	@Test
 	void testCreateAnswer(){
-//		fail("Not yet implemented");
-			List<Answer> answerList = answer.getAnswerByQnsId(questionId);
-			assertFalse(answerList.isEmpty());
-			answer.createAnswer(0, questionId, postBy, answers);
-			assertEquals(answer.getAnswerByQnsId(questionId).size(), answerList.size()+1);
-			var createError = answer.createAnswer(0, null, postBy, answers);
-			assertFalse(createError);
+		when(mockAnswerCollection.ifId(userid)).thenReturn(true);
+		assertTrue(answer2.createAnswer(0, questionId,postBy,answers,userid));
+		verify(mockAnswerCollection).ifId(userid);
+		}
+	@Test
+	void testCreateAnswerError(){
+		when(mockAnswerCollection.ifId(userid)).thenReturn(true);
+		assertFalse(answer2.createAnswer(0, null, postBy, answers, userid));
+		verify(mockAnswerCollection).ifId(userid);
+		assertFalse(answer2.createAnswer(0, null, postBy, answers, null));
 		}
 
 	@Test
 	void testGetQuestionById() {
-//		fail("Not yet implemented");
 		var currentQuestion = answer.getQuestionById(questionId);
 		//if the currentQuestion is not equals to null it will be true
 		assertFalse(currentQuestion.equals(null));

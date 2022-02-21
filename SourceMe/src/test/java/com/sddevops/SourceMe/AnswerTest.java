@@ -25,11 +25,11 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �View Answer� button
+		//Click on "View Answer" button
 	    driver.findElement(By.linkText("View Answer")).click();
 	    Thread.sleep(1800);
 	    
-		//Click on �Add your Answer� button
+		//Click on "Add your Answer" button
 	    driver.findElement(By.name("btn-add-answer")).click();
 	    Thread.sleep(1800);
 	    
@@ -43,25 +43,25 @@ public class AnswerTest {
 	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �login� button
+		//Click on "login" button
 	    driver.findElement(By.id("login")).click();
 	    Thread.sleep(1800);
 	    
-		//Click on �Home� button
+		//Click on "Home" button
 	    driver.findElement(By.linkText("Home")).click();
 	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �All Question� button
+		//Click on "All Question" button
 	    driver.findElement(By.name("questions")).click();
 	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �View Answer� button
+		//Click on "View Answer" button
 	    driver.findElement(By.linkText("View Answer")).click();
 	    Thread.sleep(1800);
 	    
-		//Click on �Add your Answer� button
+		//Click on "Add your Answer" button
 	    driver.findElement(By.name("btn-add-answer")).click();
 	    Thread.sleep(1800);
 	    
@@ -70,7 +70,7 @@ public class AnswerTest {
 	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �Submit Answer� button
+		//Click on "Submit Answer" button
 	    driver.findElement(By.id("submitAnswer")).click();
 	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
@@ -83,12 +83,12 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(1800);
 		
-		//Click on �All Question� button
+		//Click on "All Question" button
 		driver.findElement(By.name("questions")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 		
-		//Click on �View Answer� button 
+		//Click on "View Answer" button 
 	    driver.findElement(By.linkText("View Answer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
@@ -101,17 +101,17 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(1800);
 		
-		//Click on �All Question� button
+		//Click on "All Question" button
 		driver.findElement(By.name("questions")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 		
-		//Click on �View Answer� button 
+		//Click on "View Answer" button 
 	    driver.findElement(By.linkText("View Answer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-	    //Click on �edit� button 
+	    //Click on "edit" button 
 	    driver.findElement(By.name("editAnswer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
@@ -125,7 +125,7 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(1800);
 		
-		//Click on �All Question� button 
+		//Click on "All Question" button 
 		driver.findElement(By.name("questions")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);

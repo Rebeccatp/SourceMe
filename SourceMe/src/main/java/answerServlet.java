@@ -22,6 +22,35 @@ import javax.servlet.http.HttpSession;
 public class answerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+    //Step 1: Prepare list of variables used for database connections
+    private String jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "password";
+
+    //Step 2: Prepare list of SQL prepared statements to perform CRUD to database
+    private static final String SELECT_QUESTION_BY_ID = "select title, question, username from question where id = ?";
+    private static final String SELECT_ALL_ANSWERS = "select * from answers";
+    private static final String SELECT_ANSWER_BY_ID = "select id, qnsId, postBy, answers from answers where id = ?";
+    private static final String UPDATE_ANSWER_SQL = "update answers set qnsId = ?, postBy = ?, answers = ? where id = ?";
+    private static final String DELETE_ANSWER_SQL = "delete from answers where id = ?";
+
+    //Step 3: Implement the getConnection method which facilitates connection to the database via JDBC
+
+    protected Connection getConnection() {
+    	
+        Connection connection = null;
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
+
+    }
 	Answer answer = new Answer(0, 0, null, null);
        
     /**
@@ -74,12 +103,35 @@ public class answerServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Question existingQuestion = new Question(0,"", "", "");
 		//Step 5: Set existingQuestion and answerList to request and serve up the viewAnswer form
-		answerList = answer.getAnswerByQnsId(id);
-		existingQuestion = answer.getQuestionById(id);
-		request.setAttribute("question", existingQuestion);
-		request.setAttribute("answerList", answerList);
-		System.out.println(answerList);
-		request.getRequestDispatcher("/viewAnswer.jsp").forward(request, response);
+		try (Connection connection = getConnection();
+		        //Step 2: Create statements using connection object
+		        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUESTION_BY_ID);
+		        PreparedStatement preparedStatement2 = connection.prepareStatement(SELECT_ALL_ANSWERS);) {
+		        preparedStatement.setInt(1, id);
+		            //Step 3: Execute the query or update query
+		            ResultSet rs = preparedStatement.executeQuery();
+		            ResultSet rs2 = preparedStatement2.executeQuery();
+		            //Step 4: Process the ResultSet object
+		            while (rs.next()) {
+		             String title = rs.getString("title");
+		             String question = rs.getString("question");
+		             String username = rs.getString("username");
+		             existingQuestion = new Question(id, title, question, username);
+		            }
+		            while (rs2.next()) {
+		                int ansId = rs2.getInt("id");
+		                int qnsId = rs2.getInt("qnsId");
+		                String postBy = rs2.getString("postBy");
+		                String answer = rs2.getString("answers");
+		                answerList.add(new Answer(ansId, qnsId, postBy, answer));
+		              }
+		          } catch (SQLException e) {
+		              System.out.println(e.getMessage());
+		          }
+		          //Step 5: Set existingQuestion and answerList to request and serve up the viewAnswer form
+		          request.setAttribute("question", existingQuestion);
+		          request.setAttribute("answerList", answerList);
+		          request.getRequestDispatcher("/viewAnswer.jsp").forward(request, response);
 	}
 	
 	private void showCreateAnswerForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -90,14 +142,30 @@ public class answerServlet extends HttpServlet {
 			//Get parameter passed in the URL
 			int qnsId = Integer.parseInt(request.getParameter("qnsId"));
 			Question existingQuestion = new Question(0,"","","");
-			existingQuestion = answer.showCreateAnswerForm(qnsId);
-			request.setAttribute("question", existingQuestion);
-			request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
+			
+			 try (Connection connection = getConnection();
+			            //Step 2: Create a statement using connection object
+			            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUESTION_BY_ID);) {
+			                preparedStatement.setInt(1, qnsId);
+			                //Step 3: Execute the query or update query
+			                ResultSet rs = preparedStatement.executeQuery();
+			                //Step 4: Process the ResultSet object
+			                while (rs.next()) {
+			                    String title = rs.getString("title");
+			                    String question = rs.getString("question");
+			                    String username = rs.getString("username");
+			                    existingQuestion = new Question(qnsId, title, question, username);
+			                }
+			            } catch (SQLException e) {
+			                System.out.println(e.getMessage());
+			            }
+			            request.setAttribute("question", existingQuestion);
+			            request.getRequestDispatcher("/createAnswer.jsp").forward(request, response);
+			        }else {
+						response.sendRedirect(contextPath + "/UserServlet/loginPage");
 		}
-		else {
-			response.sendRedirect(contextPath + "/UserServlet/loginPage");
+		
 		}
-	}
 	
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		//get parameter passed in the URL
@@ -127,18 +195,45 @@ public class answerServlet extends HttpServlet {
 		int qnsId = Integer.parseInt(request.getParameter("qnsId"));
 		String postBy = request.getParameter("postBy");
 		String answers = request.getParameter("answer");
+		String contextPath = request.getContextPath();
+		HttpSession session = request.getSession();
+        String idString = (String) session.getAttribute("userId");
+        if (ifId(idString)) {
 		//Step 3: Attempt connection to database using JDBC
-		try {
-			if (answer.createAnswer(0, qnsId, postBy, answers) == true) {
-				response.sendRedirect("viewAnswer?id=" + qnsId);
-			}
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
+            //Step 4: implement the sql query using prepared statement (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+            PreparedStatement ps = con.prepareStatement("insert into answers values(?,?,?,?)");
+            //Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
+            ps.setInt(1, 0);
+            ps.setInt(2, qnsId);
+            ps.setString(3, postBy);
+            ps.setString(4, answers);
+            //Step 6: perform the query on the database using the prepared statement
+            int i = ps.executeUpdate();
+            //Step 7: check if the query had been successfully executed
+            if (i > 0) {
+                response.sendRedirect("viewAnswer?id=" + qnsId);
+            }
+        }
+        //Step 8: catch and print out any exception
+        catch (Exception exception) {
+            System.out.println(exception);
+            out.close();
 		}
-		//Step 8: catch and print out any exception
-		catch (Exception exception) {
-			System.out.println(exception);
-			out.close();
-		}
+        }
 	}
+	
+	protected boolean ifId(String id){
+        if (id != null){
+        return true;
+        }
+        else {
+            return false;
+
+        }
+    }
 	
 	private void deleteAnswer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Retrieve value from the request
