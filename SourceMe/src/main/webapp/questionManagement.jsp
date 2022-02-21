@@ -109,7 +109,7 @@ information accordingly -->
 
 
 
-<div class="align"><a href="/SourceMe/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a>
+<div class="align"><a href="<%=request.getContextPath()%>/answerServlet/viewAnswer?id=<c:out value='${question.id}'/>">View Answer</a>
 <img src="<%=request.getContextPath()%>/assets/question.png" width="20px"></div>
 
 <form action="bookmarkServlet" method="post" class="align">
