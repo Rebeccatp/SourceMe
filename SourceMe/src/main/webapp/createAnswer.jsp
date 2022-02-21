@@ -89,7 +89,7 @@
 				    <div class="form-row mt-2">
 	            <div class="col">
 	              <label style="font-size: 18px;">My Answer</label> 
-	              <input type="text" class="form-control" name="answer">
+	              <input type="text" class="form-control" id="answer" name="answer">
 	            </div>
 				    </div>
 				    <!-- Submit button -->

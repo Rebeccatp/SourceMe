@@ -14,3 +14,11 @@ margin: 4px 2px;
 cursor: pointer;
 align-content: center;
 }
+
+.btn-add-qns{
+	background-color: #586BA4;
+   	color: white;
+    padding: 6px 10px 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
