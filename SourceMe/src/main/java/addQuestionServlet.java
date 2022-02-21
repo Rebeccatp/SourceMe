@@ -59,7 +59,7 @@ public class addQuestionServlet extends HttpServlet {
 			ps.setString(4, u);
 			//Step 6: Perform the query on the database using the prepared statement
 			int i = ps.executeUpdate();
-			//Step 7: Check if the query had been successfully executed, return “Question added” via the response
+			//Step 7: Check if the query had been successfully executed, return Question added via the response
 			if (i > 0) {
 				PrintWriter writer = response.getWriter();
 				writer.println("<h1>" + "Question added!" + "</h1>");

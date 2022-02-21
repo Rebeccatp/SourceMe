@@ -176,7 +176,7 @@ public class tutorialServlet extends HttpServlet {
 				int i = ps.executeUpdate();
 				System.out.println(i);
 				response.sendRedirect("dashboard");
-				//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
+				//Step 7: Check if the query had been successfully execute, return You have successfully created a tutorial! via the response
 				return true;
 			}
 			//Step 8: catch and print out any exception
