@@ -34,7 +34,7 @@ class AnswerCollectionTest {
 		questionId = 5;
 		answer = new Answer(0,0,null,null);
 		updateId = 84;
-		deleteId = 209;
+		deleteId = 210;
 		deleteId2 = 0;
 		postBy = "jaslynylh";
 		answers = "123";

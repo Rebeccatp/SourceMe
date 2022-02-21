@@ -9,7 +9,7 @@ import org.testng.annotations.AfterTest;
 
 public class NewTest {
 	private WebDriver driver;
-//  @Test
+//  @Test 
 //  public void f() throws InterruptedException {
 //	// define the chrome driver
 //			System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
@@ -27,7 +27,7 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// hit all questions button
-		driver.findElement(By.name("question")).click();
+		driver.findElement(By.name("questions")).click();
 		Thread.sleep(950);
 
 		// get to the list of question page
@@ -47,12 +47,12 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// fill up the login details
-		driver.findElement(By.name("userName")).sendKeys("Zann");
-		driver.findElement(By.name("password")).sendKeys("Zann@123");
+		driver.findElement(By.name("userName")).sendKeys("jaslynylh");
+		driver.findElement(By.name("password")).sendKeys("123");
 		Thread.sleep(950);
 
 		// hit login button
-		driver.findElement(By.name("Login")).click();
+		driver.findElement(By.id("login")).click();
 		Thread.sleep(950);
 
 		// navigate to account page
@@ -77,7 +77,7 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// hit submit button
-		driver.findElement(By.name("submit")).click();
+		driver.findElement(By.id("submitQuestion")).click();
 		Thread.sleep(950);
 
 		// get to the question added page
@@ -105,7 +105,7 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// click on back button
-		driver.findElement(By.name("Back")).click();
+		driver.findElement(By.id("back")).click();
 		Thread.sleep(950);
 
 		// get to list of question page
@@ -125,7 +125,7 @@ public class NewTest {
 		Thread.sleep(950);
 
 		// hit save changes button
-		driver.findElement(By.name("save changes")).click();
+		driver.findElement(By.id("editQns")).click();
 		Thread.sleep(950);
 
 		// navigate back to list of question page to check if question is edited
@@ -147,7 +147,7 @@ public class NewTest {
 
 	@BeforeTest
 	public void beforeTest() {
-		String chromeDriverDir = "C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe";
+		String chromeDriverDir = "C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromeDriverDir);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
