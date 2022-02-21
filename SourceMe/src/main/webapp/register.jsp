@@ -34,10 +34,10 @@
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 						<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+		      		<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 		    		</li>
 		      	<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+		      		<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 		    		</li>
 		    	</c:when>
 				</c:choose>
@@ -69,7 +69,7 @@
 						<tr>
 							<th>Role: </th>
 							<td>
-								<select name="role">
+								<select id="registerRole" name="role">
 									<option>Admin</option>
 									<option>User</option>
 								</select>
@@ -79,42 +79,42 @@
 					<div class="firstName">
 						<tr>
 							<th>First Name: </th>
-							<td><input type="text" name="firstName" size="20"></td>
+							<td><input id="registerFirstname" type="text" name="firstName" size="20"></td>
 						</tr>
 					</div>
 					<div class="lastName">
 						<tr>
 							<th>Last Name: </th>
-							<td><input type="text" name="lastName" size="20"></td>
+							<td><input id="registerLastname" type="text" name="lastName" size="20"></td>
 						</tr>
 					</div>
 					<div class="number">
 						<tr>
 							<th>Contact Details: </th>
-							<td><input type="text" name="number" size="20"></td>
+							<td><input id="registerNumber" type="text" name="number" size="20"></td>
 						</tr>
 					</div>
 					<div class="username">
 						<tr>
 							<th>Username: </th>
-							<td><input type="text" name="userName" size="20"></td>
+							<td><input id="registerUsername" type="text" name="userName" size="20"></td>
 						</tr>
 					</div>
 					<div class="password">
 						<tr>
 							<th>Password: </th>
-							<td><input type="password" name="password" size="20"></td>
+							<td><input id="registerPassword" type="password" name="password" size="20"></td>
 						</tr>
 					</div>
 					<div class="email">
 						<tr>
 							<th>Email: </th>
-							<td><input type="text" name="email" size="20"></td>
+							<td><input id="registerEmail" type="text" name="email" size="20"></td>
 						</tr>
 					</div>
 				</table>
 				<br><br>
-				<input class="btn btn-primary" type="submit" value="Register" style="margin-left: 120px"/>
+				<input id="registerBtn" class="btn btn-primary" type="submit" value="Register" style="margin-left: 120px"/>
 			</form>
 		</div>
 		<br><br><br>

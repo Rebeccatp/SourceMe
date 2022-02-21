@@ -7,10 +7,15 @@
       <class name="com.sddevops.SourceMe.AnswerTest"/>
 
       <class name="com.sddevops.SourceMe.TutorialTest"/>
+<<<<<<< HEAD
       <class name="SourceMe.NewTest"/>
       <class name="tutorialCollectionTest"/>
 		<class name="AnswerCollectionTest"/>
 		<class name="questiontest"/>
+=======
+
+      <class name="SourceMe.UserSeleniumTest"/>
+>>>>>>> branch 'tutorialBranch' of https://github.com/Rebeccatp/SourceMe
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
