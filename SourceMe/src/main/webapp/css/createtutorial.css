@@ -37,8 +37,6 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
-
-
 .button-submit{
 background-color: #586BA4;
 border: none;
@@ -56,6 +54,13 @@ align-content: center;
 /* margin-top: 30px; */
 }
 
+.btn-add-qns{
+	background-color: #586BA4;
+   	color: white;
+    padding: 6px 10px 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  
 .createTutorial{
 	margin-bottom:55px;
 }

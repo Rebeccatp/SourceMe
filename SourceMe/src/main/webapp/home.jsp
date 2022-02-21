@@ -36,7 +36,7 @@
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 			   		<li class="nav-item">
-			      	<a id="signinNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage" id="signin">Sign In</a>
 			    	</li>
 			      <li class="nav-item">
 			      	<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
@@ -65,7 +65,7 @@
 		  <div class="centered">Welcome to SourceMe!</div>
 		</div>
 		<div class="buttons">
-			<button onclick="window.location.href='<%=request.getContextPath()%>/questionServlet/questions'" type="button" class="btn-all-questions">All Questions</button>
+			<button onclick="window.location.href='<%=request.getContextPath()%>/questionServlet/questions'" name="questions" type="button" class="btn-all-questions">All Questions</button>
 			<button onclick="window.location.href='<%=request.getContextPath()%>/tutorialServlet/dashboard'" type="button" class="btn-all-tutorials">All Tutorials</button>
 		</div>
 	</body>
