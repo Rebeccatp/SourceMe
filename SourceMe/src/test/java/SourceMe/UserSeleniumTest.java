@@ -51,7 +51,7 @@ public class UserSeleniumTest {
 	
   @Test
   public void navigateToRegisterPage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // NAVIGATE TO REGISTER PAGE FROM HOME PAGE
@@ -85,7 +85,7 @@ public class UserSeleniumTest {
   
   @Test
   public void navigateToLoginPage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // NAVIGATE TO LOGIN PAGE FROM HOME PAGE
@@ -119,7 +119,7 @@ public class UserSeleniumTest {
   
   @Test
   public void register() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // REGISTER FAIL (USERNAME ALREADY EXISTS)
@@ -170,7 +170,7 @@ public class UserSeleniumTest {
   
   @Test
   public void login() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // LOGIN FAIL (WRONG USERNAME)
@@ -225,7 +225,7 @@ public class UserSeleniumTest {
   
   @Test
   public void navigateToHomePage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // NAVIGATE TO HOME PAGE FROM LOGIN PAGE
@@ -281,7 +281,7 @@ public class UserSeleniumTest {
   
   @Test
   public void navigateToProfilePage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 
 // NAVIGATE TO PROFILE PAGE VIA URL	  
@@ -325,7 +325,7 @@ public class UserSeleniumTest {
   
   @Test
   public void update() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // UPDATE SUCCESS
@@ -391,7 +391,7 @@ public class UserSeleniumTest {
   
   @Test
   public void logout() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // LOGOUT FROM HOME PAGE
@@ -451,7 +451,7 @@ public class UserSeleniumTest {
   
   @Test
   public void delete() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\chromedriver.exe");
 	  WebDriver driver = new ChromeDriver();
 	  
 // DELETE SUCCESS
