@@ -31,16 +31,16 @@ pageEncoding="ISO-8859-1"%>
 <c:when test="${sessionScope['userId'] != null}">
 
 <li class="nav-item">
-<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+<a class="nav-link" id="profile" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
 </li>
 </c:when>
 <c:when test="${sessionScope['userId'] == null}">
 
  <li class="nav-item">
-<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
+<a class="nav-link" id="signin" href="<%=request.getContextPath()%>/UserServlet/loginPage">Sign In</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+<a class="nav-link" id="signup" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 </li>
 </c:when>
 </c:choose>
@@ -67,14 +67,14 @@ pageEncoding="ISO-8859-1"%>
 <div class="username">
 	<tr>
 	<th>Username: </th>
-	<td><input type="text" name="userName" size="20"></td>
+	<td><input id="loginUsername" type="text" name="userName" size="20"></td>
 	</tr>
 </div>
 <br>
 <div class="password">
 	<tr>
 	<th>Password: </th>
-	<td><input type="password" name="password" size="20"></td>
+	<td><input id="loginPassword" type="password" name="password" size="20"></td>
 	</tr>
 </div>
 

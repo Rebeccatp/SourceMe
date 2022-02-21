@@ -31,15 +31,15 @@
 		  	<c:choose>
 					<c:when test="${sessionScope['userId'] != null}">
 						<li class="nav-item">
-		      		<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
+		      		<a id="profile" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/edit">${sessionScope['userName']}</a>
 		    		</li>
 		    	</c:when>
 					<c:when test="${sessionScope['userId'] == null}">
 			   		<li class="nav-item">
-			      	<a class="nav-link" href="<%=request.getContextPath()%>/UserServlet/loginPage" id="signin">Sign In</a>
+			      	<a class="nav-link" id="signin" href="<%=request.getContextPath()%>/UserServlet/loginPage" id="signin">Sign In</a>
 			    	</li>
 			      <li class="nav-item">
-			      	<a id="signupNav" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
+			      	<a id="signup" class="nav-link" href="<%=request.getContextPath()%>/UserServlet/registerPage">Sign Up</a>
 			    	</li>
 		    	</c:when>
 				</c:choose>
