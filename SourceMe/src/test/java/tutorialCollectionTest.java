@@ -41,7 +41,7 @@ class tutorialCollectionTest {
 	void setUp() throws Exception {
 		tutorial = new Tutorial(0, null,null);
 		tutorial2 = new Tutorial(mockTutorialCollection);
-		tutorialId = 61;
+		tutorialId = 77;
 		deleteId = 62;
 		errorId = null;
 		setId = 64;

@@ -63,7 +63,7 @@
 		<nav class="navbar navbar-expand-md navbar-light">
 			<ul class="navbar-nav">
 				<li>
-					<a href="<%=request.getContextPath()%>/questionServlet/questions" class="nav-link">Back to question</a>
+					<a id="back" href="<%=request.getContextPath()%>/questionServlet/questions" class="nav-link">Back to question</a>
 				</li>
 			</ul>
 		</nav>
@@ -107,7 +107,7 @@
 							</fieldset>
 						</div>
 						<div class="save-btn">
-							<button type="submit" class="btn btn-success">Save changes</button>
+							<button id="editQns" type="submit" class="btn btn-success">Save changes</button>
 						</div>
 					</form>
 				</div>

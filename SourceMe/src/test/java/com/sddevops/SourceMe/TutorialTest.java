@@ -32,11 +32,11 @@ public class TutorialTest {
 			 driver.findElement(By.linkText("Sign In")).click();
 			 Thread.sleep(2000);
 			 //Enter credentials for Admin
-			 driver.findElement(By.id("userName")).sendKeys("test");
-			 driver.findElement(By.id("password")).sendKeys("1");
+			 driver.findElement(By.name("userName")).sendKeys("Ad");
+			 driver.findElement(By.name("password")).sendKeys("admin@123");
 			 Thread.sleep(2000);
 			 //Click on 'login' button
-			 driver.findElement(By.id("submit")).submit();
+			 driver.findElement(By.id("login")).click();
 			 Thread.sleep(2000);
 			 //Click on 'All tutorials' button on navigation bar 
 			 driver.findElement(By.linkText("All Tutorials")).click();
@@ -70,12 +70,12 @@ public class TutorialTest {
 			 //Click on 'sign in' button 
 			 driver.findElement(By.linkText("Sign In")).click();
 			 Thread.sleep(2000);
-			 //Enter credentials for Admin 
-			 driver.findElement(By.id("userName")).sendKeys("test");
-			 driver.findElement(By.id("password")).sendKeys("1");
+			 //Enter credentials for Admin
+			 driver.findElement(By.name("userName")).sendKeys("Ad");
+			 driver.findElement(By.name("password")).sendKeys("admin@123");
 			 Thread.sleep(2000);
-			 //Click on 'login' button 
-			 driver.findElement(By.id("submit")).submit();
+			 //Click on 'login' button
+			 driver.findElement(By.id("login")).click();
 			 Thread.sleep(2000);
 			 //Click on "All tutorials" button 
 			 driver.findElement(By.linkText("All Tutorials")).click();
@@ -97,16 +97,12 @@ public class TutorialTest {
 			 //Click on 'sign in' button 
 			 driver.findElement(By.linkText("Sign In")).click();
 			 Thread.sleep(2000);
-			 //Enter credentials for Admin 
-			 driver.findElement(By.id("userName")).clear();
-			 driver.findElement(By.id("password")).clear();
-			 Thread.sleep(1000);
-			 driver.findElement(By.id("userName")).sendKeys("test");
-			 Thread.sleep(1000);
-			 driver.findElement(By.id("password")).sendKeys("1");
+			 //Enter credentials for Admin
+			 driver.findElement(By.name("userName")).sendKeys("Ad");
+			 driver.findElement(By.name("password")).sendKeys("admin@123");
 			 Thread.sleep(2000);
 			 //Click on 'login' button
-			 driver.findElement(By.id("submit")).submit();
+			 driver.findElement(By.id("login")).click();
 			 Thread.sleep(2000);
 			 //Click on "All tutorials" button 
 			 driver.findElement(By.linkText("All Tutorials")).click();
@@ -115,6 +111,10 @@ public class TutorialTest {
 			 driver.findElement(By.linkText("Edit")).click();
 			 Thread.sleep(2000);
 			 //Make changes to title/content 
+			//Clear previous input
+			    driver.findElement(By.id("title")).clear();
+			    driver.findElement(By.id("tutorial")).clear();
+			    Thread.sleep(1500);
 			 driver.findElement(By.id("title")).sendKeys("testing devops");
 			 driver.findElement(By.id("tutorial")).sendKeys("Tutorials testing devops");
 			 Thread.sleep(2000);
@@ -135,12 +135,12 @@ public class TutorialTest {
 			 //Click on 'sign in' button 
 			 driver.findElement(By.linkText("Sign In")).click();
 			 Thread.sleep(2000);
-			 //Enter credentials for Admin 
-			 driver.findElement(By.id("userName")).sendKeys("test");
-			 driver.findElement(By.id("password")).sendKeys("1");
+			 //Enter credentials for Admin
+			 driver.findElement(By.name("userName")).sendKeys("Ad");
+			 driver.findElement(By.name("password")).sendKeys("admin@123");
 			 Thread.sleep(2000);
 			 //Click on 'login' button
-			 driver.findElement(By.id("submit")).submit();
+			 driver.findElement(By.id("login")).click();
 			 Thread.sleep(2000);
 			 //Click on "All tutorials" button 
 			 driver.findElement(By.linkText("All Tutorials")).click();
