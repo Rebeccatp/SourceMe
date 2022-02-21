@@ -12,6 +12,7 @@ class questiontest {
 	private static Question question = new Question(0, null, null, null);
 	private static int questionId;
 	private static int deleteQuestionId;
+	private static Question questionById;
 	
 	
 	@BeforeAll
@@ -29,15 +30,15 @@ class questiontest {
 		//Act
 		List<Question> testQc = question.getAllQuestions();
 		//Assert
-		assertTrue(!testQc.isEmpty());
+		assertFalse(testQc.isEmpty());
 	}
 
 	@Test
 	void testGetQuestionByID() {
 		//Act
-		var questionById = question.getQuestionByID(questionId);
+		questionById = question.getQuestionByID(questionId);
 		//Assert
-		assertTrue(!questionById.equals(null));
+		assertFalse(questionById.equals(null));
 	}
 
 	@Test
@@ -54,7 +55,7 @@ class questiontest {
 
 	@Test
 	void testUpdateQn() {
-		var questionById = question.getQuestionByID(questionId);
+		questionById = question.getQuestionByID(questionId);
 		boolean isUpdated = question.updateQn("Kpop", "Jisoo songs and drama", "Kelsey", questionId);	
 		assertEquals(isUpdated, true);
 	}
