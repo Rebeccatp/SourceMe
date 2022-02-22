@@ -131,10 +131,6 @@ class tutorialCollectionTest {
 	@Test
 	void testCreateTutorialError() {		
 		
-		//	Assert the number of tutorials
-//		List<Tutorial> testTc = tutorial.getAllTutorials();
-//		assertFalse(testTc.isEmpty());
-//		int beforeCreate = testTc.size();
 		
 		// Act
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
