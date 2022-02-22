@@ -52,7 +52,7 @@ class AnswerCollectionTest {
 		questionId = 5;
 		answer = new Answer(0,0,null,null);
 		updateId = 84;
-		deleteId = 258;
+		deleteId = 269;
 		postBy = "jaslynylh";
 		answers = "123";
 		jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
