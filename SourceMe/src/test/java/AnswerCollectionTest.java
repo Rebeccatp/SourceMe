@@ -52,7 +52,7 @@ class AnswerCollectionTest {
 		questionId = 5;
 		answer = new Answer(0,0,null,null);
 		updateId = 84;
-		deleteId = 269;
+		deleteId = 272;
 		postBy = "jaslynylh";
 		answers = "123";
 		jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
@@ -108,6 +108,7 @@ class AnswerCollectionTest {
 		List <Answer> answerList = answer.getAnswerByQnsId(questionId);
 		//if the answerList is not empty it will be true
 		assertFalse(answerList.isEmpty());
+		connectionError3 = answer.getConnection(jdbcURL, usernameErr, passwordErr, driverErr);
 		assertNull(connectionError3);
 		} 
 
