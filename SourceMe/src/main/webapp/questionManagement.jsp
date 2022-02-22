@@ -88,11 +88,11 @@
 										<c:choose>
 									 		<c:when test="${sessionScope['userName'] == question.username}">
 												<div class="align">
-													<a href="edit?id=<c:out value='${question.id}' />">Edit</a>
+													<a href="edit?id=<c:out value='${question.id}' />" name="edit" >Edit</a>
 													<img src="<%=request.getContextPath()%>/assets/edit.png" width="20px">
 												</div>
 												<div class="align">
-													<a href="delete?id=<c:out value='${question.id}' />">Delete</a>
+													<a href="delete?id=<c:out value='${question.id}'/>" name="delete" >Delete</a>
 													<img src="<%=request.getContextPath()%>/assets/remove.png" width="20px">
 												</div>
 								    	</c:when>

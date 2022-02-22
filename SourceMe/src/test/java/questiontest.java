@@ -1,3 +1,4 @@
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ class questiontest {
 	@Test
 	void testGetQuestionByID() {
 		//Act
-		var questionById = question.getQuestionByID(questionId);
+		Question questionById = question.getQuestionByID(questionId);
 		//Assert
 		assertTrue(!questionById.equals(null));
 	}
@@ -54,7 +55,7 @@ class questiontest {
 
 	@Test
 	void testUpdateQn() {
-		var questionById = question.getQuestionByID(questionId);
+		Question questionById = question.getQuestionByID(questionId);
 		boolean isUpdated = question.updateQn("Kpop", "Jisoo songs and drama", "Kelsey", questionId);	
 		assertEquals(isUpdated, true);
 	}

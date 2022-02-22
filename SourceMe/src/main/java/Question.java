@@ -40,7 +40,7 @@ public class Question {
 	return connection;
 	}
   
-public class Question {
+
 	protected int id;
 	protected String title;
 	protected String question;
