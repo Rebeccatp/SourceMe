@@ -164,7 +164,7 @@ public class questionServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			writer.println("<br>");
 			writer.println(
-					"<a href='http://localhost:8090/SourceMe/questionServlet/questions' style='color: #9A9A9A; text-decoration:none;'>"
+					"<a href='/SourceMe/questionServlet/questions' style='color: #9A9A9A; text-decoration:none;'>"
 							+ "Back to main" + "</a>");
 			writer.println("<h1 style='text-align: center; color: #586BA4; margin-top: 190px'>"
 					+ "Your question has been added!" + "</h1>");
