@@ -23,20 +23,16 @@ public class NewTest {
 	@Test (priority = 1)
 	public void a() throws InterruptedException {
 		// navigate the browser to this url
-		driver.get("http://localhost:8090/SourceMe/home.jsp");
+		driver.get("http://localhost:8080/SourceMe/home.jsp");
 	
-
 		// hit all questions button
 		driver.findElement(By.name("questions")).click();
 		
-
 		// get to the list of question page
 		driver.getCurrentUrl();
 		
-
 		// hit add question button
 		driver.findElement(By.linkText("Add Your Question")).click();
-		
 	}
 
 	//login
@@ -49,14 +45,11 @@ public class NewTest {
 		driver.findElement(By.name("userName")).sendKeys("Ad");
 		driver.findElement(By.name("password")).sendKeys("admin@123");
 	
-
 		// hit login button
 		driver.findElement(By.id("login")).click();
-		
 
 		// navigate to account page
-		driver.getCurrentUrl();
-		
+		driver.getCurrentUrl();	
 	}
 	
 	//user try to add a question again
@@ -65,7 +58,6 @@ public class NewTest {
 		// hit add question button
 		driver.findElement(By.linkText("Add Your Question")).click();
 		
-
 		// get to the add question page
 		driver.getCurrentUrl();
 	
@@ -73,22 +65,17 @@ public class NewTest {
 		driver.findElement(By.name("title")).sendKeys("CPOP");
 		driver.findElement(By.name("question")).sendKeys("Eric Chou songs to recommend");
 		
-
 		// hit submit button
 		driver.findElement(By.id("submitQuestion")).click();
 	
-
 		// get to the question added page
 		driver.getCurrentUrl();
 	
-
 		// hit back to main button to navigate back to list of question page
 		driver.findElement(By.linkText("Back to main")).click();
-	
 
 		// get back to the list of questions page
-		driver.getCurrentUrl();
-		
+		driver.getCurrentUrl();	
 	}
 
 	//user try to edit question
@@ -100,19 +87,15 @@ public class NewTest {
 		// get to the edit question page
 		driver.getCurrentUrl();
 		
-
 		// click on back button
 		driver.findElement(By.id("back")).click();
 		
-
 		// get to list of question page
 		driver.getCurrentUrl();
 		
-
 		// hit edit button again
 		driver.findElement(By.linkText("Edit")).click();
 		
-
 		// edit the details of the question
 		driver.findElement(By.name("title")).clear();
 		driver.findElement(By.name("question")).clear();
@@ -123,10 +106,8 @@ public class NewTest {
 		// hit save changes button
 		driver.findElement(By.id("editQns")).click();
 	
-
 		// navigate back to list of question page to check if question is edited
-		driver.getCurrentUrl();
-		
+		driver.getCurrentUrl();	
 	}
 
 	//user try to delete qn
