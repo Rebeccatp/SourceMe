@@ -24,6 +24,7 @@ public class NewTest {
 	public void a() throws InterruptedException {
 		// navigate the browser to this url
 		driver.get("http://localhost:8090/SourceMe/home.jsp");
+		
 	
 		// hit all questions button
 		driver.findElement(By.name("questions")).click();
