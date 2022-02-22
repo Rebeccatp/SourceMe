@@ -23,7 +23,7 @@ public class NewTest {
 	@Test (priority = 1)
 	public void a() throws InterruptedException {
 		// navigate the browser to this url
-		driver.get("http://localhost:8090/SourceMe/home.jsp");
+		driver.get("http://localhost:8080/SourceMe/home.jsp");
 	
 
 		// hit all questions button
