@@ -17,11 +17,5 @@ node () {
 			} 
  		} 
 	}
-	
-	post {
-	    failure {
-	        emailext(attachLog: true, body: 'Error(s) occurred in your Jenkins build. ', compressLog: true, subject: '', to: '2001356a@student.tp.edu.sg')
-	    }
-	}
 }
 }
