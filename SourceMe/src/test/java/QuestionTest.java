@@ -3,13 +3,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-class questiontest {
+class QuestionTest {
 	private static Question question = new Question(0, null, null, null);
 	private static int questionId;
 	private static int deleteQuestionId;
