@@ -160,7 +160,7 @@ public class tutorialServlet extends HttpServlet {
 			ps.setString(3, p);
 			//Step 6: Perform the query on the database using the prepared statement
 			int i = ps.executeUpdate();
-			//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
+			//Step 7: Check if the query had been successfully execute, return You have successfully created a tutorial! via the response
 			if (i > 0) {
 				response.sendRedirect("dashboard");
 				PrintWriter writer = response.getWriter();
