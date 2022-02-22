@@ -126,7 +126,7 @@ public class questionServlet extends HttpServlet {
 		if (idString != null) {
 			request.getRequestDispatcher("/questions.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("http://localhost:8090/SourceMe/UserServlet/loginPage");
+			response.sendRedirect("/SourceMe/UserServlet/loginPage");
 		}
 	}
 
@@ -188,7 +188,7 @@ public class questionServlet extends HttpServlet {
 		// Step 3: redirect back to questionServlet (note: remember to change the url to
 		// your project name)
 		if (question.updateQn(title, questions, username, id) == true) {
-			response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+			response.sendRedirect("/SourceMe/questionServlet/questions");
 		}
 	}
 
@@ -201,7 +201,7 @@ public class questionServlet extends HttpServlet {
 																// delete question SQL query
 //Step 3: redirect back to questionServlet main page (note: remember to change the url to your project name)
 		if (question.deleteQn(id) == true) {
-			response.sendRedirect("http://localhost:8090/SourceMe/questionServlet/questions");
+			response.sendRedirect("/SourceMe/questionServlet/questions");
 		}
 	}
 
