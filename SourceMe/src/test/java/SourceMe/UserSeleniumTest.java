@@ -2,6 +2,7 @@ package SourceMe;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
 public class UserSeleniumTest {
+	
+	private WebDriver driver;
 	
 	// permanent user that is never modified
 	private String existingUsername1;
@@ -50,15 +53,15 @@ public class UserSeleniumTest {
 	private String updateEmail;
 	
   @Test
-  public void navigateToRegisterPage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void a_navigateToRegisterPage() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // NAVIGATE TO REGISTER PAGE FROM HOME PAGE
 	  driver.get("http://localhost:8090/SourceMe/home");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("Sign Up")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/registerPage");
 	  
 	  // check navbar items
@@ -70,9 +73,9 @@ public class UserSeleniumTest {
 	  
 // NAVIGATE TO REGISTER PAGE FROM LOGIN PAGE	  
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("click here")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/registerPage");
 	  
 	  // check navbar items
@@ -84,15 +87,15 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void navigateToLoginPage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void b_navigateToLoginPage() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // NAVIGATE TO LOGIN PAGE FROM HOME PAGE
 	  driver.get("http://localhost:8090/SourceMe/home");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("Sign In")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
 	  
 	  // check navbar items
@@ -104,9 +107,9 @@ public class UserSeleniumTest {
 	  
 // NAVIGATE TO LOGIN PAGE FROM REGISTER PAGE	  
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("Login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
 	  
 	  // check navbar items
@@ -118,13 +121,13 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void register() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void c_register() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // REGISTER FAIL (USERNAME ALREADY EXISTS)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // fill in registration form
 	  Select registerRole1 = new Select(driver.findElement(By.id("registerRole")));
@@ -138,7 +141,7 @@ public class UserSeleniumTest {
 	  
 	  // submit registration form
 	  driver.findElement(By.id("register")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "register"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/register");
@@ -148,7 +151,7 @@ public class UserSeleniumTest {
 	  
 // REGISTER SUCCESS
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // fill in registration form
 	  Select registerRole2 = new Select(driver.findElement(By.id("registerRole")));
@@ -162,20 +165,20 @@ public class UserSeleniumTest {
 	  
 	  // submit registration form
 	  driver.findElement(By.id("register")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "loginPage"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
   }
   
   @Test
-  public void login() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void d_login() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // LOGIN FAIL (WRONG USERNAME)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // fill in login form
 	  driver.findElement(By.id("loginUsername")).sendKeys(wrongUsername);
@@ -183,7 +186,7 @@ public class UserSeleniumTest {
 	  
 	  // submit login form
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "login"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/login");
@@ -193,46 +196,46 @@ public class UserSeleniumTest {
 	  
 // LOGIN FAIL (WRONG PASSWORD)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(wrongPassword);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/login");
 	  driver.findElements(By.xpath("//*[contains(text(), 'Wrong username or password!')]"));
 	  
 // LOGIN FAIL (WRONG USERNAME AND PASSWORD)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(wrongUsername);
 	  driver.findElement(By.id("loginPassword")).sendKeys(wrongPassword);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/login");
 	  driver.findElements(By.xpath("//*[contains(text(), 'Wrong username or password!')]"));
 	  
 // LOGIN SUCCESS
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "edit"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
   }
   
   @Test
-  public void navigateToHomePage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void e_navigateToHomePage() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // NAVIGATE TO HOME PAGE FROM LOGIN PAGE
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("Home")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/home");
 	  
 	  // check navbar items
@@ -244,9 +247,9 @@ public class UserSeleniumTest {
 	  
 // NAVIGATE TO HOME PAGE FROM REGISTER PAGE
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/registerPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.linkText("Home")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/home");
 	  
 	  // check navbar items
@@ -259,16 +262,16 @@ public class UserSeleniumTest {
 // NAVIGATE TO HOME PAGE FROM PROFILE PAGE
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  //navigate to "home"
 	  driver.findElement(By.linkText("Home")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/home");
 	  
 	  // check navbar items
@@ -280,14 +283,14 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void navigateToProfilePage() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
-
+  public void f_navigateToProfilePage() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
+	  
 // NAVIGATE TO PROFILE PAGE VIA URL	  
 // ACCESS DENIED (NOT LOGGED IN)
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/edit");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  // check if redirected to "loginPage"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
 	  
@@ -301,18 +304,18 @@ public class UserSeleniumTest {
 // NAVIGATE TO PROFILE PAGE FROM HOME PAGE
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  driver.get("http://localhost:8090/SourceMe/home");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  //navigate to "edit"
 	  driver.findElement(By.linkText(existingUsername1)).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  // check navbar items
@@ -324,18 +327,18 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void update() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void g_update() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // UPDATE SUCCESS
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername2);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword2);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  // check if profile form is pre-populated
@@ -370,7 +373,7 @@ public class UserSeleniumTest {
 	  
 	  // submit profile form
 	  driver.findElement(By.id("updateBtn")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if profile form is updated with new details after page refresh
 	  role = driver.findElement(By.id("updateRole")).getAttribute("value");
@@ -390,26 +393,26 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void logout() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void h_logout() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // LOGOUT FROM HOME PAGE
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  driver.get("http://localhost:8090/SourceMe/home");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // click on logout nav link
 	  driver.findElement(By.id("logoutBtn")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "loginPage"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
@@ -424,19 +427,19 @@ public class UserSeleniumTest {
 // LOGOUT FROM PROFILE PAGE
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername1);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword1);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/edit");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // click on logout nav link
 	  driver.findElement(By.id("logoutBtn")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "loginPage"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/loginPage");
@@ -450,23 +453,23 @@ public class UserSeleniumTest {
   }
   
   @Test
-  public void delete() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver();
+  public void i_delete() throws InterruptedException {
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
 	  
 // DELETE SUCCESS
 	  // login
 	  driver.get("http://localhost:8090/SourceMe/UserServlet/loginPage");
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  driver.findElement(By.id("loginUsername")).sendKeys(existingUsername3);
 	  driver.findElement(By.id("loginPassword")).sendKeys(existingPassword3);
 	  driver.findElement(By.id("login")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/edit");
 	  
 	  // click on delete account button
 	  driver.findElement(By.id("deleteBtn")).click();
-	  Thread.sleep(2000);
+	  Thread.sleep(1000);
 	  
 	  // check if navigated to "registerPage"
 	  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8090/SourceMe/UserServlet/registerPage");
@@ -481,6 +484,9 @@ public class UserSeleniumTest {
   
   @BeforeTest
   public void beforeTest() {
+	  
+	  System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+	  
 	  existingUsername1 = "jane";
 	  existingPassword1 = "password";
 	  

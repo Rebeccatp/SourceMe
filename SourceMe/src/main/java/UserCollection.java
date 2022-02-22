@@ -38,7 +38,7 @@ public class UserCollection {
 		String msg = "";
 		//Step 3: attempt connection to database using JDBC
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
 			PreparedStatement ps1 = con.prepareStatement("select id from user where userName = ?");
 			ps1.setString(1, username);
@@ -156,7 +156,7 @@ public class UserCollection {
 		String roleExisting ="";
 		//Step 3: attempt connection to database using JDBC
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourceme", "root", "password");
 			PreparedStatement ps1 = con.prepareStatement("select id, userName, role from user where userName = ? and password = ?");
 			ps1.setString(1, username);

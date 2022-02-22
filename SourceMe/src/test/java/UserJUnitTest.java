@@ -16,7 +16,8 @@ import static org.mockito.Mockito.verify;
  * @author akjza
  *
  */
-class UserJUnitTest {
+
+public class UserJUnitTest {
 	
 	private UserCollection uc;
 	private User mockUser = mock(User.class);
