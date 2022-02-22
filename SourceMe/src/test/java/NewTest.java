@@ -20,101 +20,98 @@ public class NewTest {
 //  }
 
 	//user try to add a question before they even login
-	@Test
+	@Test (priority = 1)
 	public void a() throws InterruptedException {
 		// navigate the browser to this url
 		driver.get("http://localhost:8090/SourceMe/home.jsp");
-		Thread.sleep(950);
+	
 
 		// hit all questions button
 		driver.findElement(By.name("questions")).click();
-		Thread.sleep(950);
+		
 
 		// get to the list of question page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 
 		// hit add question button
 		driver.findElement(By.linkText("Add Your Question")).click();
-		Thread.sleep(950);
+		
 	}
 
 	//login
-	@Test
+	@Test  (priority = 2)
 	public void b() throws InterruptedException {
 		// get to the login page as we need to login then can add a question
 		driver.getCurrentUrl();
-		Thread.sleep(950);
-
+		
 		// fill up the login details
 		driver.findElement(By.name("userName")).sendKeys("Ad");
 		driver.findElement(By.name("password")).sendKeys("admin@123");
-		Thread.sleep(950);
+	
 
 		// hit login button
 		driver.findElement(By.id("login")).click();
-		Thread.sleep(950);
+		
 
 		// navigate to account page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 	}
 	
 	//user try to add a question again
-	@Test
+	@Test (priority = 3)
 	public void c() throws InterruptedException {
 		// hit add question button
 		driver.findElement(By.linkText("Add Your Question")).click();
-		Thread.sleep(950);
+		
 
 		// get to the add question page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
-
+	
 		// fill up the question details
 		driver.findElement(By.name("title")).sendKeys("CPOP");
 		driver.findElement(By.name("question")).sendKeys("Eric Chou songs to recommend");
-		Thread.sleep(950);
+		
 
 		// hit submit button
 		driver.findElement(By.id("submitQuestion")).click();
-		Thread.sleep(950);
+	
 
 		// get to the question added page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+	
 
 		// hit back to main button to navigate back to list of question page
 		driver.findElement(By.linkText("Back to main")).click();
-		Thread.sleep(950);
+	
 
 		// get back to the list of questions page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 	}
 
 	//user try to edit question
-	@Test
+	@Test  (priority = 4)
 	public void d() throws InterruptedException {
 		// hit edit button
 		driver.findElement(By.linkText("Edit")).click();
-		Thread.sleep(950);
-
+		
 		// get to the edit question page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 
 		// click on back button
 		driver.findElement(By.id("back")).click();
-		Thread.sleep(950);
+		
 
 		// get to list of question page
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 
 		// hit edit button again
 		driver.findElement(By.linkText("Edit")).click();
-		Thread.sleep(950);
+		
 
 		// edit the details of the question
 		driver.findElement(By.name("title")).clear();
@@ -122,27 +119,24 @@ public class NewTest {
 
 		driver.findElement(By.name("title")).sendKeys("Shows and song");
 		driver.findElement(By.name("question")).sendKeys("Chinese shows and or song that have Kris Wu");
-		Thread.sleep(950);
-
+		
 		// hit save changes button
 		driver.findElement(By.id("editQns")).click();
-		Thread.sleep(950);
+	
 
 		// navigate back to list of question page to check if question is edited
 		driver.getCurrentUrl();
-		Thread.sleep(950);
+		
 	}
 
 	//user try to delete qn
-	@Test
+	@Test (priority = 5)
 	public void e() throws InterruptedException {
 		// hit delete question button
 		driver.findElement(By.linkText("Delete")).click();
-		Thread.sleep(950);
-
+		
 		// navigate back to list of question page to see if question is removed
 		driver.getCurrentUrl();
-		Thread.sleep(1050);
 	}
 
 	@BeforeTest
