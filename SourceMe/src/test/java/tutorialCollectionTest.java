@@ -46,10 +46,10 @@ class tutorialCollectionTest {
 	void setUp() throws Exception {
 		tutorial = new Tutorial(0, null,null);
 		tutorial2 = new Tutorial(mockTutorialCollection);
-		tutorialId = 77;
-		deleteId = 62;
+		tutorialId = 120;
+		deleteId = 108;
 		errorId = null;
-		setId = 64;
+		setId = 117;
 		t1 = "T1";
 		t2 = "T2";
 		t3 = "T3";
