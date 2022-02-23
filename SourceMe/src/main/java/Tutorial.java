@@ -126,7 +126,7 @@ public class Tutorial {
 				//Step 6: Perform the query on the database using the prepared statement
 				int i = ps.executeUpdate();
 				System.out.println(i);
-				//Step 7: Check if the query had been successfully execute, return “You have successfully created a tutorial!” via the response
+				//Step 7: Check if the query had been successfully execute, return You have successfully created a tutorial! via the response
 				return true;
 			}
 			//Step 8: catch and print out any exception
