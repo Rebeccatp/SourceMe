@@ -160,6 +160,6 @@ class AnswerCollectionTest {
 	void testDeleteAnswer() {
 		deleteById = answer.deleteAnswer(deleteId);
 		assertTrue(deleteById);
-	}
+	} 
 
 }
