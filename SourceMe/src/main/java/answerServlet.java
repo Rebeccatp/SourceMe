@@ -238,7 +238,8 @@ public class answerServlet extends HttpServlet {
 	private void deleteAnswer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		//Step 1: Retrieve value from the request
 		int id = Integer.parseInt(request.getParameter("id"));
-		int qnsId = answer.deleteAnswer(id);
+		int qnsId = answer.showEditForm(id).qnsId;
+		answer.deleteAnswer(id);
 		System.out.println(qnsId);
 			response.sendRedirect("viewAnswer?id=" + qnsId);
 	}

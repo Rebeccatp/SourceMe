@@ -42,7 +42,7 @@ class AnswerCollectionTest {
 	private Question currentQuestion;
 	private List <Answer> answerByQnsId;
 	private boolean editError;
-	private int deleteById;
+	private boolean deleteById;
     
 	@BeforeEach
 	void setUp() throws Exception {
@@ -50,9 +50,9 @@ class AnswerCollectionTest {
 	    userid = "12";
 		answerId = 1;
 		questionId = 5;
+		deleteId = 332;
 		answer = new Answer(0,0,null,null);
 		updateId = 84;
-		deleteId = 281;
 		postBy = "jaslynylh";
 		answers = "123";
 		jdbcURL = "jdbc:mysql://localhost:3306/sourceme";
@@ -158,10 +158,8 @@ class AnswerCollectionTest {
 
 	@Test
 	void testDeleteAnswer() {
-		List<Answer> answerList = answer.getAnswerByQnsId(questionId);
-		assertFalse(answerList.isEmpty());
-		deleteById = answer.deleteAnswer(deleteId+1);
-		assertEquals(answer.getAnswerByQnsId(questionId).size(), answerList.size()-1);
+		deleteById = answer.deleteAnswer(deleteId);
+		assertTrue(deleteById);
 	}
 
 }
