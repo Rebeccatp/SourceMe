@@ -17,7 +17,6 @@ class tutorialCollectionTest {
 	private Tutorial tutorial;
 	private Tutorial tutorial2;
 	private TutorialCollection mockTutorialCollection = mock(TutorialCollection.class);
-	
 	private Integer tutorialId;
 	private Integer deleteId;
 	private Integer errorId;
@@ -46,10 +45,10 @@ class tutorialCollectionTest {
 	void setUp() throws Exception {
 		tutorial = new Tutorial(0, null,null);
 		tutorial2 = new Tutorial(mockTutorialCollection);
-		tutorialId = 120;
+		tutorialId = 177;
 		deleteId = 108;
 		errorId = null;
-		setId = 117;
+		setId = 176;
 		t1 = "T1";
 		t2 = "T2";
 		t3 = "T3";
@@ -131,13 +130,11 @@ class tutorialCollectionTest {
 	@Test
 	void testCreateTutorialError() {		
 		
-		
 		// Act
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
 		
 		//Act & Assert (Check if return false value and if the size remain the same )
 		assertFalse(tutorial2.createTutorial(null, null, role));
-//		assertEquals(tutorial.getAllTutorials().size(), beforeCreate);
 		verify(mockTutorialCollection).ifAdmin(role);
 		
 		// Act & Assert (Check if return false value with incorrect role)
@@ -147,11 +144,7 @@ class tutorialCollectionTest {
 	@Test
 	void testUpdateTutorialById() {
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
-		//pass call update (parameter1)
-//		var tutorialById = tutorial.getTutorialById(tutorialId);
 		assertTrue(tutorial2.updateTutorialById(tutorialId, t3, c3, role));
-		// call retrieve record to check para
-//		assertNotSame(tutorialById,tutorial.getTutorialById(tutorialId));
 		verify(mockTutorialCollection).ifAdmin(role);
 	}
 	
@@ -170,31 +163,14 @@ class tutorialCollectionTest {
 	@Test
 	void testDeleteTutorialById() {
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
-//		List<Tutorial> testTc = tutorial.getAllTutorials();
-//		assertFalse(testTc.isEmpty());
-//		int beforeDelete = testTc.size();
-//		var tutorialById = tutorial.getTutorialById(deleteId);
-		
-		//delete tutorial
-		//var deletedTutorial = tutorial2.deleteTutorialById(deleteId,role);
 		assertTrue(tutorial2.deleteTutorialById(deleteId,role));
-		// Check size before and after delete
-//		assertEquals(tutorial.getAllTutorials().size(), beforeDelete-1);
-		
-
-		// Check deleted tutorial
-//		assertNotSame(tutorialById,tutorial.getTutorialById(deleteId));
 		verify(mockTutorialCollection).ifAdmin(role);
 	}
 	
 	@Test
 	void testDeleteTutorialByIdError() {
 		when(mockTutorialCollection.ifAdmin(role)).thenReturn(true);
-//		List<Tutorial> testTc = tutorial.getAllTutorials();
-//		assertFalse(testTc.isEmpty());
-//		int beforeDelete = testTc.size();
 		assertFalse(tutorial2.deleteTutorialById(errorId, role));
-//		assertEquals(tutorial.getAllTutorials().size(), beforeDelete);
 		verify(mockTutorialCollection).ifAdmin(role);
 		
 		// Act & Assert (Check if return false value with incorrect role)
