@@ -183,7 +183,7 @@ public class AnswerTest {
   public void beforeTest() {
 	  System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
 	  driver = new ChromeDriver();
-	  js = (JavascriptExecutor) driver;
+	  js = (JavascriptExecutor) driver; 
   }
 
   @AfterTest
