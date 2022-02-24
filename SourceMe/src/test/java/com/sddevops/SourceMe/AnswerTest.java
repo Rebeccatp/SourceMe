@@ -147,6 +147,7 @@ public class AnswerTest {
 		
 		//Make changes to answer
 	    driver.findElement(By.name("answer")).sendKeys("selenium edited text");
+		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 		
 		//Click on Edit Answer button
