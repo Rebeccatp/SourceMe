@@ -130,12 +130,12 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
-		//Click on �View Answer� button 
+		//Click on View Answer button 
 	    driver.findElement(By.linkText("View Answer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 		
-		//Click on �edit� button 
+		//Click on edit button 
 	    driver.findElement(By.name("editAnswer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
@@ -147,7 +147,7 @@ public class AnswerTest {
 	    driver.findElement(By.name("answer")).sendKeys("selenium edited text");
 	    Thread.sleep(1800);
 		
-		//Click on �Edit Answer� button
+		//Click on Edit Answer button
 	    driver.findElement(By.id("editAnswer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
@@ -160,17 +160,17 @@ public class AnswerTest {
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(1800);
 		
-		//Click on �All Question� button 
+		//Click on All Question button 
 		driver.findElement(By.name("questions")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);  
 		
-	    //Click on �View Answer� button 
+	    //Click on View Answer button 
 	    driver.findElement(By.linkText("View Answer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800); 
 						
-		//Click on �Delete� button
+		//Click on Delete button
 	    driver.findElement(By.name("btnDel")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);

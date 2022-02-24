@@ -183,7 +183,7 @@ public class Answer {
 			ps.setString(3, postBy);
 			ps.setString(4, answers);
 			//Step 6: perform the query on the database using the prepared statement
-			int i = ps.executeUpdate();
+			int i = ps.executeUpdate(); 
 			return true;
 				} 
 		catch (Exception exception) {

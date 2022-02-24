@@ -117,6 +117,7 @@ class AnswerCollectionTest {
 		question = answer.showCreateAnswerForm(questionId);
 		//if the question is not equals to null it will be true
 		assertFalse(question.equals(null));
+		assertFalse(question.equals(null));
 	}
 	
 	@Test
