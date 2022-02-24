@@ -31,7 +31,7 @@ public class AnswerTest {
 	    
 		//Click on "Add your Answer" button
 	    driver.findElement(By.name("btn-add-answer")).click();
-	    Thread.sleep(800); 
+	    Thread.sleep(800);  
 	    
 		//Enter username
 	    driver.findElement(By.name("userName")).sendKeys("Ad");
