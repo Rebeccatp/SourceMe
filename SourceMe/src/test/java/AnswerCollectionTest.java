@@ -37,7 +37,7 @@ class AnswerCollectionTest {
 	private Connection connectionError;
 	private Connection connectionError2;
 	private Connection connectionError3;
-	private Question question;
+	private Question question; 
 	private Answer currentAnswer;
 	private Question currentQuestion;
 	private List <Answer> answerByQnsId;
