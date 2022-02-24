@@ -46,7 +46,7 @@ class tutorialCollectionTest {
 		tutorial = new Tutorial(0, null,null);
 		tutorial2 = new Tutorial(mockTutorialCollection);
 		tutorialId = 179;
-		deleteId = 108;
+		deleteId = 165;
 		errorId = null;
 		setId = 176;
 		t1 = "T1";
