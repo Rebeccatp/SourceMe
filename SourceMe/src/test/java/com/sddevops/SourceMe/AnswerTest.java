@@ -63,6 +63,7 @@ public class AnswerTest {
 	    
 		//Click on "Add your Answer" button
 	    driver.findElement(By.name("btn-add-answer")).click();
+	    (js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	    Thread.sleep(1800);
 	    
 		//Enter the answer
