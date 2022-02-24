@@ -204,7 +204,7 @@ public class Answer {
 						}
 	}
 	
-	public int deleteAnswer(Integer id) {
+	public boolean deleteAnswer(Integer id) {
 		try (Connection connection = getConnection(jdbcURL, jdbcUsername, jdbcPassword, jdbcDriver);
 				//Step 2: Create a statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ANSWER_BY_ID);) {
@@ -223,10 +223,10 @@ public class Answer {
 				PreparedStatement statement = connection.prepareStatement(DELETE_ANSWER_SQL);) {
 					statement.setInt(1, id);
 					int i = statement.executeUpdate();
-					return qnsId;
+					return true;
 				}catch (SQLException e) {
 					System.out.println(e.getMessage());
-					return 0;
+					return false;
 				}
 			}
 	

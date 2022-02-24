@@ -38,7 +38,7 @@
 //	private Question currentQuestion;
 //	private List <Answer> answerByQnsId;
 //	private boolean editError;
-//	private int deleteById;
+//	private boolean deleteById;
 //    
 //	@BeforeEach
 //	void setUp() throws Exception {
@@ -152,10 +152,8 @@
 //
 //	@Test
 //	void testDeleteAnswer() {
-//		List<Answer> answerList = answer.getAnswerByQnsId(questionId);
-//		assertFalse(answerList.isEmpty());
 //		deleteById = answer.deleteAnswer(deleteId);
-//		assertEquals(answer.getAnswerByQnsId(questionId).size(), answerList.size()-1);
+//		assertTrue(deleteById);
 //	}
 //
 //}
