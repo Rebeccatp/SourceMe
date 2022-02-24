@@ -160,7 +160,7 @@ class AnswerCollectionTest {
 	@Test
 	void testDeleteAnswer() {
 		deleteById = answer.deleteAnswer(deleteId);
-		assertTrue(deleteById);
+		assertTrue(deleteById); 
 	} 
 
 }
