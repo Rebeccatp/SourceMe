@@ -86,7 +86,7 @@ class AnswerCollectionTest {
 		answer.setPostBy(postBy);
 		assertEquals(postBy, answer.getPostBy());
 	}
-	
+	 
 	@Test
 	void testGetAnswers() {
 		answer.setAnswers(answers);
