@@ -145,7 +145,7 @@ class AnswerCollectionTest {
 	void testGetQuestionById() {
 		currentQuestion = answer.getQuestionById(questionId);
 		//if the currentQuestion is not equals to null it will be true
-		assertFalse(currentQuestion.equals(null));
+		assertFalse(currentQuestion.equals(null)); 
 	}
 
 	@Test
