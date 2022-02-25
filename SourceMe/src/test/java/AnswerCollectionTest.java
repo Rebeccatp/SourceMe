@@ -109,7 +109,7 @@ class AnswerCollectionTest {
 		//if the answerList is not empty it will be true
 		assertFalse(answerList.isEmpty());
 		connectionError3 = answer.getConnection(jdbcURL, usernameErr, passwordErr, driverErr);
-		assertNull(connectionError3);
+		assertNull(connectionError3); 
 		} 
 
 	@Test
