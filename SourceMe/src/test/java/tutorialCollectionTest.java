@@ -45,10 +45,10 @@ class tutorialCollectionTest {
 	void setUp() throws Exception {
 		tutorial = new Tutorial(0, null,null);
 		tutorial2 = new Tutorial(mockTutorialCollection);
-		tutorialId = 179;
+		tutorialId = 190;
 		deleteId = 165;
 		errorId = null;
-		setId = 176;
+		setId = 190;
 		t1 = "T1";
 		t2 = "T2";
 		t3 = "T3";
