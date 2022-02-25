@@ -61,7 +61,7 @@
 		</nav>
 		
 		<div class="title">
-			<h2>Tutorials</h2>
+			<h2>View Tutorials</h2>
 		</div>
 		<div class="viewTutorials">
 			<c:choose>
