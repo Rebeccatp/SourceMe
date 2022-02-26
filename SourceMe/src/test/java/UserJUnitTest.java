@@ -151,7 +151,7 @@ public class UserJUnitTest {
 	void testLogin() {
 // LOGIN SUCCESS
 		when(mockUser.isNumeric(String.valueOf(existingUser.id))).thenReturn(true);
-		assertEquals(String.valueOf(existingUser.id), uc.login(existingUser.userName, existingUser.password));
+		assertEquals(uc.login(existingUser.userName, existingUser.password), String.valueOf(existingUser.id));
 		verify(mockUser).isNumeric(String.valueOf(existingUser.id));
 		
 // LOGIN FAIL (WRONG USERNAME)
