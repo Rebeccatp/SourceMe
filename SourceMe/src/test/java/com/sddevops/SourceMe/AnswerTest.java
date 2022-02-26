@@ -140,7 +140,7 @@ public class AnswerTest {
 		//Click on edit button 
 	    driver.findElement(By.name("editAnswer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-	    Thread.sleep(800);
+	    Thread.sleep(800); 
 	    
 	    //Clear previous input
 	    driver.findElement(By.name("answer")).clear();
