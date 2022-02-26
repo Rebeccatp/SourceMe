@@ -135,7 +135,7 @@ public class AnswerTest {
 		//Click on View Answer button 
 	    driver.findElement(By.linkText("View Answer")).click();
 		(js).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-	    Thread.sleep(800);
+	    Thread.sleep(800); 
 		
 		//Click on edit button 
 	    driver.findElement(By.name("editAnswer")).click();
