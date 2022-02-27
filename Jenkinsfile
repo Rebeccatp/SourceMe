@@ -14,6 +14,15 @@ pipeline {
                 }
             }
         }
+        stage ('sourceme - Deploy') {
+            steps {
+                deploy(
+                    adapters: [tomcat7(url: 'http://localhost:8080/', credentialsId: 'e3cbf20e-4922-4385-a5c6-cb93c4de32ce')],
+                    war: '**/*.war',
+                    contextPath: 'sourceme-pipeline'
+                )
+            }
+        }
     }
     post {
         failure {
