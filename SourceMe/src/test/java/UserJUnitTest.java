@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 
 public class UserJUnitTest {
 	
-	// test
+	
 	private UserCollection uc;
 	private User mockUser = mock(User.class);
 	
